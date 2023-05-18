@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PeersRepository extends CrudRepository<Peers, Integer> {
+public interface PeersRepository extends CrudRepository<Peers, String> {
 }

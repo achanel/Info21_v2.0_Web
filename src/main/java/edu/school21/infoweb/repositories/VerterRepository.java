@@ -1,7 +1,9 @@
-package edu.school21.infoweb.repository;
+package edu.school21.infoweb.repositories;
 
 import edu.school21.infoweb.models.Verter;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface VerterRepository extends CrudRepository<Verter, Integer> {
 }
