@@ -11,4 +11,6 @@ public interface PeersRepository extends CrudRepository<Peers, String> {
     List<Peers> findAll();
 
     Peers save(Peers peers);
+
+    void deleteById(String id);
 }

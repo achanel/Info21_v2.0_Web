@@ -25,4 +25,11 @@ public class PeersServiceImpl implements PeersService {
     public Peers savePeer(Peers peers) {
         return peersRepository.save(peers);
     }
+
+    @Override
+    public void deletePeer(String id) {
+        peersRepository.deleteById(id);
+    }
+
+
 }

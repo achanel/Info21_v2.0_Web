@@ -8,4 +8,6 @@ public interface PeersService {
     List<Peers> getAllPeers();
 
     Peers savePeer(Peers peers);
+
+    void deletePeer(String id);
 }
