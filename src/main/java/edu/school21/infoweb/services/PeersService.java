@@ -7,7 +7,7 @@ import java.util.List;
 public interface PeersService {
     List<Peers> getAllPeers();
 
-    Peers savePeer(Peers peers);
+    List<Peers> savePeers(List<Peers> peers);
 
     void deletePeer(String id);
 }
