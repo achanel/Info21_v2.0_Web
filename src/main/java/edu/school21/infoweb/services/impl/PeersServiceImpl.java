@@ -23,7 +23,7 @@ public class PeersServiceImpl implements PeersService {
     @Override
     @Transactional
     public List<Peers> savePeers(List<Peers> peers) {
-        return peersRepository.saveAllAndFlush(peers);
+        return (List<Peers>) peersRepository.saveAll(peers);
     }
 
     @Override
