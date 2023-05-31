@@ -19,9 +19,9 @@ public class TimeTracking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "id")
-    private List<Peers> peer = new LinkedList<>();
+//    @OneToMany(cascade = CascadeType.REMOVE)
+//    @JoinColumn(name = "id")
+//    private List<Peers> peer = new LinkedList<>();
     private Date date;
     private Time time;
     private short state;

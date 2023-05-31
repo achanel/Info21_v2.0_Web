@@ -17,12 +17,12 @@ public class TransferredPoints {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "id")
-    private List<Peers> checkingPeer = new LinkedList<>();
-    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "id")
-    private List<Peers> checkedPeer = new LinkedList<>();
+//    @OneToMany(cascade = CascadeType.REMOVE)
+//    @JoinColumn(name = "id")
+//    private List<Peers> checkingPeer = new LinkedList<>();
+//    @OneToMany(cascade = CascadeType.REMOVE)
+//    @JoinColumn(name = "id")
+//    private List<Peers> checkedPeer = new LinkedList<>();
     private Integer pointsAmount;
 }
 

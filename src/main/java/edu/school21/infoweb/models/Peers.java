@@ -1,5 +1,6 @@
 package edu.school21.infoweb.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -9,8 +10,8 @@ import java.time.LocalDateTime;
 @Table
 public class Peers {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonProperty("id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @JsonIgnoreProperties
     private long id;
     @JsonProperty("name")
     private String name;
@@ -19,6 +20,11 @@ public class Peers {
 
     public Peers(long id, String name, LocalDateTime birthday) {
         this.id = id;
+        this.name = name;
+        this.birthday = birthday;
+    }
+
+    public Peers(String name, LocalDateTime birthday) {
         this.name = name;
         this.birthday = birthday;
     }
@@ -38,17 +44,14 @@ public class Peers {
         return this.birthday;
     }
 
-    @JsonProperty("id")
     public void setId(long id) {
         this.id = id;
     }
 
-    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
 
-    @JsonProperty("birthday")
     public void setBirthday(LocalDateTime birthday) {
         this.birthday = birthday;
     }

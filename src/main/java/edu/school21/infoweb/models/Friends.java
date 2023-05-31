@@ -17,10 +17,10 @@ public class Friends {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "id")
-    private List<Peers> peer1 = new LinkedList<>();
-    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "id")
-    private List<Peers> peer2 = new LinkedList<>();
+//    @OneToMany(cascade = CascadeType.REMOVE)
+//    @JoinColumn(name = "id")
+//    private List<Peers> peer1 = new LinkedList<>();
+//    @OneToMany(cascade = CascadeType.REMOVE)
+//    @JoinColumn(name = "id")
+//    private List<Peers> peer2 = new LinkedList<>();
 }

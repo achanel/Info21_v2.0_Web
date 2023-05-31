@@ -18,7 +18,7 @@ public class XP {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "id")
     private List<Checks> check = new LinkedList<>();
     private Integer xpAmount;

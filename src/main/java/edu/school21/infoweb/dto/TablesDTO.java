@@ -1,28 +1,41 @@
 package edu.school21.infoweb.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.school21.infoweb.models.*;
 
 import java.util.List;
 
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class TablesDTO {
+    @JsonProperty("peersList")
     List<Peers> peersList;
 
+    @JsonProperty("checksList")
     List<Checks> checksList;
 
+    @JsonProperty("friendsList")
     List<Friends> friendsList;
 
+    @JsonProperty("p2PList")
     List<P2P> p2PList;
 
+    @JsonProperty("recommendationsList")
     List<Recommendations> recommendationsList;
 
+    @JsonProperty("tasksList")
     List<Tasks> tasksList;
 
+    @JsonProperty("timeTrackingList")
     List<TimeTracking> timeTrackingList;
 
+    @JsonProperty("transferredPointsList")
     List<TransferredPoints> transferredPointsList;
 
+    @JsonProperty("verterList")
     List<Verter> verterList;
 
+    @JsonProperty("xpList")
     List<XP> xpList;
 
     public TablesDTO(List<Peers> peersList, List<Checks> checksList, List<Friends> friendsList, List<P2P> p2PList, List<Recommendations> recommendationsList, List<Tasks> tasksList, List<TimeTracking> timeTrackingList, List<TransferredPoints> transferredPointsList, List<Verter> verterList, List<XP> xpList) {
