@@ -13,12 +13,11 @@ public class TablesServiceImpl implements TablesService {
 
     @Override
     public TablesDTO getTables() {
-        System.out.println("tableService: " + new TablesDTO.TablesDTOBuilder().peersList(peersService.getAllPeers()).build().getPeersList());
-        return new TablesDTO.TablesDTOBuilder().peersList(peersService.getAllPeers()).build();
+        return TablesDTO.builder().peersList(peersService.getAllPeers()).build();
     }
 
     @Override
     public TablesDTO saveTables(TablesDTO tablesDTO) {
-        return new TablesDTO.TablesDTOBuilder().peersList(peersService.savePeers(tablesDTO.getPeersList())).build();
+        return TablesDTO.builder().peersList(peersService.savePeers(tablesDTO.getPeersList())).build();
     }
 }

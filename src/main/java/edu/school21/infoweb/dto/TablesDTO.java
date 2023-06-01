@@ -55,7 +55,7 @@ public class TablesDTO {
     }
 
     public static TablesDTOBuilder builder() {
-        return new TablesDTOBuilder();
+        return new TablesDTO().new TablesDTOBuilder();
     }
 
     public List<Peers> getPeersList() {
@@ -138,7 +138,7 @@ public class TablesDTO {
         this.xpList = xpList;
     }
 
-    public static class TablesDTOBuilder {
+    public class TablesDTOBuilder {
         private List<Peers> peersList;
         private List<Checks> checksList;
         private List<Friends> friendsList;
@@ -154,7 +154,7 @@ public class TablesDTO {
         }
 
         public TablesDTOBuilder peersList(List<Peers> peersList) {
-            this.peersList = peersList;
+            TablesDTO.this.peersList = peersList;
             return this;
         }
 
@@ -194,12 +194,12 @@ public class TablesDTO {
         }
 
         public TablesDTOBuilder verterList(List<Verter> verterList) {
-            this.verterList = verterList;
+            TablesDTO.this.verterList = verterList;
             return this;
         }
 
         public TablesDTOBuilder xpList(List<XP> xpList) {
-            this.xpList = xpList;
+            TablesDTO.this.xpList = xpList;
             return this;
         }
 

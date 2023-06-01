@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity(name = "Peers")
 @Table
@@ -16,15 +17,15 @@ public class Peers {
     @JsonProperty("name")
     private String name;
     @JsonProperty("birthday")
-    private LocalDateTime birthday;
+    private Date birthday;
 
-    public Peers(long id, String name, LocalDateTime birthday) {
+    public Peers(long id, String name, Date birthday) {
         this.id = id;
         this.name = name;
         this.birthday = birthday;
     }
 
-    public Peers(String name, LocalDateTime birthday) {
+    public Peers(String name, Date birthday) {
         this.name = name;
         this.birthday = birthday;
     }
@@ -40,7 +41,7 @@ public class Peers {
         return this.name;
     }
 
-    public LocalDateTime getBirthday() {
+    public Date getBirthday() {
         return this.birthday;
     }
 
@@ -52,7 +53,7 @@ public class Peers {
         this.name = name;
     }
 
-    public void setBirthday(LocalDateTime birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
