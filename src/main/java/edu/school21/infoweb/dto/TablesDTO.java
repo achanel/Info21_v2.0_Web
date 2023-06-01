@@ -55,7 +55,7 @@ public class TablesDTO {
     }
 
     public static TablesDTOBuilder builder() {
-        return new TablesDTO().new TablesDTOBuilder();
+        return new TablesDTOBuilder();
     }
 
     public List<Peers> getPeersList() {
@@ -98,47 +98,57 @@ public class TablesDTO {
         return this.xpList;
     }
 
+    @JsonProperty("peersList")
     public void setPeersList(List<Peers> peersList) {
         this.peersList = peersList;
     }
 
+    @JsonProperty("checksList")
     public void setChecksList(List<Checks> checksList) {
         this.checksList = checksList;
     }
 
+    @JsonProperty("friendsList")
     public void setFriendsList(List<Friends> friendsList) {
         this.friendsList = friendsList;
     }
 
+    @JsonProperty("p2PList")
     public void setP2PList(List<P2P> p2PList) {
         this.p2PList = p2PList;
     }
 
+    @JsonProperty("recommendationsList")
     public void setRecommendationsList(List<Recommendations> recommendationsList) {
         this.recommendationsList = recommendationsList;
     }
 
+    @JsonProperty("tasksList")
     public void setTasksList(List<Tasks> tasksList) {
         this.tasksList = tasksList;
     }
 
+    @JsonProperty("timeTrackingList")
     public void setTimeTrackingList(List<TimeTracking> timeTrackingList) {
         this.timeTrackingList = timeTrackingList;
     }
 
+    @JsonProperty("transferredPointsList")
     public void setTransferredPointsList(List<TransferredPoints> transferredPointsList) {
         this.transferredPointsList = transferredPointsList;
     }
 
+    @JsonProperty("verterList")
     public void setVerterList(List<Verter> verterList) {
         this.verterList = verterList;
     }
 
+    @JsonProperty("xpList")
     public void setXpList(List<XP> xpList) {
         this.xpList = xpList;
     }
 
-    public class TablesDTOBuilder {
+    public static class TablesDTOBuilder {
         private List<Peers> peersList;
         private List<Checks> checksList;
         private List<Friends> friendsList;
@@ -150,11 +160,11 @@ public class TablesDTO {
         private List<Verter> verterList;
         private List<XP> xpList;
 
-        public TablesDTOBuilder() {
+        TablesDTOBuilder() {
         }
 
         public TablesDTOBuilder peersList(List<Peers> peersList) {
-            TablesDTO.this.peersList = peersList;
+            this.peersList = peersList;
             return this;
         }
 
@@ -194,17 +204,17 @@ public class TablesDTO {
         }
 
         public TablesDTOBuilder verterList(List<Verter> verterList) {
-            TablesDTO.this.verterList = verterList;
+            this.verterList = verterList;
             return this;
         }
 
         public TablesDTOBuilder xpList(List<XP> xpList) {
-            TablesDTO.this.xpList = xpList;
+            this.xpList = xpList;
             return this;
         }
 
         public TablesDTO build() {
-            return new TablesDTO();
+            return new TablesDTO(peersList, checksList, friendsList, p2PList, recommendationsList, tasksList, timeTrackingList, transferredPointsList, verterList, xpList);
         }
 
         public String toString() {
