@@ -6,4 +6,6 @@ public interface TablesService {
     TablesDTO getTables();
 
     TablesDTO saveTables(TablesDTO tablesDTO);
+
+    void deleteTables(TablesDTO tablesDTO);
 }

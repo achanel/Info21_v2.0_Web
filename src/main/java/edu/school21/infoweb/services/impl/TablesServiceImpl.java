@@ -20,4 +20,9 @@ public class TablesServiceImpl implements TablesService {
     public TablesDTO saveTables(TablesDTO tablesDTO) {
         return TablesDTO.builder().peersList(peersService.savePeers(tablesDTO.getPeersList())).build();
     }
+
+    @Override
+    public void deleteTables(TablesDTO tablesDTO) {
+        peersService.deletePeer(tablesDTO.getPeersList());
+    }
 }

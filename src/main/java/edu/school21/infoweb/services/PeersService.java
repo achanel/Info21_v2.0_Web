@@ -9,5 +9,5 @@ public interface PeersService {
 
     List<Peers> savePeers(List<Peers> peers);
 
-    void deletePeer(String id);
+    void deletePeer(List<Peers> peers);
 }

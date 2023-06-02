@@ -28,9 +28,7 @@ public class PeersServiceImpl implements PeersService {
     }
 
     @Override
-    public void deletePeer(String id) {
-        peersRepository.deleteById(id);
+    public void deletePeer(List<Peers> peers) {
+        peersRepository.deleteAll(peers);
     }
-
-
 }

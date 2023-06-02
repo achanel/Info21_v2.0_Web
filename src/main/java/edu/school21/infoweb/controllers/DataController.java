@@ -23,9 +23,9 @@ public class DataController {
         return new ResponseEntity<>(tablesService.saveTables(tablesDTO), HttpStatus.CREATED);
     }
 
-//    @DeleteMapping("/delete/{id}")
-//    public ResponseEntity<Peers> deletePeer(@RequestParam String id) {
-//        peersService.deletePeer(id);
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
+    @DeleteMapping("/delete")
+    public ResponseEntity<TablesDTO> deletePeer(@RequestBody TablesDTO tablesDTO) {
+        tablesService.deleteTables(tablesDTO);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
