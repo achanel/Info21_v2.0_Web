@@ -9,6 +9,4 @@ import java.util.List;
 @Repository
 public interface PeersRepository extends CrudRepository<Peers, Long> {
     List<Peers> findAll();
-
-    void deleteById(String id);
 }

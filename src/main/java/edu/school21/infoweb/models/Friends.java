@@ -1,26 +1,54 @@
 package edu.school21.infoweb.models;
 
-import javax.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.LinkedList;
+import javax.persistence.*;
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
 @Entity(name = "Friends")
 @Table
 public class Friends {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @JsonIgnoreProperties
     private Integer id;
-//    @OneToMany(cascade = CascadeType.REMOVE)
-//    @JoinColumn(name = "id")
-//    private List<Peers> peer1 = new LinkedList<>();
-//    @OneToMany(cascade = CascadeType.REMOVE)
-//    @JoinColumn(name = "id")
-//    private List<Peers> peer2 = new LinkedList<>();
+
+    @JsonProperty("peer1")
+    private String peer1;
+
+    @JsonProperty("peer2")
+    private String peer2;
+    @OneToMany
+    @JoinColumn(name = "peer_id")
+    private List<Peers> peer1List;
+    @OneToMany
+    @JoinColumn(name = "peer_id")
+    private List<Peers> peer2List;
+
+    public Friends(Integer id, String peer1, String peer2) {
+        this.id = id;
+        this.peer1 = peer1;
+        this.peer2 = peer2;
+    }
+
+    public Friends() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Friends{" +
+                "id=" + id +
+                ", peer1=" + peer1 +
+                ", peer2=" + peer2 +
+                '}';
+    }
 }

@@ -4,6 +4,9 @@ import edu.school21.infoweb.models.Friends;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface FriendsRepository extends CrudRepository<Friends, Integer> {
+    List<Friends> findAll();
 }
