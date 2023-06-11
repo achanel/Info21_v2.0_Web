@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PeersRepository extends CrudRepository<Peers, Long> {
+public interface PeersRepository extends CrudRepository<Peers, String> {
     List<Peers> findAll();
 }

@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 
 import java.util.Date;
-import java.util.List;
 
 @Entity(name = "Checks")
 @Table
@@ -14,41 +13,41 @@ public class Checks {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonIgnoreProperties
-    private long id;
-
-    @JsonProperty("peer")
-    private String peer;
-
-    @JsonProperty("task")
-    private String task;
+    private long check_id;
 
     @JsonProperty("date")
     private Date date;
 
-    @OneToMany
-    @JoinColumn(name = "peer_id")
-    private List<Peers> peersList;
+    @ManyToOne
+    @JoinColumn(name = "name")
+    private Peers peer;
 
-    @OneToMany
-    @JoinColumn(name = "task_id")
-    private List<Tasks> tasksList;
+    @ManyToOne
+    @JoinColumn(name = "title")
+    private Tasks task;
 
-    public Checks(long id, String peer, String task, Date date) {
-        this.id = id;
+    public Checks(long check_id, Date date, Peers peer, Tasks task) {
+        this.check_id = check_id;
+        this.date = date;
         this.peer = peer;
         this.task = task;
+    }
+
+    public Checks(long check_id, Date date, Peers peer) {
+        this.check_id = check_id;
         this.date = date;
+        this.peer = peer;
     }
 
-    public Checks(){
+    public Checks() {
     }
 
-    public long getId() {
-        return id;
+    public long getCheck_id() {
+        return check_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCheck_id(long checks_id) {
+        this.check_id = checks_id;
     }
 
     public Date getDate() {
@@ -59,29 +58,29 @@ public class Checks {
         this.date = date;
     }
 
-    public String getPeer() {
+    public Peers getPeer() {
         return peer;
     }
 
-    public void setPeer(String peer) {
+    public void setPeer(Peers peer) {
         this.peer = peer;
     }
 
-    public String getTask() {
+    public Tasks getTask() {
         return task;
     }
 
-    public void setTask(String task) {
+    public void setTask(Tasks task) {
         this.task = task;
     }
 
     @Override
     public String toString() {
         return "Checks{" +
-                "id=" + id +
+                "checks_id=" + check_id +
+                ", date=" + date +
                 ", peer=" + peer +
                 ", task=" + task +
-                ", date=" + date +
                 '}';
     }
 }

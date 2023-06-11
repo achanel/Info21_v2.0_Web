@@ -5,22 +5,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.sql.Time;
-import java.util.LinkedList;
-import java.util.List;
-
 @Entity(name = "P2P")
 @Table
 public class P2P {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonIgnoreProperties
-    private long id;
-    @OneToMany
-    @JsonProperty("check_id")
-    private List<Checks> check = new LinkedList<>();
-    @OneToMany
-    @JoinColumn(name = "peers_id")
-    private List<Peers> checkingPeer = new LinkedList<>();
+    private long p2p_id;
+    @ManyToOne
+    @JoinColumn(name = "check_id")
+    private Checks check;
+    @ManyToOne
+    @JoinColumn(name = "name")
+    private Peers checkingPeer;
 
     @JsonProperty("checkState")
     private CheckState checkState;
@@ -28,8 +25,8 @@ public class P2P {
     @JsonProperty("time")
     private Time time;
 
-    public P2P(long id, List<Checks> check, List<Peers> checkingPeer, CheckState checkState, Time time) {
-        this.id = id;
+    public P2P(long p2p_id, Checks check, Peers checkingPeer, CheckState checkState, Time time) {
+        this.p2p_id = p2p_id;
         this.check = check;
         this.checkingPeer = checkingPeer;
         this.checkState = checkState;
@@ -39,10 +36,50 @@ public class P2P {
     public P2P() {
     }
 
+    public long getP2p_id() {
+        return p2p_id;
+    }
+
+    public void setP2p_id(long p2p_id) {
+        this.p2p_id = p2p_id;
+    }
+
+    public Checks getCheck() {
+        return check;
+    }
+
+    public void setCheck(Checks check) {
+        this.check = check;
+    }
+
+    public Peers getCheckingPeer() {
+        return checkingPeer;
+    }
+
+    public void setCheckingPeer(Peers checkingPeer) {
+        this.checkingPeer = checkingPeer;
+    }
+
+    public CheckState getCheckState() {
+        return checkState;
+    }
+
+    public void setCheckState(CheckState checkState) {
+        this.checkState = checkState;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
+    }
+
     @Override
     public String toString() {
         return "P2P{" +
-                "id=" + id +
+                "id=" + p2p_id +
                 ", check=" + check +
                 ", checkingPeer=" + checkingPeer +
                 ", checkState=" + checkState +

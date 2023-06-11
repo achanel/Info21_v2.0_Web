@@ -9,20 +9,12 @@ import java.util.Date;
 @Entity(name = "Peers")
 @Table
 public class Peers {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @JsonIgnoreProperties
-    private long id;
     @JsonProperty("name")
     private String name;
     @JsonProperty("birthday")
     private Date birthday;
-
-    public Peers(long id, String name, Date birthday) {
-        this.id = id;
-        this.name = name;
-        this.birthday = birthday;
-    }
 
     public Peers(String name, Date birthday) {
         this.name = name;
@@ -32,27 +24,19 @@ public class Peers {
     public Peers() {
     }
 
-    public long getId() {
-        return this.id;
-    }
-
     public String getName() {
-        return this.name;
-    }
-
-    public Date getBirthday() {
-        return this.birthday;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String toString() {
-        return "Peers(id=" + this.getId() + ", name=" + this.getName() + ", birthday=" + this.getBirthday() + ")";
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 }

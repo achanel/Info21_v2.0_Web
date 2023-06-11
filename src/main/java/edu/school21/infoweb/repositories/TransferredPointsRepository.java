@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface TransferredPointsRepository extends CrudRepository<TransferredPoints, Integer> {
+public interface TransferredPointsRepository extends CrudRepository<TransferredPoints, Long> {
 
     List<TransferredPoints> findAll();
 }

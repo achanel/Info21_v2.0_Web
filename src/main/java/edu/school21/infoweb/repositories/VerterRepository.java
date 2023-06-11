@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface VerterRepository extends CrudRepository<Verter, Integer> {
+public interface VerterRepository extends CrudRepository<Verter, Long> {
     List<Verter> findAll();
 }

@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface P2PRepository extends CrudRepository<P2P, Integer> {
+public interface P2PRepository extends CrudRepository<P2P, Long> {
     List<P2P> findAll();
 }

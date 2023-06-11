@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface XPRepository extends CrudRepository<XP, Integer> {
+public interface XPRepository extends CrudRepository<XP, Long> {
     List<XP> findAll();
 }

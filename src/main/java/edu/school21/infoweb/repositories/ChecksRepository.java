@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ChecksRepository extends CrudRepository<Checks, Integer> {
+public interface ChecksRepository extends CrudRepository<Checks, Long> {
     List<Checks> findAll();
 }

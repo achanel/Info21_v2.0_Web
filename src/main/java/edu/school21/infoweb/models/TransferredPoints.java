@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.util.LinkedList;
-import java.util.List;
 
 @Entity(name = "TransferredPoints")
 @Table
@@ -13,18 +11,18 @@ public class TransferredPoints {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonIgnoreProperties
-    private long id;
-    @OneToMany(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "peer_id")
-    private List<Peers> checkingPeer = new LinkedList<>();
-    @OneToMany(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "peer_id")
-    private List<Peers> checkedPeer = new LinkedList<>();
+    private long transferredPoints_id;
+    @ManyToOne
+    @JoinColumn(name = "name1")
+    private Peers checkingPeer;
+    @ManyToOne
+    @JoinColumn(name = "name2")
+    private Peers checkedPeer;
     @JsonProperty("pointsAmount")
     private Integer pointsAmount;
 
-    public TransferredPoints(long id, List<Peers> checkingPeer, List<Peers> checkedPeer, Integer pointsAmount) {
-        this.id = id;
+    public TransferredPoints(long transferredPoints_id, Peers checkingPeer, Peers checkedPeer, Integer pointsAmount) {
+        this.transferredPoints_id = transferredPoints_id;
         this.checkingPeer = checkingPeer;
         this.checkedPeer = checkedPeer;
         this.pointsAmount = pointsAmount;
@@ -33,10 +31,42 @@ public class TransferredPoints {
     public TransferredPoints() {
     }
 
+    public long getTransferredPoints_id() {
+        return transferredPoints_id;
+    }
+
+    public void setTransferredPoints_id(long transferedPoints_id) {
+        this.transferredPoints_id = transferedPoints_id;
+    }
+
+    public Peers getCheckingPeer() {
+        return checkingPeer;
+    }
+
+    public void setCheckingPeer(Peers checkingPeer) {
+        this.checkingPeer = checkingPeer;
+    }
+
+    public Peers getCheckedPeer() {
+        return checkedPeer;
+    }
+
+    public void setCheckedPeer(Peers checkedPeer) {
+        this.checkedPeer = checkedPeer;
+    }
+
+    public Integer getPointsAmount() {
+        return pointsAmount;
+    }
+
+    public void setPointsAmount(Integer pointsAmount) {
+        this.pointsAmount = pointsAmount;
+    }
+
     @Override
     public String toString() {
         return "TransferredPoints{" +
-                "id=" + id +
+                "id=" + transferredPoints_id +
                 ", checkingPeer=" + checkingPeer +
                 ", checkedPeer=" + checkedPeer +
                 ", pointsAmount=" + pointsAmount +

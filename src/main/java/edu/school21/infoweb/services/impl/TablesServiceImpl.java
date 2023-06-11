@@ -17,52 +17,25 @@ public class TablesServiceImpl implements TablesService {
     private FriendsService friendsService;
 
     @Override
-    public TablesDTO getPeers() {
-        return TablesDTO.builder().peersList(peersService.getAllPeers()).build();
+    public TablesDTO getTable() {
+        return TablesDTO.builder()
+                .peersList(peersService.getAllPeers())
+                .tasksList(tasksService.getAllTasks())
+                .checksList(checksService.getAllChecks())
+                .build();
     }
     @Override
-    public TablesDTO savePeers(TablesDTO tablesDTO) {
-        return TablesDTO.builder().peersList(peersService.savePeers(tablesDTO.getPeersList())).build();
+    public TablesDTO saveTable(TablesDTO tablesDTO) {
+        return TablesDTO.builder()
+                .peersList(peersService.savePeers(tablesDTO.getPeersList()))
+                .tasksList(tasksService.saveTasks(tablesDTO.getTasksList()))
+                .checksList(checksService.saveChecks(tablesDTO.getChecksList()))
+                .build();
     }
     @Override
-    public void deletePeers(TablesDTO tablesDTO) {
+    public void deleteTable(TablesDTO tablesDTO) {
         peersService.deletePeer(tablesDTO.getPeersList());
-    }
-    @Override
-    public TablesDTO getTasks() {
-        return TablesDTO.builder().tasksList(tasksService.getAllTasks()).build();
-    }
-    @Override
-    public TablesDTO saveTasks(TablesDTO tablesDTO) {
-        return TablesDTO.builder().tasksList(tasksService.saveTasks(tablesDTO.getTasksList())).build();
-    }
-    @Override
-    public void deleteTasks(TablesDTO tablesDTO) {
         tasksService.deleteTasks(tablesDTO.getTasksList());
-    }
-
-    @Override
-    public TablesDTO getChecks() {
-        return TablesDTO.builder().checksList(checksService.getAllChecks()).build();
-    }
-    @Override
-    public TablesDTO saveChecks(TablesDTO tablesDTO) {
-        return TablesDTO.builder().checksList(checksService.saveChecks(tablesDTO.getChecksList())).build();
-    }
-    @Override
-    public void deleteChecks(TablesDTO tablesDTO) {
         checksService.deleteChecks(tablesDTO.getChecksList());
-    }
-    @Override
-    public TablesDTO getFriends() {
-        return TablesDTO.builder().friendsList(friendsService.getAllFriends()).build();
-    }
-    @Override
-    public TablesDTO saveFriends(TablesDTO tablesDTO) {
-        return TablesDTO.builder().friendsList(friendsService.saveFriends(tablesDTO.getFriendsList())).build();
-    }
-    @Override
-    public void deleteFriends(TablesDTO tablesDTO) {
-        friendsService.deleteFriends(tablesDTO.getFriendsList());
     }
 }

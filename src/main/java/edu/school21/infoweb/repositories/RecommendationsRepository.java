@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface RecommendationsRepository extends CrudRepository<Recommendations, Integer> {
+public interface RecommendationsRepository extends CrudRepository<Recommendations, Long> {
     List<Recommendations> findAll();
 }

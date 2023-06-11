@@ -5,8 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.sql.Time;
-import java.util.LinkedList;
-import java.util.List;
 
 @Entity(name = "Verter")
 @Table
@@ -14,17 +12,17 @@ public class Verter {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonIgnoreProperties
-    private Integer id;
-    @OneToMany(cascade = CascadeType.REMOVE)
+    private long verter_id;
+    @ManyToOne
     @JoinColumn(name = "check_id")
-    private List<Checks> check = new LinkedList<>();
+    private Checks check;
     @JsonProperty("checkState")
     private CheckState checkState;
     @JsonProperty("time")
     private Time time;
 
-    public Verter(Integer id, List<Checks> check, CheckState checkState, Time time) {
-        this.id = id;
+    public Verter(long verter_id, Checks check, CheckState checkState, Time time) {
+        this.verter_id = verter_id;
         this.check = check;
         this.checkState = checkState;
         this.time = time;
@@ -33,10 +31,42 @@ public class Verter {
     public Verter() {
     }
 
+    public long getVerter_id() {
+        return verter_id;
+    }
+
+    public void setVerter_id(long id) {
+        this.verter_id = id;
+    }
+
+    public Checks getCheck() {
+        return check;
+    }
+
+    public void setCheck(Checks check) {
+        this.check = check;
+    }
+
+    public CheckState getCheckState() {
+        return checkState;
+    }
+
+    public void setCheckState(CheckState checkState) {
+        this.checkState = checkState;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
+    }
+
     @Override
     public String toString() {
         return "Verter{" +
-                "id=" + id +
+                "id=" + verter_id +
                 ", check=" + check +
                 ", checkState=" + checkState +
                 ", time=" + time +

@@ -1,10 +1,8 @@
 package edu.school21.infoweb.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity(name = "Friends")
 @Table
@@ -12,22 +10,17 @@ public class Friends {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonIgnoreProperties
-    private Integer id;
+    private long friend_id;
 
-    @JsonProperty("peer1")
-    private String peer1;
+    @ManyToOne
+    @JoinColumn(name = "name1")
+    private Peers peer1;
+    @ManyToOne
+    @JoinColumn(name = "name2")
+    private Peers peer2;
 
-    @JsonProperty("peer2")
-    private String peer2;
-    @OneToMany
-    @JoinColumn(name = "peer_id")
-    private List<Peers> peer1List;
-    @OneToMany
-    @JoinColumn(name = "peer_id")
-    private List<Peers> peer2List;
-
-    public Friends(Integer id, String peer1, String peer2) {
-        this.id = id;
+    public Friends(long friend_id, Peers peer1, Peers peer2) {
+        this.friend_id = friend_id;
         this.peer1 = peer1;
         this.peer2 = peer2;
     }
@@ -35,18 +28,34 @@ public class Friends {
     public Friends() {
     }
 
-    public Integer getId() {
-        return id;
+    public long getFriend_id() {
+        return friend_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setFriend_id(long friend_id) {
+        this.friend_id = friend_id;
+    }
+
+    public Peers getPeer1() {
+        return peer1;
+    }
+
+    public void setPeer1(Peers peer1) {
+        this.peer1 = peer1;
+    }
+
+    public Peers getPeer2() {
+        return peer2;
+    }
+
+    public void setPeer2(Peers peer2) {
+        this.peer2 = peer2;
     }
 
     @Override
     public String toString() {
         return "Friends{" +
-                "id=" + id +
+                "id=" + friend_id +
                 ", peer1=" + peer1 +
                 ", peer2=" + peer2 +
                 '}';
