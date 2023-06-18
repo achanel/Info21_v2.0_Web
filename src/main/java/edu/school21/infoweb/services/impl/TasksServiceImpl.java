@@ -29,6 +29,8 @@ public class TasksServiceImpl implements TasksService {
 
     @Override
     public void deleteTasks(List<Tasks> tasks) {
+        if (tasks.isEmpty())
+            return;
         tasksRepository.deleteAll(tasks);
     }
 }

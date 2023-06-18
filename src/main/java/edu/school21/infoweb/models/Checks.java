@@ -7,14 +7,13 @@ import javax.persistence.*;
 
 import java.util.Date;
 
-@Entity(name = "Checks")
-@Table
+@Entity
+@Table(name = "Checks")
 public class Checks {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonIgnoreProperties
     private long check_id;
-
     @JsonProperty("date")
     private Date date;
 

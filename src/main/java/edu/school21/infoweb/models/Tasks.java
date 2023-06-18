@@ -4,15 +4,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 
-@Entity(name = "Tasks")
-@Table
+@Entity
+@Table(name = "Tasks")
 public class Tasks {
 
     @Id
+    @Column
     @JsonProperty("tittle")
     private String tittle;
+    @Column
     @JsonProperty("parentTask")
     private String parentTask;
+    @Column
     @JsonProperty("maxXP")
     private Integer maxXP;
 

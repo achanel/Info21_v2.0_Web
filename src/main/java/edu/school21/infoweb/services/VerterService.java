@@ -7,7 +7,7 @@ import java.util.List;
 public interface VerterService {
     List<Verter> getAllVerter();
 
-    List<Verter> saveVerter(List<Verter> peers);
+    List<Verter> saveVerter(List<Verter> verters);
 
-    void deleteVerter(List<Verter> peers);
+    void deleteVerter(List<Verter> verters);
 }

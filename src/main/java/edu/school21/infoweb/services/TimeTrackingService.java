@@ -7,7 +7,7 @@ import java.util.List;
 public interface TimeTrackingService {
     List<TimeTracking> getAllTimeTracking();
 
-    List<TimeTracking> saveTimeTracking(List<TimeTracking> peers);
+    List<TimeTracking> saveTimeTracking(List<TimeTracking> timeTrackings);
 
-    void deleteTimeTracking(List<TimeTracking> peers);
+    void deleteTimeTracking(List<TimeTracking> timeTrackings);
 }

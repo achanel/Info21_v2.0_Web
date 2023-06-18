@@ -21,7 +21,7 @@ public class TablesServiceImpl implements TablesService {
         return TablesDTO.builder()
                 .peersList(peersService.getAllPeers())
                 .tasksList(tasksService.getAllTasks())
-                .checksList(checksService.getAllChecks())
+//                .checksList(checksService.getAllChecks())
                 .build();
     }
     @Override
@@ -29,13 +29,13 @@ public class TablesServiceImpl implements TablesService {
         return TablesDTO.builder()
                 .peersList(peersService.savePeers(tablesDTO.getPeersList()))
                 .tasksList(tasksService.saveTasks(tablesDTO.getTasksList()))
-                .checksList(checksService.saveChecks(tablesDTO.getChecksList()))
+//                .checksList(checksService.saveChecks(tablesDTO.getChecksList()))
                 .build();
     }
     @Override
     public void deleteTable(TablesDTO tablesDTO) {
         peersService.deletePeer(tablesDTO.getPeersList());
         tasksService.deleteTasks(tablesDTO.getTasksList());
-        checksService.deleteChecks(tablesDTO.getChecksList());
+//        checksService.deleteChecks(tablesDTO.getChecksList());
     }
 }

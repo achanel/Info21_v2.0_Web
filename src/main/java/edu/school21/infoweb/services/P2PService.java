@@ -7,7 +7,7 @@ import java.util.List;
 public interface P2PService {
     List<P2P> getAllP2P();
 
-    List<P2P> saveP2P(List<P2P> peers);
+    List<P2P> saveP2P(List<P2P> p2ps);
 
-    void deleteP2P(List<P2P> peers);
+    void deleteP2P(List<P2P> p2ps);
 }

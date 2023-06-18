@@ -7,7 +7,7 @@ import java.util.List;
 public interface FriendsService {
     List<Friends> getAllFriends();
 
-    List<Friends> saveFriends(List<Friends> peers);
+    List<Friends> saveFriends(List<Friends> friends);
 
-    void deleteFriends(List<Friends> peers);
+    void deleteFriends(List<Friends> friends);
 }

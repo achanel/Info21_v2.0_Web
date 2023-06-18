@@ -28,4 +28,9 @@ public class DataController {
         tablesService.deleteTable(tablesDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PostMapping("/update_table")
+    public ResponseEntity<TablesDTO> updateTable(@RequestBody TablesDTO tablesDTO) {
+        return new ResponseEntity<>(tablesService.saveTable(tablesDTO), HttpStatus.OK);
+    }
 }

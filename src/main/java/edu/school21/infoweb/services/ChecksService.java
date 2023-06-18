@@ -7,7 +7,7 @@ import java.util.List;
 public interface ChecksService {
     List<Checks> getAllChecks();
 
-    List<Checks> saveChecks(List<Checks> peers);
+    List<Checks> saveChecks(List<Checks> checks);
 
-    void deleteChecks(List<Checks> peers);
+    void deleteChecks(List<Checks> checks);
 }

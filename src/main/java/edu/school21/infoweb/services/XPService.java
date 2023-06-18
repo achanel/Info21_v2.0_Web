@@ -7,7 +7,7 @@ import java.util.List;
 public interface XPService {
     List<XP> getAllXP();
 
-    List<XP> saveXP(List<XP> peers);
+    List<XP> saveXP(List<XP> xps);
 
-    void deleteXP(List<XP> peers);
+    void deleteXP(List<XP> xps);
 }

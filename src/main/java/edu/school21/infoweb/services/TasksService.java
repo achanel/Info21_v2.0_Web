@@ -7,7 +7,7 @@ import java.util.List;
 public interface TasksService {
     List<Tasks> getAllTasks();
 
-    List<Tasks> saveTasks(List<Tasks> peers);
+    List<Tasks> saveTasks(List<Tasks> tasks);
 
-    void deleteTasks(List<Tasks> peers);
+    void deleteTasks(List<Tasks> tasks);
 }
