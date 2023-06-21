@@ -24,11 +24,13 @@ public class ChecksServiceImpl implements ChecksService {
     @Override
     @Transactional
     public List<Checks> saveChecks(List<Checks> checks) {
-        return (List<Checks>) checksRepository.saveAll(checks);
+        return checks == null ? null : (List<Checks>) checksRepository.saveAll(checks);
     }
 
     @Override
     public void deleteChecks(List<Checks> checks) {
-        checksRepository.deleteAll(checks);
+        if (checks != null) {
+            checksRepository.deleteAll(checks);
+        }
     }
 }

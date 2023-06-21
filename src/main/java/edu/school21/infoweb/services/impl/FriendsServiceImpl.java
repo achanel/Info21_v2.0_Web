@@ -24,11 +24,14 @@ public class FriendsServiceImpl implements FriendsService {
     @Override
     @Transactional
     public List<Friends> saveFriends(List<Friends> friends) {
-        return (List<Friends>) friendsRepository.saveAll(friends);
+        return friends == null ?
+                null : (List<Friends>) friendsRepository.saveAll(friends);
     }
 
     @Override
     public void deleteFriends(List<Friends> friends) {
-        friendsRepository.deleteAll(friends);
+        if (friends != null) {
+            friendsRepository.deleteAll(friends);
+        }
     }
 }

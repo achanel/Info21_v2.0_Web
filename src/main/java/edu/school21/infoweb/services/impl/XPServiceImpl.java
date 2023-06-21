@@ -24,11 +24,14 @@ public class XPServiceImpl implements XPService {
     @Override
     @Transactional
     public List<XP> saveXP(List<XP> xp) {
-        return (List<XP>) xpRepository.saveAll(xp);
+        return xp == null ?
+                null : (List<XP>) xpRepository.saveAll(xp);
     }
 
     @Override
     public void deleteXP(List<XP> xp) {
-        xpRepository.deleteAll(xp);
+        if (xp != null) {
+            xpRepository.deleteAll(xp);
+        }
     }
 }

@@ -24,11 +24,14 @@ public class VerterServiceImpl implements VerterService {
     @Override
     @Transactional
     public List<Verter> saveVerter(List<Verter> verters) {
-        return (List<Verter>) verterRepository.saveAll(verters);
+        return verters == null ?
+                null : (List<Verter>) verterRepository.saveAll(verters);
     }
 
     @Override
     public void deleteVerter(List<Verter> verters) {
-        verterRepository.deleteAll(verters);
+        if (verters != null) {
+            verterRepository.deleteAll(verters);
+        }
     }
 }

@@ -24,11 +24,14 @@ public class P2PServiceImpl implements P2PService {
     @Override
     @Transactional
     public List<P2P> saveP2P(List<P2P> p2p) {
-        return (List<P2P>) p2PRepository.saveAll(p2p);
+        return p2p == null ?
+                null : (List<P2P>) p2PRepository.saveAll(p2p);
     }
 
     @Override
     public void deleteP2P(List<P2P> p2p) {
-        p2PRepository.deleteAll(p2p);
+        if (p2p != null) {
+            p2PRepository.deleteAll(p2p);
+        }
     }
 }

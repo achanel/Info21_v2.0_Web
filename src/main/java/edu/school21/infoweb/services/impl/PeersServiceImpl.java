@@ -24,11 +24,13 @@ public class PeersServiceImpl implements PeersService {
     @Override
     @Transactional
     public List<Peers> savePeers(List<Peers> peers) {
-        return (List<Peers>) peersRepository.saveAll(peers);
+        return peers == null ? null : (List<Peers>) peersRepository.saveAll(peers);
     }
 
     @Override
     public void deletePeer(List<Peers> peers) {
-        peersRepository.deleteAll(peers);
+        if (peers != null) {
+            peersRepository.deleteAll(peers);
+        }
     }
 }

@@ -24,13 +24,13 @@ public class TasksServiceImpl implements TasksService {
     @Override
     @Transactional
     public List<Tasks> saveTasks(List<Tasks> tasks) {
-        return (List<Tasks>) tasksRepository.saveAll(tasks);
+        return tasks == null ? null : (List<Tasks>) tasksRepository.saveAll(tasks);
     }
 
     @Override
     public void deleteTasks(List<Tasks> tasks) {
-        if (tasks.isEmpty())
-            return;
-        tasksRepository.deleteAll(tasks);
+        if (tasks != null) {
+            tasksRepository.deleteAll(tasks);
+        }
     }
 }

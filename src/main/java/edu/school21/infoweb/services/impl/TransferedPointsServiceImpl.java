@@ -24,11 +24,14 @@ public class TransferedPointsServiceImpl implements TransferredPointsService {
     @Override
     @Transactional
     public List<TransferredPoints> saveTransferredPoints(List<TransferredPoints> transferredPoints) {
-        return (List<TransferredPoints>) transferredPointsRepository.saveAll(transferredPoints);
+        return transferredPoints == null ?
+                null : (List<TransferredPoints>) transferredPointsRepository.saveAll(transferredPoints);
     }
 
     @Override
     public void deleteTransferredPoints(List<TransferredPoints> transferredPoints) {
-        transferredPointsRepository.deleteAll(transferredPoints);
+        if (transferredPoints != null) {
+            transferredPointsRepository.deleteAll(transferredPoints);
+        }
     }
 }

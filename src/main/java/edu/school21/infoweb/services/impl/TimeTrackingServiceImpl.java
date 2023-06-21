@@ -24,11 +24,14 @@ public class TimeTrackingServiceImpl implements TimeTrackingService {
     @Override
     @Transactional
     public List<TimeTracking> saveTimeTracking(List<TimeTracking> timeTrackings) {
-        return (List<TimeTracking>) timeTrackingRepository.saveAll(timeTrackings);
+        return timeTrackings == null ?
+                null : (List<TimeTracking>) timeTrackingRepository.saveAll(timeTrackings);
     }
 
     @Override
     public void deleteTimeTracking(List<TimeTracking> timeTrackings) {
-        timeTrackingRepository.deleteAll(timeTrackings);
+        if (timeTrackings != null) {
+            timeTrackingRepository.deleteAll(timeTrackings);
+        }
     }
 }

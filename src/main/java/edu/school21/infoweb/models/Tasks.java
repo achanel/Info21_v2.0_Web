@@ -3,21 +3,22 @@ package edu.school21.infoweb.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Tasks")
 public class Tasks {
 
     @Id
-    @Column
     @JsonProperty("tittle")
     private String tittle;
-    @Column
     @JsonProperty("parentTask")
     private String parentTask;
-    @Column
     @JsonProperty("maxXP")
     private Integer maxXP;
+
+//    @OneToMany(mappedBy = "task")
+//    private List<Checks> checks;
 
     public Tasks(String tittle, String parentTask, Integer maxXP) {
         this.tittle = tittle;
@@ -51,6 +52,14 @@ public class Tasks {
     public void setMaxXP(Integer maxXP) {
         this.maxXP = maxXP;
     }
+
+//    public List<Checks> getChecks() {
+//        return checks;
+//    }
+//
+//    public void setChecks(List<Checks> checks) {
+//        this.checks = checks;
+//    }
 
     @Override
     public String toString() {

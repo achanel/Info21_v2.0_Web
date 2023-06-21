@@ -24,11 +24,14 @@ public class RecommendationsServiceImpl implements RecommendationsService {
     @Override
     @Transactional
     public List<Recommendations> saveRecommendations(List<Recommendations> recommendations) {
-        return (List<Recommendations>) recommendationsRepository.saveAll(recommendations);
+        return recommendations == null ?
+                null : (List<Recommendations>) recommendationsRepository.saveAll(recommendations);
     }
 
     @Override
     public void deleteRecommendations(List<Recommendations> recommendations) {
-        recommendationsRepository.deleteAll(recommendations);
+        if (recommendations != null) {
+            recommendationsRepository.deleteAll(recommendations);
+        }
     }
 }
