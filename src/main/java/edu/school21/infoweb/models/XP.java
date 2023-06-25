@@ -6,19 +6,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 
-@Entity(name = "XP")
-@Table
+@Entity
+@Table(name = "xp")
 public class XP {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonIgnoreProperties
+    @Column(name = "id")
     private long xp_id;
 
     @JsonProperty("xpAmount")
     private Integer xpAmount;
 
-    @ManyToOne
-    @JoinColumn(name = "check_id")
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "`check`")
     private Checks check;
 
     public XP(long xp_id, Integer xpAmount, Checks check) {

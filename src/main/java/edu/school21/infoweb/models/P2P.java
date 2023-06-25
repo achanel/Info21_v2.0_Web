@@ -5,31 +5,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.sql.Time;
-@Entity(name = "P2P")
-@Table
+@Entity
+@Table(name = "p2p")
 public class P2P {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonIgnoreProperties
+    @Column(name = "id")
     private long p2p_id;
     @ManyToOne
-    @JoinColumn(name = "check_id")
+    @JoinColumn(name = "`Check`")
     private Checks check;
     @ManyToOne
-    @JoinColumn(name = "name")
-    private Peers checkingPeer;
+    @JoinColumn(name = "checkingPeer")
+    private Peers peer;
 
-    @JsonProperty("checkState")
-    private CheckState checkState;
+    @JsonProperty("state")
+    private State state;
 
     @JsonProperty("time")
     private Time time;
 
-    public P2P(long p2p_id, Checks check, Peers checkingPeer, CheckState checkState, Time time) {
+    public P2P(long p2p_id, Checks check, Peers peer, State state, Time time) {
         this.p2p_id = p2p_id;
         this.check = check;
-        this.checkingPeer = checkingPeer;
-        this.checkState = checkState;
+        this.peer = peer;
+        this.state = state;
         this.time = time;
     }
 
@@ -52,20 +53,20 @@ public class P2P {
         this.check = check;
     }
 
-    public Peers getCheckingPeer() {
-        return checkingPeer;
+    public Peers getPeer() {
+        return peer;
     }
 
-    public void setCheckingPeer(Peers checkingPeer) {
-        this.checkingPeer = checkingPeer;
+    public void setPeer(Peers checkingPeer) {
+        this.peer = checkingPeer;
     }
 
-    public CheckState getCheckState() {
-        return checkState;
+    public State getState() {
+        return state;
     }
 
-    public void setCheckState(CheckState checkState) {
-        this.checkState = checkState;
+    public void setState(State state) {
+        this.state = state;
     }
 
     public Time getTime() {
@@ -81,8 +82,8 @@ public class P2P {
         return "P2P{" +
                 "id=" + p2p_id +
                 ", check=" + check +
-                ", checkingPeer=" + checkingPeer +
-                ", checkState=" + checkState +
+                ", checkingPeer=" + peer +
+                ", state=" + state +
                 ", time=" + time +
                 '}';
     }

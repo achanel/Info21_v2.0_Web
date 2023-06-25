@@ -7,25 +7,25 @@ import javax.persistence.*;
 import java.sql.Time;
 import java.util.Date;
 
-@Entity(name = "TimeTracking")
-@Table
+@Entity
+@Table(name = "timeTracking")
 public class TimeTracking {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonIgnoreProperties
     private long id;
     @ManyToOne
-    @JoinColumn(name = "name")
+    @JoinColumn(name = "peer")
     private Peers peer;
 
-    @JsonProperty("date")
+    @JsonProperty("`date`")
     private Date date;
-    @JsonProperty("time")
+    @JsonProperty("`time`")
     private Time time;
     @JsonProperty("state")
-    private CheckState state;
+    private State state;
 
-    public TimeTracking(long id, Peers peer, Date date, Time time, CheckState state) {
+    public TimeTracking(long id, Peers peer, Date date, Time time, State state) {
         this.id = id;
         this.peer = peer;
         this.date = date;
@@ -68,11 +68,11 @@ public class TimeTracking {
         this.time = time;
     }
 
-    public CheckState getState() {
+    public State getState() {
         return state;
     }
 
-    public void setState(CheckState state) {
+    public void setState(State state) {
         this.state = state;
     }
 

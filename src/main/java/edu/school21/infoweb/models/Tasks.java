@@ -3,25 +3,22 @@ package edu.school21.infoweb.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "Tasks")
+@Table(name = "tasks")
 public class Tasks {
 
     @Id
-    @JsonProperty("tittle")
-    private String tittle;
+    @JsonProperty("title")
+    private String title;
     @JsonProperty("parentTask")
+    @Column(name = "parenttask")
     private String parentTask;
     @JsonProperty("maxXP")
     private Integer maxXP;
 
-//    @OneToMany(mappedBy = "task")
-//    private List<Checks> checks;
-
-    public Tasks(String tittle, String parentTask, Integer maxXP) {
-        this.tittle = tittle;
+    public Tasks(String title, String parentTask, Integer maxXP) {
+        this.title = title;
         this.parentTask = parentTask;
         this.maxXP = maxXP;
     }
@@ -29,12 +26,12 @@ public class Tasks {
     public Tasks() {
     }
 
-    public String getTittle() {
-        return tittle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTittle(String tittle) {
-        this.tittle = tittle;
+    public void setTitle(String tittle) {
+        this.title = tittle;
     }
 
     public String getParentTask() {
@@ -53,18 +50,10 @@ public class Tasks {
         this.maxXP = maxXP;
     }
 
-//    public List<Checks> getChecks() {
-//        return checks;
-//    }
-//
-//    public void setChecks(List<Checks> checks) {
-//        this.checks = checks;
-//    }
-
     @Override
     public String toString() {
         return "Tasks{" +
-                ", tittle='" + tittle + '\'' +
+                ", tittle='" + title + '\'' +
                 ", parentTask='" + parentTask + '\'' +
                 ", maxXP=" + maxXP +
                 '}';

@@ -4,24 +4,25 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
-@Entity(name = "Recommendations")
-@Table
+@Entity
+@Table(name = "recommendations")
 public class Recommendations {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonIgnoreProperties
+    @Column(name = "id")
     private long recommendations_id;
     @ManyToOne
-    @JoinColumn(name = "name1")
+    @JoinColumn(name = "peer")
     private Peers peer;
     @ManyToOne
-    @JoinColumn(name = "name2")
-    private Peers recommendatedPeer;
+    @JoinColumn(name = "recommendedPeer")
+    private Peers recommendedPeer;
 
-    public Recommendations(long recommendations_id, Peers peer, Peers recommendatedPeer) {
+    public Recommendations(long recommendations_id, Peers peer, Peers recommendedPeer) {
         this.recommendations_id = recommendations_id;
         this.peer = peer;
-        this.recommendatedPeer = recommendatedPeer;
+        this.recommendedPeer = recommendedPeer;
     }
 
     public Recommendations() {
@@ -43,12 +44,12 @@ public class Recommendations {
         this.peer = peer;
     }
 
-    public Peers getRecommendatedPeer() {
-        return recommendatedPeer;
+    public Peers getRecommendedPeer() {
+        return recommendedPeer;
     }
 
-    public void setRecommendatedPeer(Peers recommendatedPeer) {
-        this.recommendatedPeer = recommendatedPeer;
+    public void setRecommendedPeer(Peers recommendatedPeer) {
+        this.recommendedPeer = recommendatedPeer;
     }
 
     @Override
@@ -56,7 +57,7 @@ public class Recommendations {
         return "Recommendations{" +
                 "id=" + recommendations_id +
                 ", peer=" + peer +
-                ", recomendatedPeer=" + recommendatedPeer +
+                ", recomendatedPeer=" + recommendedPeer +
                 '}';
     }
 }

@@ -4,19 +4,20 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
-@Entity(name = "Friends")
-@Table
+@Entity
+@Table(name = "friends")
 public class Friends {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonIgnoreProperties
+    @Column(name = "id")
     private long friend_id;
 
     @ManyToOne
-    @JoinColumn(name = "name1")
+    @JoinColumn(name = "peer1")
     private Peers peer1;
     @ManyToOne
-    @JoinColumn(name = "name2")
+    @JoinColumn(name = "peer2")
     private Peers peer2;
 
     public Friends(long friend_id, Peers peer1, Peers peer2) {

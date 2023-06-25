@@ -8,32 +8,33 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Checks")
+@Table(name = "`Checks`")
 public class Checks {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonIgnoreProperties
-    private long check_id;
+    @Column(name = "id")
+    private long checks_id;
     @JsonProperty("date")
     private Date date;
 
     @ManyToOne
-    @JoinColumn(name = "name")
+    @JoinColumn(name = "peer")
     private Peers peer;
 
     @ManyToOne
-    @JoinColumn(name = "title")
+    @JoinColumn(name = "task")
     private Tasks task;
 
-    public Checks(long check_id, Date date, Peers peer, Tasks task) {
-        this.check_id = check_id;
+    public Checks(long checks_id, Date date, Peers peer, Tasks task) {
+        this.checks_id = checks_id;
         this.date = date;
         this.peer = peer;
         this.task = task;
     }
 
-    public Checks(long check_id, Date date, Peers peer) {
-        this.check_id = check_id;
+    public Checks(long checks_id, Date date, Peers peer) {
+        this.checks_id = checks_id;
         this.date = date;
         this.peer = peer;
     }
@@ -41,12 +42,12 @@ public class Checks {
     public Checks() {
     }
 
-    public long getCheck_id() {
-        return check_id;
+    public long getChecks_id() {
+        return checks_id;
     }
 
-    public void setCheck_id(long checks_id) {
-        this.check_id = checks_id;
+    public void setChecks_id(long checks_id) {
+        this.checks_id = checks_id;
     }
 
     public Date getDate() {
@@ -76,7 +77,7 @@ public class Checks {
     @Override
     public String toString() {
         return "Checks{" +
-                "checks_id=" + check_id +
+                "checks_id=" + checks_id +
                 ", date=" + date +
                 ", peer=" + peer +
                 ", task=" + task +

@@ -5,18 +5,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 
-@Entity(name = "TransferredPoints")
-@Table
+@Entity
+@Table(name = "transferredPoints")
 public class TransferredPoints {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonIgnoreProperties
+    @Column(name = "id")
     private long transferredPoints_id;
     @ManyToOne
-    @JoinColumn(name = "name1")
+    @JoinColumn(name = "checkingPeer")
     private Peers checkingPeer;
     @ManyToOne
-    @JoinColumn(name = "name2")
+    @JoinColumn(name = "checkedPeer")
     private Peers checkedPeer;
     @JsonProperty("pointsAmount")
     private Integer pointsAmount;

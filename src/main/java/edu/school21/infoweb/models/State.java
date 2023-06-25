@@ -1,14 +1,11 @@
 package edu.school21.infoweb.models;
 
-public enum CheckState {
+public enum State {
     START("start"),
     SUCCESS("success"),
     FAILURE("failure");
 
-    private String state;
-
-    CheckState(String state) {
-        this.state = state;
+    State(String state) {
     }
 }
 

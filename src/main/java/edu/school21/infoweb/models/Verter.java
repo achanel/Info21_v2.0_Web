@@ -6,25 +6,26 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 import java.sql.Time;
 
-@Entity(name = "Verter")
-@Table
+@Entity
+@Table(name = "verter")
 public class Verter {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonIgnoreProperties
+    @Column(name = "id")
     private long verter_id;
-    @ManyToOne
-    @JoinColumn(name = "check_id")
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "`check`")
     private Checks check;
-    @JsonProperty("checkState")
-    private CheckState checkState;
+    @JsonProperty("state")
+    private State state;
     @JsonProperty("time")
     private Time time;
 
-    public Verter(long verter_id, Checks check, CheckState checkState, Time time) {
+    public Verter(long verter_id, Checks check, State state, Time time) {
         this.verter_id = verter_id;
         this.check = check;
-        this.checkState = checkState;
+        this.state = state;
         this.time = time;
     }
 
@@ -47,12 +48,12 @@ public class Verter {
         this.check = check;
     }
 
-    public CheckState getCheckState() {
-        return checkState;
+    public State getState() {
+        return state;
     }
 
-    public void setCheckState(CheckState checkState) {
-        this.checkState = checkState;
+    public void setState(State state) {
+        this.state = state;
     }
 
     public Time getTime() {
@@ -68,7 +69,7 @@ public class Verter {
         return "Verter{" +
                 "id=" + verter_id +
                 ", check=" + check +
-                ", checkState=" + checkState +
+                ", state=" + state +
                 ", time=" + time +
                 '}';
     }

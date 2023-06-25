@@ -4,23 +4,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
-@Table(name = "Peers")
+@Table(name = "peers")
 public class Peers {
 
     @Id
     @JsonProperty("name")
-    private String name;
+    private String nickname;
     @JsonProperty("birthday")
     private Date birthday;
-//
-//    @OneToMany(mappedBy = "peer")
-//    private List<Checks> checks;
 
     public Peers(String name, Date birthday) {
-        this.name = name;
+        this.nickname = name;
         this.birthday = birthday;
     }
 
@@ -28,11 +24,11 @@ public class Peers {
     }
 
     public String getName() {
-        return name;
+        return nickname;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.nickname = name;
     }
 
     public Date getBirthday() {
@@ -43,18 +39,10 @@ public class Peers {
         this.birthday = birthday;
     }
 
-//    public List<Checks> getChecks() {
-//        return checks;
-//    }
-//
-//    public void setChecks(List<Checks> checks) {
-//        this.checks = checks;
-//    }
-
     @Override
     public String toString() {
         return "Peers{" +
-                "name='" + name + '\'' +
+                "name='" + nickname + '\'' +
                 ", birthday=" + birthday +
                 '}';
     }
