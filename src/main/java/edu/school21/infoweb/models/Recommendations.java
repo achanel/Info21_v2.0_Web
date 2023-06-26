@@ -1,6 +1,8 @@
 package edu.school21.infoweb.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -12,10 +14,12 @@ public class Recommendations {
     @JsonIgnoreProperties
     @Column(name = "id")
     private long recommendations_id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "peer")
     private Peers peer;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "recommendedPeer")
     private Peers recommendedPeer;
 

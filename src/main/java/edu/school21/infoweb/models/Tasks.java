@@ -1,6 +1,8 @@
 package edu.school21.infoweb.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -12,6 +14,7 @@ public class Tasks {
     @JsonProperty("title")
     private String title;
     @JsonProperty("parentTask")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @Column(name = "parenttask")
     private String parentTask;
     @JsonProperty("maxXP")

@@ -2,6 +2,8 @@ package edu.school21.infoweb.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.sql.Time;
@@ -14,7 +16,8 @@ public class TimeTracking {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonIgnoreProperties
     private long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "peer")
     private Peers peer;
 
