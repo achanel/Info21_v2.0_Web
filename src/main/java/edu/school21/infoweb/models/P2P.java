@@ -15,11 +15,11 @@ public class P2P {
     @JsonIgnoreProperties
     @Column(name = "id")
     private long p2p_id;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "`Check`")
     private Checks check;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "checkingPeer")
     private Peers peer;

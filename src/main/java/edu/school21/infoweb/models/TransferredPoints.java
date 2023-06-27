@@ -15,11 +15,11 @@ public class TransferredPoints {
     @JsonIgnoreProperties
     @Column(name = "id")
     private long transferredPoints_id;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "checkingPeer")
     private Peers checkingPeer;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "checkedPeer")
     private Peers checkedPeer;

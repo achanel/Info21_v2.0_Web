@@ -20,7 +20,7 @@ public class XP {
     @JsonProperty("xpAmount")
     private Integer xpAmount;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "`check`")
     private Checks check;

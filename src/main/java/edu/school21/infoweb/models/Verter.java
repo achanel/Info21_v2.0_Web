@@ -16,7 +16,7 @@ public class Verter {
     @JsonIgnoreProperties
     @Column(name = "id")
     private long verter_id;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "`check`")
     private Checks check;

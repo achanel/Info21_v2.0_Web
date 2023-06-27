@@ -14,11 +14,11 @@ public class Recommendations {
     @JsonIgnoreProperties
     @Column(name = "id")
     private long recommendations_id;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "peer")
     private Peers peer;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "recommendedPeer")
     private Peers recommendedPeer;
