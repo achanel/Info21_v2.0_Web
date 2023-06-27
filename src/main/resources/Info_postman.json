@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "b85e3292-9eb0-466c-8b3b-17d55974db9a",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26472069"
+	},
+	"item": [
+		{
+			"name": "table",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const resp = pm.response.json();",
+							"var jsonReq = pm.request.body.urlencoded;",
+							"pm.test(\"Successfull GET request\", function () {",
+							"    pm.expect(resp.data.name).to.eql(pm.variables.get(\"name\"));",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/v1/data/get_table",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"v1",
+						"data",
+						"get_table"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save_table",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"peersList\": [\n        {\n            \"name\": \"bgenia\",\n            \"birthday\": \"1996-06-08T20:00:00.000+00:00\"\n        }\n    ],\n    \"checksList\": [\n        {\n            \"peer\": {\n                \"name\": \"rhoke\",\n                \"birthday\": \"1993-01-12T21:00:00.000+00:00\"\n            },\n            \"task\": {\n                \"title\": \"A7_DNA Analyzer\",\n                \"parentTask\": \"A2_SimpleNavigator v1.0\",\n                \"maxXP\": 800\n            },\n            \"date\": \"2022-11-08T21:00:00.000+00:00\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/v1/data/save_table",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"v1",
+						"data",
+						"save_table"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "table",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"peersList\": [\n        {\n            \"name\": \"bgenia\",\n            \"birthday\": \"1996-06-08T20:00:00.000+00:00\"\n        }\n    ],\n    \"checksList\": [\n        {\n            \"checks_id\": 8,\n            \"peer\": {\n                \"name\": \"rhoke\",\n                \"birthday\": \"1993-01-12T21:00:00.000+00:00\"\n            },\n            \"task\": {\n                \"title\": \"A7_DNA Analyzer\",\n                \"parentTask\": \"A2_SimpleNavigator v1.0\",\n                \"maxXP\": 800\n            },\n            \"date\": \"2022-11-08T21:00:00.000+00:00\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/v1/data/delete_table",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"v1",
+						"data",
+						"delete_table"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_table",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tasksList\": [\n        {\n            \"title\": \"xxx\",\n            \"parentTask\": \"C2_SimpleBashUtils\",\n            \"maxXP\": 999\n        }\n    ],\n    \"friendsList\": [\n        {\n            \"friend_id\": 4,\n            \"peer1\": {\n                \"name\": \"wsei\",\n                \"birthday\": \"1992-02-01T21:00:00.000+00:00\"\n            },\n            \"peer2\": {\n                \"name\": \"mmonarch\",\n                \"birthday\": \"1991-10-19T22:00:00.000+00:00\"\n            }\n        },\n        {\n            \"friend_id\": 1,\n            \"peer1\": {\n                \"name\": \"ikathrin\",\n                \"birthday\": \"1997-03-13T21:00:00.000+00:00\"\n            },\n            \"peer2\": {\n                \"name\": \"wsei\",\n                \"birthday\": \"1991-10-19T22:00:00.000+00:00\"\n            }\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/v1/data/update_table",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"v1",
+						"data",
+						"update_table"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
