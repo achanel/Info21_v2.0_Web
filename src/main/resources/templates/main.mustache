@@ -1,0 +1,28 @@
+<html>
+
+<body>
+<div>Напишите запрос
+    <form method="post">
+        <input type="text" name="request" placeholder="Введите SQL-запрос"/>
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+<div>Выберете функцию
+    <form method="post">
+        <select name="request" id="function-select">
+            <option value="">--Please choose an option--</option>
+            <option type="text" value="1">FNC_TRANSFERRED_POINTS</option>
+            <option type="text" value="2">FNC_PEER_SUCCESS_PROJECT</option>
+            <option type="text" value="3">FNC_NOT_LEFT_PEER</option>
+        </select>
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+<div>Ответ от БД</div>
+{{#sqlResponse}}
+    <div>
+        <span>{{sqlResponse}}</span>
+    </div>
+{{/sqlResponse}}
+</body>
+</html>
