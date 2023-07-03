@@ -55,48 +55,48 @@ values ( 1, 'bgenia', 'SQL1_Bootcamp', '2023-06-09' ),
        ( 8, 'rhoke', 'A7_DNA Analyzer', '2022-11-09' ),
        ( 9, 'achanel', 'DO2_Linux Network', '2022-11-30' );
 
-insert into P2P ( ID, "check", checking_peer, State, Time )
-values ( 1, 1, 'achanel', 0, '18:30:21' ),
-       ( 2, 1, 'achanel', 1, '19:01:12' ),
+insert into P2P ( ID, "check", checking_peer, check_status, Time )
+values ( 1, 1, 'achanel', 'Start', '18:30:21' ),
+       ( 2, 1, 'achanel', 'Success', '19:01:12' ),
 
-       ( 3, 2, 'mmonarch', 0, '13:02:01' ),
-       ( 4, 2, 'mmonarch', 1, '13:10:01' ),
+       ( 3, 2, 'mmonarch', 'Start', '13:02:01' ),
+       ( 4, 2, 'mmonarch', 'Success', '13:10:01' ),
 
-       ( 5, 3, 'ikathrin', 0, '09:11:45' ),
-       ( 6, 3, 'ikathrin', 2, '11:06:23' ),
+       ( 5, 3, 'ikathrin', 'Start', '09:11:45' ),
+       ( 6, 3, 'ikathrin', 'Failure', '11:06:23' ),
 
-       ( 7, 4, 'rhoke', 0, '19:10:45' ),
-       ( 8, 4, 'rhoke', 1, '20:06:23' ),
+       ( 7, 4, 'rhoke', 'Start', '19:10:45' ),
+       ( 8, 4, 'rhoke', 'Success', '20:06:23' ),
 
-       ( 9, 5, 'ikael', 0, '20:11:45' ),
-       ( 10, 5, 'ikael', 1, '20:15:23' ),
+       ( 9, 5, 'ikael', 'Start', '20:11:45' ),
+       ( 10, 5, 'ikael', 'Success', '20:15:23' ),
 
-       ( 11, 6, 'wsei', 0, '00:00:00' ),
+       ( 11, 6, 'wsei', 'Start', '00:00:00' ),
 
-       ( 12, 7, 'bgenia', 0, '11:11:45' ),
-       ( 13, 7, 'bgenia', 1, '11:15:23' ),
+       ( 12, 7, 'bgenia', 'Start', '11:11:45' ),
+       ( 13, 7, 'bgenia', 'Success', '11:15:23' ),
 
-       ( 14, 8, 'achanel', 0, '10:51:45' ),
-       ( 15, 8, 'achanel', 1, '11:15:13' );
+       ( 14, 8, 'achanel', 'Start', '10:51:45' ),
+       ( 15, 8, 'achanel', 'Success', '11:15:13' );
 
-insert into Verter ( ID, "check", State, Time )
-values ( 1, 1, 0, '19:21:12' ),
-       ( 2, 1, 1, '19:51:12' ),
+insert into Verter ( ID, "check", check_status, Time )
+values ( 1, 1, 'Start', '19:21:12' ),
+       ( 2, 1, 'Success', '19:51:12' ),
 
-       ( 3, 2, 0, '13:30:01' ),
-       ( 4, 2, 1, '14:00:01' ),
+       ( 3, 2, 'Start', '13:30:01' ),
+       ( 4, 2, 'Success', '14:00:01' ),
 
-       ( 5, 4, 0, '20:26:23' ),
-       ( 6, 4, 1, '20:56:23' ),
+       ( 5, 4, 'Start', '20:26:23' ),
+       ( 6, 4, 'Success', '20:56:23' ),
 
-       ( 7, 5, 0, '19:21:12' ),
-       ( 8, 5, 1, '19:51:12' ),
+       ( 7, 5, 'Start', '19:21:12' ),
+       ( 8, 5, 'Success', '19:51:12' ),
 
-       ( 9, 7, 0, '11:35:23' ),
-       ( 10, 7, 2, '12:05:23' ),
+       ( 9, 7, 'Start', '11:35:23' ),
+       ( 10, 7, 'Failure', '12:05:23' ),
 
-       ( 11, 8, 0, '11:35:13' ),
-       ( 12, 8, 1, '12:05:13' );
+       ( 11, 8, 'Start', '11:35:13' ),
+       ( 12, 8, 'Success', '12:05:13' );
 
 insert into transferred_points ( ID, checking_peer, checked_peer, points_amount )
 values ( 1, 'achanel', 'bgenia', 1),
@@ -117,7 +117,7 @@ values ( 1, 'achanel', 'mmonarch' ),
        ( 7, 'wsei', 'achanel' ),
        ( 8, 'bgenia', 'rhoke' );
 
-insert into Recommendations ( ID, Peer, Recommended_Peer )
+insert into Recommendations ( ID, Peer, recommended_peer )
 values ( 1, 'achanel', 'mmonarch'),
        ( 2, 'achanel', 'rhoke'),
        ( 3, 'rhoke', 'wsei'),
@@ -127,7 +127,7 @@ values ( 1, 'achanel', 'mmonarch'),
        ( 7, 'ikael', 'achanel'),
        ( 8, 'mmonarch', 'achanel');
 
-insert into XP ( ID, "check", XP_Amount )
+insert into XP ( ID, "check", xp_amount )
 values ( 1, 1, 1500),
        ( 2, 2, 700),
        ( 3, 4, 1000),

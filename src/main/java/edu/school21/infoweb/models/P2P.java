@@ -24,17 +24,18 @@ public class P2P {
     @JoinColumn(name = "checkingPeer")
     private Peers peer;
 
-    @JsonProperty("state")
-    private State state;
+    @JsonProperty("checkStatus")
+    @Enumerated(EnumType.STRING)
+    private CheckStatus checkStatus;
 
     @JsonProperty("time")
     private Time time;
 
-    public P2P(long p2p_id, Checks check, Peers peer, State state, Time time) {
+    public P2P(long p2p_id, Checks check, Peers peer, CheckStatus checkStatus, Time time) {
         this.p2p_id = p2p_id;
         this.check = check;
         this.peer = peer;
-        this.state = state;
+        this.checkStatus = checkStatus;
         this.time = time;
     }
 
@@ -65,12 +66,12 @@ public class P2P {
         this.peer = checkingPeer;
     }
 
-    public State getState() {
-        return state;
+    public CheckStatus getState() {
+        return checkStatus;
     }
 
-    public void setState(State state) {
-        this.state = state;
+    public void setState(CheckStatus checkStatus) {
+        this.checkStatus = checkStatus;
     }
 
     public Time getTime() {
@@ -87,7 +88,7 @@ public class P2P {
                 "id=" + p2p_id +
                 ", check=" + check +
                 ", checkingPeer=" + peer +
-                ", state=" + state +
+                ", checkStatus=" + checkStatus +
                 ", time=" + time +
                 '}';
     }

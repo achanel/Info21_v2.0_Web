@@ -26,9 +26,9 @@ public class TimeTracking {
     @JsonProperty("`time`")
     private Time time;
     @JsonProperty("state")
-    private State state;
+    private Integer state;
 
-    public TimeTracking(long id, Peers peer, Date date, Time time, State state) {
+    public TimeTracking(long id, Peers peer, Date date, Time time, Integer state) {
         this.id = id;
         this.peer = peer;
         this.date = date;
@@ -71,11 +71,11 @@ public class TimeTracking {
         this.time = time;
     }
 
-    public State getState() {
+    public Integer getState() {
         return state;
     }
 
-    public void setState(State state) {
+    public void setState(Integer state) {
         this.state = state;
     }
 
