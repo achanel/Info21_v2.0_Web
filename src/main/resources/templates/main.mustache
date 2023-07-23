@@ -3,24 +3,41 @@
 <body>
 <div>Напишите запрос
     <form method="post">
-        <input type="text" name="request" placeholder="Введите SQL-запрос"/>
+        <label>
+            <input type="text" name="request" placeholder="Введите SQL-запрос"/>
+        </label>
         <button type="submit">Добавить</button>
     </form>
 </div>
-<div>Выберете функцию
-    <form method="post">
-        <select name="request" id="function-select">
-            <option value="">--Please choose an option--</option>
-            <option type="text" value="export">EXPORT</option>
-            <option type="text" value="import">IMPORT</option>
-            <option type="text" value="fnc_transferred_points">FNC_TRANSFERRED_POINTS</option>
-            <option type="text" value="fnc_peer_success_project">FNC_PEER_SUCCESS_PROJECT</option>
-            <option type="text" value="fnc_not_left_peer">FNC_NOT_LEFT_PEER</option>
-        </select>
-        <button type="submit">Добавить</button>
-    </form>
-</div>
+<!--<div>Выберете функцию-->
+<!--    <form method="post">-->
+<!--        <select name="request" id="function-select">-->
+<!--            <option value="">--Please choose an option--</option>-->
+<!--&lt;!&ndash;            <option type="text" value="export">EXPORT</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option type="text" value="import">IMPORT</option>&ndash;&gt;-->
+<!--            <option type="text" value="pcd_success_projects_percent">pcd_success_projects_percent</option>-->
+<!--            <option type="text" value="pcd_peer_points_changes">pcd_peer_points_changes</option>-->
+<!--            <option type="text" value="pcd_peer_points_changes_2">pcd_peer_points_changes_2</option>-->
+<!--            <option type="text" value="pcd_most_reviewed_task">pcd_most_reviewed_task</option>-->
+<!--            <option type="text" value="pcd_last_check_duration">pcd_last_check_duration</option>-->
+<!--            <option type="text" value="pcd_recommendation_list">pcd_recommendation_list</option>-->
+<!--            <option type="text" value="pcd_success_reviews_on_birthday">pcd_success_reviews_on_birthday</option>-->
+<!--            <option type="text" value="pcd_total_xp">pcd_total_xp</option>-->
+<!--            <option type="text" value="pcd_pre_task">pcd_pre_task</option>-->
+<!--            <option type="text" value="pcd_peer_max_done">pcd_peer_max_done</option>-->
+<!--            <option type="text" value="pcd_peer_max_xp">pcd_peer_max_xp</option>-->
+<!--            <option type="text" value="pcd_max_time_in_campus">pcd_max_time_in_campus</option>-->
+<!--            <option type="text" value="pcd_last_visited_peer">pcd_last_visited_peer</option>-->
+
+<!--            <option type="text" value="fnc_transferred_points">fnc_transferred_points</option>-->
+<!--            <option type="text" value="fnc_peer_success_project">fnc_peer_success_project</option>-->
+<!--            <option type="text" value="fnc_not_left_peer">FNC_NOT_LEFT_PEER</option>-->
+<!--        </select>-->
+<!--        <button type="submit">Добавить</button>-->
+<!--    </form>-->
+<!--</div>-->
 <div>Ответ от БД</div>
+<button type="submit">Выгрузить</button>
 {{#sqlResponse}}
     <div>
         <span>{{sqlResponse}}</span>

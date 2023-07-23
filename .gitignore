@@ -3,6 +3,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+!apache-tomcat-8.5.88/
+
 
 ### STS ###
 .apt_generated
