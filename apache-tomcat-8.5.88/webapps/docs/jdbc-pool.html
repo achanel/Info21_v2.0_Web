@@ -168,11 +168,11 @@
         </th><th style="width: 85%;">
           Description
         </th></tr><tr><td><code class="attributeName">defaultAutoCommit</code></td><td>
-      <p>(boolean) The default auto-commit state of connections created by this pool. If not set, default is JDBC driver default (If not set then the <code>setAutoCommit</code> method will not be called.)</p>
+      <p>(boolean) The default auto-commit checkStatus of connections created by this pool. If not set, default is JDBC driver default (If not set then the <code>setAutoCommit</code> method will not be called.)</p>
     </td></tr><tr><td><code class="attributeName">defaultReadOnly</code></td><td>
-      <p>(boolean) The default read-only state of connections created by this pool. If not set then the <code>setReadOnly</code> method will not be called. (Some drivers don't support read only mode, ex: Informix)</p>
+      <p>(boolean) The default read-only checkStatus of connections created by this pool. If not set then the <code>setReadOnly</code> method will not be called. (Some drivers don't support read only mode, ex: Informix)</p>
     </td></tr><tr><td><code class="attributeName">defaultTransactionIsolation</code></td><td>
-      <p>(String) The default TransactionIsolation state of connections created by this pool. One of the following: (see javadoc )</p>
+      <p>(String) The default TransactionIsolation checkStatus of connections created by this pool. One of the following: (see javadoc )</p>
          <ul>
            <li><code>NONE</code></li>
            <li><code>READ_COMMITTED</code></li>
@@ -435,7 +435,7 @@
       <p>(boolean) Set this to true to log errors during the validation phase to the log file. If set to true, errors will be logged as SEVERE. Default value is <code>false</code> for backwards compatibility.
       </p>
     </td></tr><tr><td><code class="attributeName">propagateInterruptState</code></td><td>
-      <p>(boolean) Set this to true to propagate the interrupt state for a thread that has been interrupted (not clearing the interrupt state). Default value is <code>false</code> for backwards compatibility.
+      <p>(boolean) Set this to true to propagate the interrupt checkStatus for a thread that has been interrupted (not clearing the interrupt checkStatus). Default value is <code>false</code> for backwards compatibility.
       </p>
     </td></tr><tr><td><code class="attributeName">ignoreExceptionOnPreLoad</code></td><td>
       <p>(boolean) Flag whether ignore error of connection creation while initializing the pool.
@@ -455,7 +455,7 @@
   <div class="subsection"><h4 id="JDBC_interceptors">JDBC interceptors</h4><div class="text">
     <p>To see an example of how to use an interceptor, take a look at
     <code>org.apache.tomcat.jdbc.pool.interceptor.ConnectionState</code>.
-    This simple interceptor is a cache of three attributes, transaction isolation level, auto commit and read only state,
+    This simple interceptor is a cache of three attributes, transaction isolation level, auto commit and read only checkStatus,
     in order for the system to avoid not needed roundtrips to the database.
     </p>
     <p>Further interceptors will be added to the core of the pool as the need arises. Contributions are always welcome!</p>
@@ -770,7 +770,7 @@
   <div class="subsection"><h4 id="Interceptors">Interceptors</h4><div class="text">
     <p>Interceptors are a powerful way to enable, disable or modify functionality on a specific connection or its sub components.
        There are many different use cases for when interceptors are useful. By default, and for performance reasons, the connection pool is stateless.
-       The only state the pool itself inserts are <code>defaultAutoCommit</code>, <code>defaultReadOnly</code>, <code>defaultTransactionIsolation</code>, <code>defaultCatalog</code> if
+       The only checkStatus the pool itself inserts are <code>defaultAutoCommit</code>, <code>defaultReadOnly</code>, <code>defaultTransactionIsolation</code>, <code>defaultCatalog</code> if
        these are set. These 4 properties are only set upon connection creation. Should these properties be modified during the usage of the connection,
        the pool itself will not reset them.</p>
     <p>An interceptor has to extend the <code>org.apache.tomcat.jdbc.pool.JdbcInterceptor</code> class. This class is fairly simple,

@@ -1,7 +1,6 @@
 package edu.school21.infoweb.sqlServices;
 
 import edu.school21.infoweb.exception.BusinessException;
-import lombok.Getter;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;
@@ -10,7 +9,6 @@ import java.util.List;
 import java.util.Objects;
 
 @Component
-@Getter
 public class SqlExecutor {
     public List<List<String>> csv = new ArrayList<>();
 
@@ -35,28 +33,28 @@ public class SqlExecutor {
                     for (int j = 1; j <= columnsNumber; j++) {
                         if (j == columnsNumber) {
                             tmp.add(rsmd.getColumnName(j));
-                            sqlResponse.append(rsmd.getColumnName(j)).append("\n\n");
+                            sqlResponse.append(rsmd.getColumnName(j)).append("\n");
                             List<String> innerList = new ArrayList<>(tmp);
                             csv.add(innerList);
                             tmp.clear();
                             break;
                         }
                         tmp.add(rsmd.getColumnName(j));
-                        sqlResponse.append(rsmd.getColumnName(j)).append("  ");
+                        sqlResponse.append(rsmd.getColumnName(j)).append(",");
                     }
                     flag++;
                 }
                 for (int i = 1; i <= columnsNumber; i++) {
                     if (i == columnsNumber) {
                         tmp.add(rs.getString(i));
-                        sqlResponse.append(rs.getString(i)).append("\n\n");
+                        sqlResponse.append(rs.getString(i)).append("\n");
                         List<String> innerList = new ArrayList<>(tmp);
                         csv.add(innerList);
                         tmp.clear();
                         break;
                     }
                     tmp.add(rs.getString(i));
-                    sqlResponse.append(rs.getString(i)).append("  ");
+                    sqlResponse.append(rs.getString(i)).append(",");
                 }
             }
             rs.close();
@@ -65,5 +63,9 @@ public class SqlExecutor {
             throw new BusinessException(e.getMessage());
         }
         return sqlResponse;
+    }
+
+    public List<List<String>> getCsv() {
+        return this.csv;
     }
 }

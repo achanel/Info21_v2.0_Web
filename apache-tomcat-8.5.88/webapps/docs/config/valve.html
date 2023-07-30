@@ -900,7 +900,7 @@
         When using mod_jk or mod_proxy_ajp, the client's session id is used to
         determine which back-end server will be used to serve the request. If the
         target node is being "drained" (in mod_jk, this is the <i>DISABLED</i>
-        state; in mod_proxy_ajp, this is the <i>Drain (N)</i> state), requests
+        checkStatus; in mod_proxy_ajp, this is the <i>Drain (N)</i> checkStatus), requests
         for expired sessions can actually cause the draining node to fail to
         drain.
       </p>
@@ -920,10 +920,10 @@
       </p>
 
       <p>
-        The activation state of the node is sent by the load-balancer in the
-        request, so no state change on the node being disabled is necessary. Simply
+        The activation checkStatus of the node is sent by the load-balancer in the
+        request, so no checkStatus change on the node being disabled is necessary. Simply
         configure this Valve in your valve pipeline and it will take action when
-        the activation state is set to "disabled".
+        the activation checkStatus is set to "disabled".
       </p>
 
       <p>

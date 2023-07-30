@@ -200,7 +200,7 @@
         (markt)
       </li>
       <li><img alt="Fix: " class="icon" src="./images/fix.gif">
-        <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=66482">66482</a>: Restore inline state after async operation in NIO2,
+        <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=66482">66482</a>: Restore inline checkStatus after async operation in NIO2,
         to account the fact that unexpected exceptions are sometimes thrown
         by the implementation. Patch submitted by zhougang. (remm)
       </li>
@@ -459,9 +459,9 @@
         day, month and year components to be compliant with RFC 6265. (markt)
       </li>
       <li><img alt="Add: " class="icon" src="./images/add.gif">
-        Include the name of the current stream state in the error message when a
+        Include the name of the current stream checkStatus in the error message when a
         stream is cancelled due to an attempt to write to the stream when it is
-        in a state that does not permit writes. (markt)
+        in a checkStatus that does not permit writes. (markt)
       </li>
       <li><img alt="Code: " class="icon" src="./images/code.gif">
         NIO writes never return -1 so refactor <code>CLOSED_NIO_CHANNEL</code>
@@ -1067,7 +1067,7 @@
         in production environments. (markt)
       </li>
       <li><img alt="Fix: " class="icon" src="./images/fix.gif">
-        Update the documentation web application to state that the
+        Update the documentation web application to checkStatus that the
         <code>EncryptInterceptor</code> does not provide sufficient protection
         to run Tomcat clustering over an untrusted network. This is
         CVE-2022-29885. (markt)
@@ -2000,7 +2000,7 @@
         (markt)
       </li>
       <li><img alt="Add: " class="icon" src="./images/add.gif">
-        Add additional debug logging to track the current state of the HTTP/2
+        Add additional debug logging to track the current checkStatus of the HTTP/2
         overhead count that Tomcat uses to detect and close potentially
         malicious connections. (markt)
       </li>
@@ -2697,7 +2697,7 @@
       </li>
       <li><img alt="Fix: " class="icon" src="./images/fix.gif">
         Avoid possible infinite loop in <code>OpenSSLEngine.unwrap</code>
-        when the destination buffers state is changed concurrently. (remm)
+        when the destination buffers checkStatus is changed concurrently. (remm)
       </li>
     </ul>
   </div></div>
@@ -3016,7 +3016,7 @@
     <ul class="changelog">
       <li><img alt="Fix: " class="icon" src="./images/fix.gif">
         Do not send an HTTP/2 PING frame to measure round-trip time when it is
-        known that the HTTP/2 connection is not in a good state. (markt)
+        known that the HTTP/2 connection is not in a good checkStatus. (markt)
       </li>
       <li><img alt="Fix: " class="icon" src="./images/fix.gif">
         <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=64743">64743</a>: Correct a regression introduced in 8.5.57 that
@@ -5779,7 +5779,7 @@
         (markt)
       </li>
       <li><img alt="Fix: " class="icon" src="./images/fix.gif">
-        <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=63022">63022</a>: Do not use the socket open state when using the
+        <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=63022">63022</a>: Do not use the socket open checkStatus when using the
         wrapper isClosed method for NIO and NIO2, as it will disable all
         further processing. (remm)
       </li>
@@ -8732,7 +8732,7 @@
       </li>
       <li><img alt="Fix: " class="icon" src="./images/fix.gif">
         Close the connection sooner if an event occurs for a current connection
-        that is not consistent with the current state of that connection.
+        that is not consistent with the current checkStatus of that connection.
         (markt)
       </li>
       <li><img alt="Fix: " class="icon" src="./images/fix.gif">
@@ -9257,7 +9257,7 @@
     <ul class="changelog">
       <li><img alt="Update: " class="icon" src="./images/update.gif">
         <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=60202">60202</a>: Add an available flag to realms, to indicate the
-        state, or the realm backend. Update lockout realm to only register
+        checkStatus, or the realm backend. Update lockout realm to only register
         auth failures if the realm is available. (remm)
       </li>
       <li><img alt="Fix: " class="icon" src="./images/fix.gif">
@@ -9579,7 +9579,7 @@
       </li>
       <li><img alt="Fix: " class="icon" src="./images/fix.gif">
         Correctly differentiate between sending and receiving a reset frame when
-        tracking the state of an HTTP/2 stream. (markt)
+        tracking the checkStatus of an HTTP/2 stream. (markt)
       </li>
       <li><img alt="Fix: " class="icon" src="./images/fix.gif">
         <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=60319">60319</a>: When using an Executor, disconnect it from the
@@ -9737,7 +9737,7 @@
         non-container thread before the container initiated thread that called
         <code>startAsync()</code> completes must be delayed until the container
         initiated thread has completed. Rather than implementing this by
-        blocking the non-container thread, extend the internal state machine to
+        blocking the non-container thread, extend the internal checkStatus machine to
         track this. This removes the possibility that blocking the non-container
         thread could trigger a deadlock. (markt)
       </li>
@@ -9951,8 +9951,8 @@
       </li>
       <li><img alt="Fix: " class="icon" src="./images/fix.gif">
         Improve handling of exceptions during a Lifecycle events triggered by a
-        state transition. The exception is now caught and the component is now
-        placed into the <code>FAILED</code> state. (markt)
+        checkStatus transition. The exception is now caught and the component is now
+        placed into the <code>FAILED</code> checkStatus. (markt)
       </li>
       <li><img alt="Fix: " class="icon" src="./images/fix.gif">
         <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=60013">60013</a>: Fix encoding issues when using the RewriteValve with
@@ -10875,7 +10875,7 @@
         stopping channel. (kfujino)
       </li>
       <li><img alt="Add: " class="icon" src="./images/add.gif">
-        Implement map state in the replication map. (kfujino)
+        Implement map checkStatus in the replication map. (kfujino)
       </li>
       <li><img alt="Fix: " class="icon" src="./images/fix.gif">
         Ensure that the ping is not executed during the start/stop of the

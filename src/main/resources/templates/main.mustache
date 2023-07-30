@@ -1,4 +1,4 @@
-<html>
+<html lang="eng">
 
 <body>
 <div>Напишите запрос
@@ -36,12 +36,23 @@
 <!--        <button type="submit">Добавить</button>-->
 <!--    </form>-->
 <!--</div>-->
-<div>Ответ от БД</div>
-<button type="submit">Выгрузить</button>
 {{#sqlResponse}}
-    <div>
-        <span>{{sqlResponse}}</span>
-    </div>
+    <form action="/v1/sql/export" method="post">
+        <div>Ответ от БД</div>
+        <div>
+            <button type="submit">Export CSV</button>
+            <span>{{sqlResponse}}</span>
+        </div>
+    </form>
 {{/sqlResponse}}
+<form action="/v1/sql/import" method="post">
+    <button type="submit">Import CSV</button>
+</form>
+{{#csvResponse}}
+    <div>
+        <span>{{csvResponse}}</span>
+    </div>
+{{/csvResponse}}
+
 </body>
 </html>

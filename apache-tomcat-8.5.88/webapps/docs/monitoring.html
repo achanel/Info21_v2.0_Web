@@ -91,14 +91,14 @@ then you can set:</p>
    more readable. It has to be all on the same line, without spaces.</p>
    <div class="codeBox"><pre><code>&lt;project name="Catalina Ant JMX"
       xmlns:jmx="antlib:org.apache.catalina.ant.jmx"
-      default="state"
+      default="checkStatus"
       basedir="."&gt;
   &lt;property name="jmx.server.name" value="localhost" /&gt;
   &lt;property name="jmx.server.port" value="9012" /&gt;
   &lt;property name="cluster.server.address" value="192.168.1.75" /&gt;
   &lt;property name="cluster.server.port" value="9025" /&gt;
 
-  &lt;target name="state" description="Show JMX Cluster state"&gt;
+  &lt;target name="checkStatus" description="Show JMX Cluster checkStatus"&gt;
     &lt;jmx:open
       host="${jmx.server.name}"
       port="${jmx.server.port}"

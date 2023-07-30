@@ -64,14 +64,14 @@
           Description
         </th></tr><tr><td><code class="attributeName">pathname</code></td><td>
         <p>Absolute or relative (to the work directory for this Context)
-        pathname of the file in which session state will be preserved
+        pathname of the file in which session checkStatus will be preserved
         across application restarts, if possible.  The default is
         "SESSIONS.ser".<br>See
         <a href="#Persistence_Across_Restarts">Persistence Across Restarts</a>
         for more information. This persistence may be
         disabled by setting this attribute to an empty string.</p>
       </td></tr><tr><td><code class="attributeName">persistAuthentication</code></td><td>
-        <p>Should authentication information be included when session state is
+        <p>Should authentication information be included when session checkStatus is
         preserved across application restarts? If <code>true</code>, the session's
         authentication is preserved so that the session remains authenticated
         after the application has been restarted. If not specified, the default
@@ -87,7 +87,7 @@
         filter pattern in order to be restored.</p>
       </td></tr><tr><td><code class="attributeName">persistAuthenticationNotes</code></td><td>
         <p>Should authentication notes (used during FORM authentication) be
-        included when session state is preserved across application restarts?
+        included when session checkStatus is preserved across application restarts?
         If <code>true</code>, the session's authentication notes are preserved
         so that an in progress FORM authentication can continue after the
         application has been restarted. If not specified, the default value of
@@ -456,7 +456,7 @@
     sessions will then be deserialized and activated (assuming they have
     not expired in the mean time) when the application reload is completed.</p>
 
-    <p>In order to successfully restore the state of session attributes,
+    <p>In order to successfully restore the checkStatus of session attributes,
     all such attributes MUST implement the <code>java.io.Serializable</code>
     interface.  You MAY cause the Manager to enforce this restriction by
     including the <code>&lt;distributable&gt;</code> element in your web

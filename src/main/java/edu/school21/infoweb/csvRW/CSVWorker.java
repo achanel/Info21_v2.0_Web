@@ -4,13 +4,14 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class CSVWorker {
-    public static void writeCSV(List<List<String>> data, String fileName) throws IOException {
+    public void writeCSV(List<List<String>> data, String fileName) throws IOException {
         CSVPrinter printer = new CSVPrinter(new FileWriter("target/" + fileName + ".csv"), CSVFormat.DEFAULT);
         data.forEach(line -> {
             try {
@@ -23,19 +24,15 @@ public class CSVWorker {
         printer.close();
     }
 
-    public static List<List<String>> readCSV(String fileName) throws IOException {
-        List<List<String>> csv = new ArrayList<>();
-        List<String> tmp = new ArrayList<>();
-        CSVParser csvParser = new CSVParser(new FileReader(fileName), CSVFormat.DEFAULT);
+    public String readCSV(String fileName) throws IOException {
+        StringBuilder csv = new StringBuilder();
+        CSVParser csvParser = new CSVParser(new FileReader("target/" + fileName), CSVFormat.DEFAULT);
 
         for (CSVRecord record : csvParser) {
-            record.forEach(tmp::add);
-            List<String> innerList = new ArrayList<>(tmp);
-            csv.add(innerList);
-            tmp.clear();
+            record.forEach(csv::append);
         }
         csvParser.close();
-        return csv;
+        return csv.toString().replaceAll("\\]", "\n").replaceAll("\\[", "");
     }
 }
 
