@@ -73,4 +73,11 @@ public class TablesServiceImpl implements TablesService {
         verterService.deleteVerter(tablesDTO.getVerterList());
         xpService.deleteXP(tablesDTO.getXpList());
     }
+
+    @Override
+    public TablesDTO getP2PTable() {
+        return TablesDTO.builder()
+                .p2PList(p2PService.getAllP2P())
+                .build();
+    }
 }

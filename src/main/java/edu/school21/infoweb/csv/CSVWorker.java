@@ -1,4 +1,4 @@
-package edu.school21.infoweb.csvRW;
+package edu.school21.infoweb.csv;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;

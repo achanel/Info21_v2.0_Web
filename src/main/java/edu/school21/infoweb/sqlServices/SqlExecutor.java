@@ -12,7 +12,7 @@ import java.util.Objects;
 public class SqlExecutor {
     public List<List<String>> csv = new ArrayList<>();
 
-    public StringBuilder execute(String statement, List<Object> params) throws BusinessException {
+    public StringBuilder execute(String statement) throws BusinessException {
         Connection connection;
         StringBuilder sqlResponse = new StringBuilder();
         try {
@@ -20,7 +20,6 @@ public class SqlExecutor {
                     .getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
 
             Statement st = connection.createStatement();
-            //TODO написать логику для хранимых процедур с параметрами
             CallableStatement cs = connection.prepareCall(statement);
             ResultSet rs = Objects.requireNonNull(cs).executeQuery();
             ResultSetMetaData rsmd = Objects.requireNonNull(rs).getMetaData();

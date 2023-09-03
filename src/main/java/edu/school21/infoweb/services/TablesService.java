@@ -7,4 +7,5 @@ public interface TablesService {
     TablesDTO saveTable(TablesDTO tablesDTO);
 
     void deleteTable(TablesDTO tablesDTO);
+    TablesDTO getP2PTable();
 }

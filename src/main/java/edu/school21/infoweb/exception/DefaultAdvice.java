@@ -11,7 +11,7 @@ import java.text.MessageFormat;
 @ControllerAdvice
 public class DefaultAdvice {
 
-    @ExceptionHandler({BusinessException.class, RuntimeException.class, SQLException.class})
+    @ExceptionHandler({BusinessException.class, RuntimeException.class, SQLException.class, Exception.class})
     public ResponseEntity<Response> handleException(BusinessException e) {
         String message = MessageFormat.format("{0} returned with message: {1}",
                 HttpStatus.BAD_REQUEST, e.getMessage()

@@ -1,6 +1,6 @@
 package edu.school21.infoweb.controllers;
 
-import edu.school21.infoweb.csvRW.CSVWorker;
+import edu.school21.infoweb.csv.CSVWorker;
 import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.sqlServices.SqlExecutor;
 import edu.school21.infoweb.sqlServices.SqlFunctions;
@@ -35,14 +35,7 @@ public class SQLController {
     @PostMapping
     public String sqlController(@RequestParam(required = false, name = "request") String request,
                                 Map<String, Object> model) throws BusinessException {
-//        sqlResponse = sqlExecutor.execute(sqlFunctions.getStatement(request),
-//                sqlFunctions.getParams());
-
-//        String s = sqlExecutor.execute(sqlFunctions.getStatement(request), null);
-
-        sqlResponse = sqlExecutor.execute(sqlFunctions.getStatement(request), sqlFunctions.getParams());
-
-        model.put("sqlResponse", sqlResponse);
+        model.put("sqlResponse", sqlExecutor.execute(request));
 
         return "main";
     }
@@ -59,6 +52,6 @@ public class SQLController {
     public String csvImport(Map<String, Object> model) throws IOException {
         String csvResponse = csvWorker.readCSV("export.csv");
         model.put("csvResponse", csvResponse);
-        return "redirect:/v1/sql/";
+        return "main";
     }
 }

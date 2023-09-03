@@ -9,6 +9,7 @@ public class SqlFunctions {
     private String statement;
     private List<Object> params;
 
+    @Deprecated
     public String getStatement(String request) {
         switch (request) {
 
