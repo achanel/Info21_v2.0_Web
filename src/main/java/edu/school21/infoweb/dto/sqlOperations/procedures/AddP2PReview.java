@@ -15,20 +15,15 @@ import java.time.LocalTime;
 public class AddP2PReview {
     @Autowired
     SqlExecutor sqlExecutor;
-
-    public void execute(String checkingPeer, String checkedPeer, String taskTitle, String state, LocalTime checkTime) throws BusinessException {
+//-- call add_p2p_review('mmonarch', 'rhoke', 'DO2_Linux Network', 'Start'::check_state, '11:12:13');
+    public void execute(String checkingPeer, String checkedPeer, String taskTitle, String state, String checkTime) throws BusinessException {
 //        log.info("start execute procedure add_p2p_review. Parameters: {{}, {}, {}, {}, {}}", checkingPeer, checkedPeer, taskTitle, state, checkTime);
-        try {
-            sqlExecutor.execute("CALL add_p2p_review(" +
-                    checkingPeer + ", " +
-                    checkedPeer + ", " +
-                    taskTitle + ", " +
-                    state + ", " +
-                    checkingPeer + ")");
+        sqlExecutor.execute("call add_p2p_review('" +
+                checkingPeer + "', '" +
+                checkedPeer + "', '" +
+                taskTitle + "', '" +
+                state + "'::check_state, '" +
+                checkTime + ":00');");
 //            log.info("procedure add_p2p_review was executed");
-        } catch (Exception e) {
-//            log.warn("{}", e.getMessage());
-            throw e;
-        }
     }
 }

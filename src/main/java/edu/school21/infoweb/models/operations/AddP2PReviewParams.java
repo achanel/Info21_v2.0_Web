@@ -1,6 +1,7 @@
 package edu.school21.infoweb.models.operations;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -10,6 +11,7 @@ import java.time.LocalTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class AddP2PReviewParams {
     @NotBlank(message = "Can not be empty")
     private String checkingPeer;
@@ -23,9 +25,11 @@ public class AddP2PReviewParams {
     @NotBlank(message = "Can not be empty")
     private String state;
 
+//    @NotNull(message = "Can not be empty")
+//    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+//    private LocalTime checkTime;
     @NotNull(message = "Can not be empty")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    private LocalTime checkTime;
+    private String checkTime;
 
     public @NotBlank(message = "Can not be empty") String getCheckingPeer() {
         return this.checkingPeer;
@@ -43,7 +47,7 @@ public class AddP2PReviewParams {
         return this.state;
     }
 
-    public @NotNull(message = "Can not be empty") LocalTime getCheckTime() {
+    public @NotNull(message = "Can not be empty") String getCheckTime() {
         return this.checkTime;
     }
 
@@ -63,7 +67,7 @@ public class AddP2PReviewParams {
         this.state = state;
     }
 
-    public void setCheckTime(@NotNull(message = "Can not be empty") LocalTime checkTime) {
+    public void setCheckTime(@NotNull(message = "Can not be empty") String checkTime) {
         this.checkTime = checkTime;
     }
 

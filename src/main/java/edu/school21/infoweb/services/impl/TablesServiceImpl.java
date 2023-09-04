@@ -1,9 +1,12 @@
 package edu.school21.infoweb.services.impl;
 
 import edu.school21.infoweb.dto.TablesDTO;
+import edu.school21.infoweb.models.Tasks;
 import edu.school21.infoweb.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class TablesServiceImpl implements TablesService {
@@ -79,5 +82,10 @@ public class TablesServiceImpl implements TablesService {
         return TablesDTO.builder()
                 .p2PList(p2PService.getAllP2P())
                 .build();
+    }
+
+    @Override
+    public List<Tasks> getTasks() {
+        return tasksService.getAllTasks();
     }
 }
