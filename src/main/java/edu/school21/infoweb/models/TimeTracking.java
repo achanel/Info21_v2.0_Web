@@ -10,7 +10,7 @@ import java.sql.Time;
 import java.util.Date;
 
 @Entity
-@Table(name = "timeTracking")
+@Table(name = "timetracking")
 public class TimeTracking {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

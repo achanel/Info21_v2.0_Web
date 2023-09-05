@@ -37,20 +37,20 @@ create type check_state as enum ( 'Start', 'Success', 'Failure' );
 
 create  table P2P (
                       ID              integer primary key not null,
-                      "Check"         integer not null,
+                      "check"         integer not null,
                       CheckingPeer    varchar not null,
                       State           check_state not null,
                       Time            time not null,
-                      foreign key ( "Check" ) references Checks ( ID ),
+                      foreign key ( "check" ) references Checks ( ID ),
                       foreign key ( CheckingPeer ) references Peers ( Nickname )
 );
 
 create table Verter (
                         ID      integer primary key not null,
-                        "Check" integer not null,
+                        "check" integer not null,
                         State   check_state not null,
                         Time    time not null,
-                        foreign key ( "Check" ) references Checks ( ID )
+                        foreign key ( "check" ) references Checks ( ID )
 );
 
 create table TransferredPoints (
@@ -80,16 +80,16 @@ create table Recommendations (
 
 create table XP (
                     ID          integer primary key not null,
-                    "Check"     integer not null,
+                    "check"     integer not null,
                     XPAmount    integer not null,
-                    foreign key ( "Check" ) references Checks ( ID )
+                    foreign key ( "check" ) references Checks ( ID )
 );
 
 create table TimeTracking (
                               ID  integer primary key not null,
                               Peer    varchar not null,
-                              "Date"  date not null,
-                              "Time"  time not null,
+                              Date  date not null,
+                              Time  time not null,
                               State   int2 not null check ( State in ( 1, 2 ) ),
                               foreign key ( Peer ) references Peers ( Nickname )
 );

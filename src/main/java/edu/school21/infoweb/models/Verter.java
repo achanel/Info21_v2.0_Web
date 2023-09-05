@@ -20,16 +20,16 @@ public class Verter {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "`check`")
     private Checks check;
-    @JsonProperty("checkStatus")
+    @JsonProperty("state")
     @Enumerated(EnumType.STRING)
-    private CheckStatus checkStatus;
+    private CheckStatus state;
     @JsonProperty("time")
     private Time time;
 
-    public Verter(long verter_id, Checks check, CheckStatus checkStatus, Time time) {
+    public Verter(long verter_id, Checks check, CheckStatus state, Time time) {
         this.verter_id = verter_id;
         this.check = check;
-        this.checkStatus = checkStatus;
+        this.state = state;
         this.time = time;
     }
 
@@ -53,11 +53,11 @@ public class Verter {
     }
 
     public CheckStatus getState() {
-        return checkStatus;
+        return state;
     }
 
     public void setState(CheckStatus checkStatus) {
-        this.checkStatus = checkStatus;
+        this.state = checkStatus;
     }
 
     public Time getTime() {
@@ -73,7 +73,7 @@ public class Verter {
         return "Verter{" +
                 "id=" + verter_id +
                 ", check=" + check +
-                ", checkStatus=" + checkStatus +
+                ", checkStatus=" + state +
                 ", time=" + time +
                 '}';
     }

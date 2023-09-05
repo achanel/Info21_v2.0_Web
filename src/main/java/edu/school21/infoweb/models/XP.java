@@ -17,17 +17,17 @@ public class XP {
     @Column(name = "id")
     private long xp_id;
 
-    @JsonProperty("xpAmount")
-    private Integer xpAmount;
+    @JsonProperty("xpamount")
+    private Integer xpamount;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "`check`")
     private Checks check;
 
-    public XP(long xp_id, Integer xpAmount, Checks check) {
+    public XP(long xp_id, Integer xpamount, Checks check) {
         this.xp_id = xp_id;
-        this.xpAmount = xpAmount;
+        this.xpamount = xpamount;
         this.check = check;
     }
 
@@ -42,12 +42,12 @@ public class XP {
         this.xp_id = xp_id;
     }
 
-    public Integer getXpAmount() {
-        return xpAmount;
+    public Integer getXpamount() {
+        return xpamount;
     }
 
-    public void setXpAmount(Integer xpAmount) {
-        this.xpAmount = xpAmount;
+    public void setXpamount(Integer xpAmount) {
+        this.xpamount = xpAmount;
     }
 
     public Checks getCheck() {
@@ -62,7 +62,7 @@ public class XP {
     public String toString() {
         return "XP{" +
                 "xp_id=" + xp_id +
-                ", xpAmount=" + xpAmount +
+                ", xpAmount=" + xpamount +
                 ", check=" + check +
                 '}';
     }

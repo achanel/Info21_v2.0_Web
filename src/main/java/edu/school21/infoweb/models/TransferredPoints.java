@@ -8,7 +8,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "transferredPoints")
+@Table(name = "transferredpoints")
 public class TransferredPoints {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -17,20 +17,20 @@ public class TransferredPoints {
     private long transferredPoints_id;
     @ManyToOne(cascade = CascadeType.REFRESH)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "checkingPeer")
-    private Peers checkingPeer;
+    @JoinColumn(name = "checkingpeer")
+    private Peers checkingpeer;
     @ManyToOne(cascade = CascadeType.REFRESH)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "checkedPeer")
-    private Peers checkedPeer;
-    @JsonProperty("pointsAmount")
-    private Integer pointsAmount;
+    @JoinColumn(name = "checkedpeer")
+    private Peers checkedpeer;
+    @JsonProperty("pointsamount")
+    private Integer pointsamount;
 
-    public TransferredPoints(long transferredPoints_id, Peers checkingPeer, Peers checkedPeer, Integer pointsAmount) {
+    public TransferredPoints(long transferredPoints_id, Peers checkingpeer, Peers checkedpeer, Integer pointsamount) {
         this.transferredPoints_id = transferredPoints_id;
-        this.checkingPeer = checkingPeer;
-        this.checkedPeer = checkedPeer;
-        this.pointsAmount = pointsAmount;
+        this.checkingpeer = checkingpeer;
+        this.checkedpeer = checkedpeer;
+        this.pointsamount = pointsamount;
     }
 
     public TransferredPoints() {
@@ -44,37 +44,37 @@ public class TransferredPoints {
         this.transferredPoints_id = transferedPoints_id;
     }
 
-    public Peers getCheckingPeer() {
-        return checkingPeer;
+    public Peers getCheckingpeer() {
+        return checkingpeer;
     }
 
-    public void setCheckingPeer(Peers checkingPeer) {
-        this.checkingPeer = checkingPeer;
+    public void setCheckingpeer(Peers checkingPeer) {
+        this.checkingpeer = checkingPeer;
     }
 
-    public Peers getCheckedPeer() {
-        return checkedPeer;
+    public Peers getCheckedpeer() {
+        return checkedpeer;
     }
 
-    public void setCheckedPeer(Peers checkedPeer) {
-        this.checkedPeer = checkedPeer;
+    public void setCheckedpeer(Peers checkedPeer) {
+        this.checkedpeer = checkedPeer;
     }
 
-    public Integer getPointsAmount() {
-        return pointsAmount;
+    public Integer getPointsamount() {
+        return pointsamount;
     }
 
-    public void setPointsAmount(Integer pointsAmount) {
-        this.pointsAmount = pointsAmount;
+    public void setPointsamount(Integer pointsAmount) {
+        this.pointsamount = pointsAmount;
     }
 
     @Override
     public String toString() {
         return "TransferredPoints{" +
                 "id=" + transferredPoints_id +
-                ", checkingPeer=" + checkingPeer +
-                ", checkedPeer=" + checkedPeer +
-                ", pointsAmount=" + pointsAmount +
+                ", checkingPeer=" + checkingpeer +
+                ", checkedPeer=" + checkedpeer +
+                ", pointsAmount=" + pointsamount +
                 '}';
     }
 }

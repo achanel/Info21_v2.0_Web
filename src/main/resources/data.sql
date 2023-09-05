@@ -55,7 +55,7 @@ values ( 1, 'bgenia', 'SQL1_Bootcamp', '2023-06-09' ),
        ( 8, 'rhoke', 'A7_DNA Analyzer', '2022-11-09' ),
        ( 9, 'achanel', 'DO2_Linux Network', '2022-11-30' );
 
-insert into P2P ( ID, "check", checking_peer, check_status, Time )
+insert into p2p ( ID, "check", checkingpeer, state, Time )
 values ( 1, 1, 'achanel', 'Start', '18:30:21' ),
        ( 2, 1, 'achanel', 'Success', '19:01:12' ),
 
@@ -79,7 +79,7 @@ values ( 1, 1, 'achanel', 'Start', '18:30:21' ),
        ( 14, 8, 'achanel', 'Start', '10:51:45' ),
        ( 15, 8, 'achanel', 'Success', '11:15:13' );
 
-insert into Verter ( ID, "check", check_status, Time )
+insert into Verter ( ID, "check", state, Time )
 values ( 1, 1, 'Start', '19:21:12' ),
        ( 2, 1, 'Success', '19:51:12' ),
 
@@ -98,7 +98,7 @@ values ( 1, 1, 'Start', '19:21:12' ),
        ( 11, 8, 'Start', '11:35:13' ),
        ( 12, 8, 'Success', '12:05:13' );
 
-insert into transferred_points ( ID, checking_peer, checked_peer, points_amount )
+insert into transferredpoints ( ID, checkingpeer, checkedpeer, pointsamount )
 values ( 1, 'achanel', 'bgenia', 1),
        ( 2, 'mmonarch', 'rhoke', 1),
        ( 3, 'ikathrin', 'wsei', 1),
@@ -117,7 +117,7 @@ values ( 1, 'achanel', 'mmonarch' ),
        ( 7, 'wsei', 'achanel' ),
        ( 8, 'bgenia', 'rhoke' );
 
-insert into Recommendations ( ID, Peer, recommended_peer )
+insert into Recommendations ( ID, Peer, recommendedpeer )
 values ( 1, 'achanel', 'mmonarch'),
        ( 2, 'achanel', 'rhoke'),
        ( 3, 'rhoke', 'wsei'),
@@ -127,14 +127,14 @@ values ( 1, 'achanel', 'mmonarch'),
        ( 7, 'ikael', 'achanel'),
        ( 8, 'mmonarch', 'achanel');
 
-insert into XP ( ID, "check", xp_amount )
+insert into XP ( ID, "check", xpamount )
 values ( 1, 1, 1500),
        ( 2, 2, 700),
        ( 3, 4, 1000),
        ( 4, 5, 800),
        ( 5, 8, 800);
 
-insert into time_tracking ( ID, peer, "date", "time", State )
+insert into timetracking ( ID, peer, "date", "time", State )
 values ( 1, 'mmonarch', '2023-01-30', '11:05:16', 1 ),
        ( 2, 'mmonarch', '2023-01-30', '20:15:22', 2 ),
        ( 3, 'achanel', '2023-02-01', '17:13:01', 1 ),

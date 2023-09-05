@@ -21,21 +21,21 @@ public class P2P {
     private Checks check;
     @ManyToOne(cascade = CascadeType.REFRESH)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "checkingPeer")
-    private Peers peer;
+    @JoinColumn(name = "checkingpeer")
+    private Peers checkingpeer;
 
-    @JsonProperty("checkStatus")
+    @JsonProperty("state")
     @Enumerated(EnumType.STRING)
-    private CheckStatus checkStatus;
+    private CheckStatus state;
 
     @JsonProperty("time")
     private Time time;
 
-    public P2P(long p2p_id, Checks check, Peers peer, CheckStatus checkStatus, Time time) {
+    public P2P(long p2p_id, Checks check, Peers checkingpeer, CheckStatus state, Time time) {
         this.p2p_id = p2p_id;
         this.check = check;
-        this.peer = peer;
-        this.checkStatus = checkStatus;
+        this.checkingpeer = checkingpeer;
+        this.state = state;
         this.time = time;
     }
 
@@ -58,20 +58,20 @@ public class P2P {
         this.check = check;
     }
 
-    public Peers getPeer() {
-        return peer;
+    public Peers getCheckingpeer() {
+        return checkingpeer;
     }
 
-    public void setPeer(Peers checkingPeer) {
-        this.peer = checkingPeer;
+    public void setCheckingpeer(Peers checkingPeer) {
+        this.checkingpeer = checkingPeer;
     }
 
     public CheckStatus getState() {
-        return checkStatus;
+        return state;
     }
 
     public void setState(CheckStatus checkStatus) {
-        this.checkStatus = checkStatus;
+        this.state = checkStatus;
     }
 
     public Time getTime() {
@@ -87,8 +87,8 @@ public class P2P {
         return "P2P{" +
                 "id=" + p2p_id +
                 ", check=" + check +
-                ", checkingPeer=" + peer +
-                ", checkStatus=" + checkStatus +
+                ", checkingPeer=" + checkingpeer +
+                ", checkStatus=" + state +
                 ", time=" + time +
                 '}';
     }

@@ -20,13 +20,13 @@ public class Recommendations {
     private Peers peer;
     @ManyToOne(cascade = CascadeType.REFRESH)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "recommendedPeer")
-    private Peers recommendedPeer;
+    @JoinColumn(name = "recommendedpeer")
+    private Peers recommendedpeer;
 
-    public Recommendations(long recommendations_id, Peers peer, Peers recommendedPeer) {
+    public Recommendations(long recommendations_id, Peers peer, Peers recommendedpeer) {
         this.recommendations_id = recommendations_id;
         this.peer = peer;
-        this.recommendedPeer = recommendedPeer;
+        this.recommendedpeer = recommendedpeer;
     }
 
     public Recommendations() {
@@ -48,12 +48,12 @@ public class Recommendations {
         this.peer = peer;
     }
 
-    public Peers getRecommendedPeer() {
-        return recommendedPeer;
+    public Peers getRecommendedpeer() {
+        return recommendedpeer;
     }
 
-    public void setRecommendedPeer(Peers recommendatedPeer) {
-        this.recommendedPeer = recommendatedPeer;
+    public void setRecommendedpeer(Peers recommendatedPeer) {
+        this.recommendedpeer = recommendatedPeer;
     }
 
     @Override
@@ -61,7 +61,7 @@ public class Recommendations {
         return "Recommendations{" +
                 "id=" + recommendations_id +
                 ", peer=" + peer +
-                ", recomendatedPeer=" + recommendedPeer +
+                ", recomendatedPeer=" + recommendedpeer +
                 '}';
     }
 }

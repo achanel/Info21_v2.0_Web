@@ -36,8 +36,8 @@ public class OperationsController {
     @GetMapping("/add-p2p-review")
     String showAddP2pCheckPage(Model model) {
 //        log.info("GET /operations/add-p2p-review");
-        model.addAttribute("tasks", tablesService.getP2PTable());
-//        model.addAttribute("addP2pCheck", new AddP2PReviewParams());
+        model.addAttribute("tasks", tablesService.getTasks());
+        model.addAttribute("addP2pCheck", new AddP2PReviewParams());
         return "/operations/add_p2p_review";
     }
 
