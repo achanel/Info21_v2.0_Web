@@ -2,10 +2,8 @@ package edu.school21.infoweb.sqlServices;
 
 import edu.school21.infoweb.dto.sqlOperations.procedures.AddP2PReview;
 import edu.school21.infoweb.exception.BusinessException;
-import edu.school21.infoweb.models.P2P;
 import edu.school21.infoweb.models.operations.AddP2PReviewParams;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +38,7 @@ public class OperationsService {
     }
 
     public void addP2PReviewProcedure(AddP2PReviewParams dto) throws BusinessException {
-        addP2PReview.execute(dto.getCheckingPeer(), dto.getCheckedPeer(), dto.getTaskTitle(), dto.getState(), dto.getCheckTime());
+        addP2PReview.execute(dto.getCheckingPeer(), dto.getCheckedPeer(), dto.getTaskTitle(), dto.getState(), dto.getCheckTime(), 1);
     }
 
 //    public void executeAddVerterCheckProcedure(AddVerterCheckParametersDto dto) {

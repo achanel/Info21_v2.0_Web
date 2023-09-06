@@ -9,13 +9,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.validation.Valid;
 
 @Slf4j
 @Controller
@@ -44,7 +41,7 @@ public class OperationsController {
     @PostMapping("/add-p2p-review")
     String executeAddP2pCheckProcedure(@ModelAttribute("addP2pCheck")AddP2PReviewParams params, Model model) throws BusinessException {
 //        log.info("POST /operations/add-p2p-check");
-        model.addAttribute("tasks", tablesService.getP2PTable());
+        model.addAttribute("tasks", tablesService.getTasks());
 //        addP2pCheckValidator.validate(addP2PCheckParametersDto, bindingResult);
 //        if (bindingResult.hasErrors()) {
 //            log.warn("bindingResult has errors: {}", bindingResult.getAllErrors());

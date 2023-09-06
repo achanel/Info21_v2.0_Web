@@ -4,6 +4,7 @@ import edu.school21.infoweb.csv.CSVWorker;
 import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.sqlServices.SqlExecutor;
 import edu.school21.infoweb.sqlServices.SqlFunctions;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.io.IOException;
 import java.util.Map;
 
+@RequiredArgsConstructor
 @Controller
 @RequestMapping("/v1/sql/")
 public class SQLController {
@@ -35,7 +37,7 @@ public class SQLController {
     @PostMapping
     public String sqlController(@RequestParam(required = false, name = "request") String request,
                                 Map<String, Object> model) throws BusinessException {
-        model.put("sqlResponse", sqlExecutor.execute(request));
+        model.put("sqlResponse", sqlExecutor.execute(request, 0));
 
         return "main";
     }

@@ -12,15 +12,22 @@ import java.util.Objects;
 public class SqlExecutor {
     public List<List<String>> csv = new ArrayList<>();
 
-    public StringBuilder execute(String statement) throws BusinessException {
+    public StringBuilder execute(String statement, Integer operation) throws BusinessException {
         Connection connection;
         StringBuilder sqlResponse = new StringBuilder();
         try {
             connection = DriverManager
                     .getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
 
-            Statement st = connection.createStatement();
             CallableStatement cs = connection.prepareCall(statement);
+            Statement st = connection.createStatement();
+            if (operation == 1) {
+                try {
+                    cs.executeQuery();
+                } catch (SQLException e) {
+                    return sqlResponse;
+                }
+            }
             ResultSet rs = Objects.requireNonNull(cs).executeQuery();
             ResultSetMetaData rsmd = Objects.requireNonNull(rs).getMetaData();
             int columnsNumber = rsmd.getColumnCount();
