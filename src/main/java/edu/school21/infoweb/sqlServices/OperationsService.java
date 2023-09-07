@@ -1,8 +1,10 @@
 package edu.school21.infoweb.sqlServices;
 
 import edu.school21.infoweb.dto.sqlOperations.procedures.AddP2PReview;
+import edu.school21.infoweb.dto.sqlOperations.procedures.AddVerterReview;
 import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.models.operations.AddP2PReviewParams;
+import edu.school21.infoweb.models.operations.AddVerterReviewParams;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Data
 public class OperationsService {
     private final AddP2PReview addP2PReview;
-//    private final AddVerterProcedure addVerterProcedure;
+    private final AddVerterReview addVerterReview;
 //    private final TransferredPointsHumanReadFunction transferredPointsHumanReadFunction;
 //    private final TransferedPointsHumanReadMapper transferedPointsHumanReadMapper;
 //    private final SuccessfulChecksFunction successfulChecksFunction;
@@ -33,18 +35,19 @@ public class OperationsService {
 //    private final EarlyComingFunction earlyComingFunction;
 
 
-    public OperationsService(AddP2PReview addP2PReview) {
+    public OperationsService(AddP2PReview addP2PReview, AddVerterReview addVerterReview) {
         this.addP2PReview = addP2PReview;
+        this.addVerterReview = addVerterReview;
     }
 
     public void addP2PReviewProcedure(AddP2PReviewParams dto) throws BusinessException {
         addP2PReview.execute(dto.getCheckingPeer(), dto.getCheckedPeer(), dto.getTaskTitle(), dto.getState(), dto.getCheckTime(), 1);
     }
 
-//    public void executeAddVerterCheckProcedure(AddVerterCheckParametersDto dto) {
-//        addVerterProcedure.execute(dto.getCheckedPeer(), dto.getTaskTitle(), dto.getState(), dto.getCheckTime());
-//    }
-//
+    public void addVerterReviewProcedure(AddVerterReviewParams dto) throws BusinessException {
+        addVerterReview.execute(dto.getCheckedPeer(), dto.getTaskTitle(), dto.getState(), dto.getCheckTime(), 1);
+    }
+
 //    public List<TransferredPointDto> executeTransferredPointsHumanRead() {
 //        List<Map<String, Object>> execute = transferredPointsHumanReadFunction.execute();
 //        return transferedPointsHumanReadMapper.map(execute);

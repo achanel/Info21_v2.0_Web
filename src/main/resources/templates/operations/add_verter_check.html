@@ -17,25 +17,18 @@
 <header></header>
 <body>
 <div class="container">
-    <div style="font-size: 18px">Процедура добавления P2P проверки</div>
-    <form action="/v1/operations/add-p2p-review" method="post" th:object="${addP2pCheck}">
-        <div class="form-group row mt-2">
-            <label for="checkingPeer" class="col-sm-2 col-form-label">Ник проверяемого</label>
-            <input type="text" id="checkingPeer" th:field="*{checkingPeer}"
-                   placeholder="Checking Peer Nickname" class="form-control mb-4 col-4"
-                   aria-describedby="checkingPeerError">
-            <small class="error_message" id="checkingPeerError"
-                   th:if="${#fields.hasErrors('checkingPeer')}" th:errors="*{checkingPeer}">error checkingPeer</small>
+    <div style="font-size: 18px">Процедура добавления проверки Verter'ом</div>
+
+    <form action="/v1/operations/add-verter-check" method="post" th:object="${addVerterCheck}">
+        <div class="form-group row mt-5">
+            <label for="checkedPeer2"  class="col-sm-2 col-form-label">Ник проверяемого</label>
+            <input type="text" id="checkedPeer2" th:field="*{checkedPeer}"
+                   placeholder="Checked Peer Nickname" class="form-control mb-4 col-4"
+                   aria-describedby="checkedPeerError2">
+            <small class="error_message" id="checkedPeerError2"
+                   th:if="${#fields.hasErrors('checkedPeer')}" th:errors="*{checkedPeer}">error checkedPeer</small>
         </div>
 
-        <div class="form-group row mt-2">
-            <label for="checkedPeer" class="col-sm-2 col-form-label">Ник проверяющего</label>
-            <input type="text" id="checkedPeer" th:field="*{checkedPeer}"
-                   placeholder="Checked Peer Nickname" class="form-control mb-4 col-4"
-                   aria-describedby="checkedPeerError">
-            <small class="error_message" id="checkedPeerError"
-                   th:if="${#fields.hasErrors('checkedPeer')}" th:errors="*{checkedPeer}">error checkingPeer</small>
-        </div>
 
         <div class="form-group row mt-5">
             <label for="task" class="col-sm-2 col-form-label">Название задания</label>
@@ -45,27 +38,28 @@
             </select>
         </div>
 
-        <div class="form-group row mt-2">
-            <label for="checkState" class="col-sm-2 col-form-label">Статус P2P проверки</label>
-            <select id="checkState" name="state">
+        <div class="form-group row mt-5">
+            <label for="checkState2" class="col-sm-2 col-form-label">Cтатус проверки Verter'ом</label>
+            <select id="checkState2" name="state">
                 <option value="Start" th:text="Start"></option>
                 <option value="Success" th:text="Success"></option>
                 <option value="Failure" th:text="Failure"></option>
             </select>
         </div>
 
-        <div class="form-group row mt-2">
-            <label for="time" class="col-sm-2 col-form-label">Время</label>
-            <input type="time" id="time" name="checkTime"
+        <div class="form-group row mt-5">
+            <label for="time2" class="col-sm-2 col-form-label">Время</label>
+            <input type="time" id="time2" name="checkTime"
                    class="form-control mb-4 col-4">
         </div>
 
         <button type="submit" class="btn btn-info col-2" onclick="return confirm_execute()">Execute</button>
     </form>
 
-    <th:block th:if="${addP2pCheckSuccess} != null">
+    <th:block th:if="${addVerterCheckSuccess} != null" >
         <div style="color: green" class="mt-2">Success</div>
     </th:block>
+
     <div class="mt-5">
         <a href="/v1/operations/" class="btn btn-primary">Назад</a>
     </div>

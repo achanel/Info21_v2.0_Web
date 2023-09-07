@@ -3,6 +3,7 @@ package edu.school21.infoweb.controllers;
 
 import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.models.operations.AddP2PReviewParams;
+import edu.school21.infoweb.models.operations.AddVerterReviewParams;
 import edu.school21.infoweb.services.TablesService;
 import edu.school21.infoweb.sqlServices.OperationsService;
 import lombok.extern.slf4j.Slf4j;
@@ -42,7 +43,6 @@ public class OperationsController {
     String executeAddP2pCheckProcedure(@ModelAttribute("addP2pCheck")AddP2PReviewParams params, Model model) throws BusinessException {
 //        log.info("POST /operations/add-p2p-check");
         model.addAttribute("tasks", tablesService.getTasks());
-//        addP2pCheckValidator.validate(addP2PCheckParametersDto, bindingResult);
 //        if (bindingResult.hasErrors()) {
 //            log.warn("bindingResult has errors: {}", bindingResult.getAllErrors());
 //            return "/operations/add_p2p_check";
@@ -52,28 +52,27 @@ public class OperationsController {
         return "/operations/add_p2p_review";
     }
 
-//    @GetMapping("/add-verter-check")
-//    String showAddVerterCheckPage(Model model) {
+    @GetMapping("/add-verter-check")
+    String showAddVerterCheckPage(Model model) {
 //        log.info("GET /operations/add-verter-check");
-//        model.addAttribute("addVerterCheck", new AddVerterCheckParametersDto());
-//        model.addAttribute("tasks", taskService.findAll());
-//        return "/operations/add_verter_check";
-//    }
-//
-//    @PostMapping("/add-verter-check")
-//    String executeAddVerterCheck(@Valid @ModelAttribute("addVerterCheck") AddVerterCheckParametersDto addVerterCheckParametersDto, BindingResult bindingResult, Model model) {
+        model.addAttribute("tasks", tablesService.getTasks());
+        model.addAttribute("addVerterCheck", new AddVerterReviewParams());
+        return "/operations/add_verter_check";
+    }
+
+    @PostMapping("/add-verter-check")
+    String executeAddVerterCheck(@ModelAttribute("addVerterCheck") AddVerterReviewParams params, Model model) throws BusinessException {
 //        log.info("POST /operations/add-verter-check");
-//        model.addAttribute("tasks", taskService.findAll());
-//        addVerterCheckValidator.validate(addVerterCheckParametersDto, bindingResult);
+        model.addAttribute("tasks", tablesService.getTasks());
 //        if (bindingResult.hasErrors()) {
 //            log.warn("bindingResult has errors: {}", bindingResult.getAllErrors());
 //            return "/operations/add_verter_check";
 //        }
-//        operationsService.executeAddVerterCheckProcedure(addVerterCheckParametersDto);
-//        model.addAttribute("addVerterCheckSuccess", true);
-//        return "/operations/add_verter_check";
-//    }
-//
+        operationsService.addVerterReviewProcedure(params);
+        model.addAttribute("addVerterCheckSuccess", true);
+        return "/operations/add_verter_check";
+    }
+
 //    @GetMapping("/transferred-points-human-read")
 //    String showTransferredPointsHumanRead() {
 ////        log.info("GET /operations/transferred-points-human-read");

@@ -25,6 +25,7 @@ public class SqlExecutor {
                 try {
                     cs.executeQuery();
                 } catch (SQLException e) {
+                   if (e.getMessage().startsWith("Запрос не вернул результатов"))
                     return sqlResponse;
                 }
             }
