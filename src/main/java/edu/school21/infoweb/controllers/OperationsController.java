@@ -8,14 +8,13 @@ import edu.school21.infoweb.services.TablesService;
 import edu.school21.infoweb.sqlServices.OperationsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 @Slf4j
 @Controller
@@ -88,32 +87,33 @@ public class OperationsController {
         return "/operations/transferred_points_human_read";
     }
 
-//    @GetMapping("/successful-checks")
-//    String showSuccessfulChecks() {
+    @GetMapping("/successful-checks")
+    String showSuccessfulChecks() {
 //        log.info("GET /operations/successful-checks");
-//        return "/operations/successful_checks";
-//    }
-//
-//    @PostMapping("/successful-checks")
-//    String executeFunctionSuccessfulChecks(Model model) {
+        return "/operations/successful_checks";
+    }
+
+    @PostMapping("/successful-checks")
+    String executeFunctionSuccessfulChecks(Model model) throws BusinessException, SQLException {
 //        log.info("POST /operations/successful-checks");
-//        model.addAttribute("entities", operationsService.executeSuccessfulChecksFunction());
-//        return "/operations/successful_checks";
-//    }
-//
-//    @GetMapping("/all-day-in-campus")
-//    String showAllDayInCampus() {
+        model.addAttribute("entities", operationsService.executeSuccessfulChecksFunction());
+        return "/operations/successful_checks";
+    }
+
+    @GetMapping("/all-day-in-campus")
+    String showAllDayInCampus() {
 //        log.info("GET /operations/all-day-in-campus");
-//        return "/operations/all_day_in_campus";
-//    }
-//
-//    @PostMapping("/all-day-in-campus")
-//    String executeFunctionAllDayInCampus(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, Model model) {
+        return "/operations/all_day_in_campus";
+    }
+
+    @PostMapping("/all-day-in-campus")
+    String executeFunctionAllDayInCampus(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
+                                         Model model) throws BusinessException, SQLException {
 //        log.info("POST /operations/all-day-in-campus");
-//        model.addAttribute("entities", operationsService.executePeersAllDayInCampusFunction(date));
-//        return "/operations/all_day_in_campus";
-//    }
-//
+        model.addAttribute("entities", operationsService.executePeersAllDayInCampusFunction(date));
+        return "/operations/all_day_in_campus";
+    }
+
 //    @GetMapping("/transferred-points-change-v1")
 //    String showTransferredPointsChangeV1() {
 //        log.info("GET /operations/transferred-points-change");

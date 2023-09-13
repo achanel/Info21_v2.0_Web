@@ -1,9 +1,12 @@
 package edu.school21.infoweb.sqlServices;
 
+import edu.school21.infoweb.dto.sqlOperations.functions.PeersAllDayInCampusFunction;
+import edu.school21.infoweb.dto.sqlOperations.functions.SuccessfulChecksFunction;
 import edu.school21.infoweb.dto.sqlOperations.functions.TransferredPointsHumanReadFunction;
 import edu.school21.infoweb.dto.sqlOperations.procedures.AddP2PReview;
 import edu.school21.infoweb.dto.sqlOperations.procedures.AddVerterReview;
 import edu.school21.infoweb.exception.BusinessException;
+import edu.school21.infoweb.models.SqlResult;
 import edu.school21.infoweb.models.TransferredPoints;
 import edu.school21.infoweb.models.operations.AddP2PReviewParams;
 import edu.school21.infoweb.models.operations.AddVerterReviewParams;
@@ -11,9 +14,8 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -23,9 +25,9 @@ public class OperationsService {
     private final AddP2PReview addP2PReview;
     private final AddVerterReview addVerterReview;
     private final TransferredPointsHumanReadFunction transferredPointsHumanReadFunction;
+    private final SuccessfulChecksFunction successfulChecksFunction;
+    private final PeersAllDayInCampusFunction peersAllDayInCampusFunction;
 //    private final TransferedPointsHumanReadMapper transferedPointsHumanReadMapper;
-//    private final SuccessfulChecksFunction successfulChecksFunction;
-//    private final PeersAllDayInCampusFunction peersAllDayInCampusFunction;
 //    private final TransferredPointsChangeFunctionV1 transferredPointsChangeFunctionV1;
 //    private final TransferredPointsChangeFunctionV2 transferredPointsChangeFunctionV2;
 //    private final CheckedTaskFunction checkedTaskFunction;
@@ -42,10 +44,12 @@ public class OperationsService {
 //    private final EarlyComingFunction earlyComingFunction;
 
 
-    public OperationsService(AddP2PReview addP2PReview, AddVerterReview addVerterReview, TransferredPointsHumanReadFunction transferredPointsHumanReadFunction) {
+    public OperationsService(AddP2PReview addP2PReview, AddVerterReview addVerterReview, TransferredPointsHumanReadFunction transferredPointsHumanReadFunction, SuccessfulChecksFunction successfulChecksFunction, PeersAllDayInCampusFunction peersAllDayInCampusFunction) {
         this.addP2PReview = addP2PReview;
         this.addVerterReview = addVerterReview;
         this.transferredPointsHumanReadFunction = transferredPointsHumanReadFunction;
+        this.successfulChecksFunction = successfulChecksFunction;
+        this.peersAllDayInCampusFunction = peersAllDayInCampusFunction;
     }
 
     public void addP2PReviewProcedure(AddP2PReviewParams dto) throws BusinessException {
@@ -60,14 +64,14 @@ public class OperationsService {
         return transferredPointsHumanReadFunction.execute();
     }
 
-//    public List<SuccessfulCheckResult> executeSuccessfulChecksFunction() {
-//        return successfulChecksFunction.execute();
-//    }
-//
-//    public List<String> executePeersAllDayInCampusFunction(LocalDate day) {
-//        return peersAllDayInCampusFunction.execute(day);
-//    }
-//
+    public List<SqlResult> executeSuccessfulChecksFunction() throws BusinessException, SQLException {
+        return successfulChecksFunction.execute();
+    }
+
+    public List<String> executePeersAllDayInCampusFunction(LocalDate day) throws BusinessException, SQLException {
+        return peersAllDayInCampusFunction.execute(day);
+    }
+
 //    public List<TransferredPointChangeResult> executeTransferredPointsChangeFunctionV1() {
 //        return transferredPointsChangeFunctionV1.execute();
 //    }
