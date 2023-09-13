@@ -1,28 +1,36 @@
 package edu.school21.infoweb.dto.sqlOperations.functions;
 
 
+import edu.school21.infoweb.exception.BusinessException;
+import edu.school21.infoweb.models.SqlResult;
+import edu.school21.infoweb.sqlServices.SqlExecutor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
 @Component
 @RequiredArgsConstructor
 public class PeersAllDayInCampusFunction {
-//
-//    private static final String sqlQuery = "SELECT * FROM ex03(?)";
-//
-//    public List<String> execute(LocalDate day) {
-//        log.info("start execute function ex03(). Date: {}", day);
-//        try {
-//            return jdbcTemplate.queryForList(sqlQuery, String.class, day);
-//        } catch (Exception e) {
-//            log.warn("FAIL execute function ex03. Message: {}", e.getMessage());
-//            throw e;
-//        }
-//    }
+    @Autowired
+    SqlExecutor sqlExecutor;
+
+    public List<String> execute(LocalDate day) throws BusinessException, SQLException {
+        List<String> result = new ArrayList<>();
+        ResultSet rs = sqlExecutor.executeToResultSet(
+                "select * from fnc_not_left_peer('" + day.toString() + "')");
+
+        while(rs.next()) {
+            result.add(rs.getString("fnc_not_left_peer"));
+        }
+        return result;
+    }
 }
