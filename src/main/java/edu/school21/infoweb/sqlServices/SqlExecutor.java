@@ -12,7 +12,7 @@ import java.util.Objects;
 public class SqlExecutor {
     public List<List<String>> csv = new ArrayList<>();
 
-    public StringBuilder execute(String statement, Integer operation) throws BusinessException {
+    public StringBuilder execute(String statement) throws BusinessException {
         Connection connection;
         StringBuilder sqlResponse = new StringBuilder();
         try {
@@ -21,14 +21,6 @@ public class SqlExecutor {
 
             CallableStatement cs = connection.prepareCall(statement);
             Statement st = connection.createStatement();
-            if (operation == 1) {
-                try {
-                    cs.executeQuery();
-                } catch (SQLException e) {
-                   if (e.getMessage().startsWith("Запрос не вернул результатов"))
-                    return sqlResponse;
-                }
-            }
             ResultSet rs = Objects.requireNonNull(cs).executeQuery();
             ResultSetMetaData rsmd = Objects.requireNonNull(rs).getMetaData();
             int columnsNumber = rsmd.getColumnCount();
@@ -67,9 +59,32 @@ public class SqlExecutor {
             rs.close();
             st.close();
         } catch (SQLException e) {
-            throw new BusinessException(e.getMessage());
+            if (e.getMessage().startsWith("Запрос не вернул результатов")) {
+                return sqlResponse;
+            } else {
+                throw new BusinessException(e.getMessage());
+            }
         }
         return sqlResponse;
+    }
+
+    public ResultSet executeToResultSet(String statement) throws BusinessException {
+        Connection connection;
+        ResultSet rs;
+        try {
+            connection = DriverManager
+                    .getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+
+            CallableStatement cs = connection.prepareCall(statement);
+            rs = Objects.requireNonNull(cs).executeQuery();
+        } catch (SQLException e) {
+            if (e.getMessage().startsWith("Запрос не вернул результатов")) {
+                return null;
+            } else {
+                throw new BusinessException(e.getMessage());
+            }
+        }
+        return rs;
     }
 
     public List<List<String>> getCsv() {

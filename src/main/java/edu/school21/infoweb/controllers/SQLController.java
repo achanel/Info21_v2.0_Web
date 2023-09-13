@@ -37,7 +37,7 @@ public class SQLController {
     @PostMapping
     public String sqlController(@RequestParam(required = false, name = "request") String request,
                                 Map<String, Object> model) throws BusinessException {
-        model.put("sqlResponse", sqlExecutor.execute(request, 0));
+        model.put("sqlResponse", sqlExecutor.execute(request));
 
         return "main";
     }

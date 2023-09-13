@@ -15,14 +15,13 @@ public class AddVerterReview {
     @Autowired
     SqlExecutor sqlExecutor;
 
-    public void execute(String checkedPeer, String taskTitle, String state, String checkTime, Integer flag) throws BusinessException {
+    public void execute(String checkedPeer, String taskTitle, String state, String checkTime) throws BusinessException {
 //        log.info("start execute procedure add_p2p_review. Parameters: {{}, {}, {}, {}, {}}", checkingPeer, checkedPeer, taskTitle, state, checkTime);
         sqlExecutor.execute("call add_verter_review('" +
                         checkedPeer + "', '" +
                         taskTitle + "', '" +
                         state + "', '" +
-                        checkTime + ":00');",
-                flag);
+                        checkTime + ":00');");
 //            log.info("procedure add_p2p_review was executed");
     }
 }

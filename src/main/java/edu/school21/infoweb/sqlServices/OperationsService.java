@@ -1,13 +1,20 @@
 package edu.school21.infoweb.sqlServices;
 
+import edu.school21.infoweb.dto.sqlOperations.functions.TransferredPointsHumanReadFunction;
 import edu.school21.infoweb.dto.sqlOperations.procedures.AddP2PReview;
 import edu.school21.infoweb.dto.sqlOperations.procedures.AddVerterReview;
 import edu.school21.infoweb.exception.BusinessException;
+import edu.school21.infoweb.models.TransferredPoints;
 import edu.school21.infoweb.models.operations.AddP2PReviewParams;
 import edu.school21.infoweb.models.operations.AddVerterReviewParams;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.List;
 
 @Service
 @Component
@@ -15,7 +22,7 @@ import org.springframework.stereotype.Service;
 public class OperationsService {
     private final AddP2PReview addP2PReview;
     private final AddVerterReview addVerterReview;
-//    private final TransferredPointsHumanReadFunction transferredPointsHumanReadFunction;
+    private final TransferredPointsHumanReadFunction transferredPointsHumanReadFunction;
 //    private final TransferedPointsHumanReadMapper transferedPointsHumanReadMapper;
 //    private final SuccessfulChecksFunction successfulChecksFunction;
 //    private final PeersAllDayInCampusFunction peersAllDayInCampusFunction;
@@ -35,24 +42,24 @@ public class OperationsService {
 //    private final EarlyComingFunction earlyComingFunction;
 
 
-    public OperationsService(AddP2PReview addP2PReview, AddVerterReview addVerterReview) {
+    public OperationsService(AddP2PReview addP2PReview, AddVerterReview addVerterReview, TransferredPointsHumanReadFunction transferredPointsHumanReadFunction) {
         this.addP2PReview = addP2PReview;
         this.addVerterReview = addVerterReview;
+        this.transferredPointsHumanReadFunction = transferredPointsHumanReadFunction;
     }
 
     public void addP2PReviewProcedure(AddP2PReviewParams dto) throws BusinessException {
-        addP2PReview.execute(dto.getCheckingPeer(), dto.getCheckedPeer(), dto.getTaskTitle(), dto.getState(), dto.getCheckTime(), 1);
+        addP2PReview.execute(dto.getCheckingPeer(), dto.getCheckedPeer(), dto.getTaskTitle(), dto.getState(), dto.getCheckTime());
     }
 
     public void addVerterReviewProcedure(AddVerterReviewParams dto) throws BusinessException {
-        addVerterReview.execute(dto.getCheckedPeer(), dto.getTaskTitle(), dto.getState(), dto.getCheckTime(), 1);
+        addVerterReview.execute(dto.getCheckedPeer(), dto.getTaskTitle(), dto.getState(), dto.getCheckTime());
     }
 
-//    public List<TransferredPointDto> executeTransferredPointsHumanRead() {
-//        List<Map<String, Object>> execute = transferredPointsHumanReadFunction.execute();
-//        return transferedPointsHumanReadMapper.map(execute);
-//    }
-//
+    public List<TransferredPoints> executeTransferredPointsHumanRead() throws BusinessException, SQLException {
+        return transferredPointsHumanReadFunction.execute();
+    }
+
 //    public List<SuccessfulCheckResult> executeSuccessfulChecksFunction() {
 //        return successfulChecksFunction.execute();
 //    }
