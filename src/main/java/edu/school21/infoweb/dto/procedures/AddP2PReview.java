@@ -1,4 +1,4 @@
-package edu.school21.infoweb.dto.sqlOperations.procedures;
+package edu.school21.infoweb.dto.procedures;
 
 import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.sqlServices.SqlExecutor;

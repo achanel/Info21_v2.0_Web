@@ -1,10 +1,11 @@
 package edu.school21.infoweb.sqlServices;
 
-import edu.school21.infoweb.dto.sqlOperations.functions.PeersAllDayInCampusFunction;
-import edu.school21.infoweb.dto.sqlOperations.functions.SuccessfulChecksFunction;
-import edu.school21.infoweb.dto.sqlOperations.functions.TransferredPointsHumanReadFunction;
-import edu.school21.infoweb.dto.sqlOperations.procedures.AddP2PReview;
-import edu.school21.infoweb.dto.sqlOperations.procedures.AddVerterReview;
+import edu.school21.infoweb.dto.functions.PeersAllDayInCampusFunction;
+import edu.school21.infoweb.dto.functions.SuccessfulChecksFunction;
+import edu.school21.infoweb.dto.functions.TransferredPointsHumanReadFunction;
+import edu.school21.infoweb.dto.functions.TwoBlockCompareFunction;
+import edu.school21.infoweb.dto.procedures.AddP2PReview;
+import edu.school21.infoweb.dto.procedures.AddVerterReview;
 import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.models.SqlResult;
 import edu.school21.infoweb.models.TransferredPoints;
@@ -33,7 +34,7 @@ public class OperationsService {
 //    private final CheckedTaskFunction checkedTaskFunction;
 //    private final TaskBlockFunction taskBlockFunction;
 //    private final RecommendedPeerFunction recommendedPeerFunction;
-//    private final TwoBlockCompareFunction twoBlockCompareFunction;
+    private final TwoBlockCompareFunction twoBlockCompareFunction;
 //    private final BirthdayCheckFunction birthdayCheckFunction;
 //    private final CompletedTwoTaskWithoutThirdFunction completedTwoTaskWithoutThirdFunction;
 //    private final TaskCountFunction taskCountFunction;
@@ -44,12 +45,13 @@ public class OperationsService {
 //    private final EarlyComingFunction earlyComingFunction;
 
 
-    public OperationsService(AddP2PReview addP2PReview, AddVerterReview addVerterReview, TransferredPointsHumanReadFunction transferredPointsHumanReadFunction, SuccessfulChecksFunction successfulChecksFunction, PeersAllDayInCampusFunction peersAllDayInCampusFunction) {
+    public OperationsService(AddP2PReview addP2PReview, AddVerterReview addVerterReview, TransferredPointsHumanReadFunction transferredPointsHumanReadFunction, SuccessfulChecksFunction successfulChecksFunction, PeersAllDayInCampusFunction peersAllDayInCampusFunction, TwoBlockCompareFunction twoBlockCompareFunction) {
         this.addP2PReview = addP2PReview;
         this.addVerterReview = addVerterReview;
         this.transferredPointsHumanReadFunction = transferredPointsHumanReadFunction;
         this.successfulChecksFunction = successfulChecksFunction;
         this.peersAllDayInCampusFunction = peersAllDayInCampusFunction;
+        this.twoBlockCompareFunction = twoBlockCompareFunction;
     }
 
     public void addP2PReviewProcedure(AddP2PReviewParams dto) throws BusinessException {
@@ -91,11 +93,11 @@ public class OperationsService {
 //    public List<RecommendedPeerResult> executeRecommendedPeerFunction() {
 //        return recommendedPeerFunction.execute();
 //    }
-//
-//    public List<TwoBlockCompareResult> executeTwoBlockCompareFunction(String firstBlock, String secondBlock) {
-//        return twoBlockCompareFunction.execute(firstBlock, secondBlock);
-//    }
-//
+
+    public List<SqlResult> executeTwoBlockCompareFunction(String firstBlock, String secondBlock) throws BusinessException, SQLException {
+        return twoBlockCompareFunction.execute(firstBlock, secondBlock);
+    }
+
 //    public List<BirthdayCheckResult> executeBirthdayCheckFunction() {
 //        return birthdayCheckFunction.execute();
 //    }

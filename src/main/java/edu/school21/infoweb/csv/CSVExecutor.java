@@ -10,7 +10,7 @@ import java.io.*;
 import java.util.List;
 
 @Component
-public class CSVWorker {
+public class CSVExecutor {
     public void writeCSV(List<List<String>> data, String fileName) throws IOException {
         CSVPrinter printer = new CSVPrinter(new FileWriter("target/" + fileName + ".csv"), CSVFormat.DEFAULT);
         data.forEach(line -> {

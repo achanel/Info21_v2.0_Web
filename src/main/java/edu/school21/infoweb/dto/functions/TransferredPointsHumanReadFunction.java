@@ -1,4 +1,4 @@
-package edu.school21.infoweb.dto.sqlOperations.functions;
+package edu.school21.infoweb.dto.functions;
 
 import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.models.Peers;
@@ -6,7 +6,6 @@ import edu.school21.infoweb.models.TransferredPoints;
 import edu.school21.infoweb.sqlServices.SqlExecutor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,8 +13,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Component

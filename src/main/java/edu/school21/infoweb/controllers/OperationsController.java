@@ -126,7 +126,7 @@ public class OperationsController {
 //        model.addAttribute("entities", operationsService.executeTransferredPointsChangeFunctionV1());
 //        return "/operations/transferred_points_change_v1";
 //    }
-//
+
 //    @GetMapping("/transferred-points-change-v2")
 //    String showTransferredPointsChangeV2() {
 //        log.info("GET /operations/transferred-points-change");
@@ -179,19 +179,20 @@ public class OperationsController {
 //        return "/operations/recommended_peer";
 //    }
 //
-//    @GetMapping("/blocks-comparing")
-//    String showBlocksComparing() {
+    @GetMapping("/blocks-comparing")
+    String showBlocksComparing() {
 //        log.info("GET /operations/blocks-comparing");
-//        return "/operations/blocks_comparing";
-//    }
-//
-//    @PostMapping("/blocks-comparing")
-//    String executeFunctionRecommendedPeer(@RequestParam String firstBlock, @RequestParam String secondBlock, Model model) {
+        return "/operations/blocks_comparing";
+    }
+
+    @PostMapping("/blocks-comparing")
+    String executeFunctionRecommendedPeer(@RequestParam String firstBlock, @RequestParam String secondBlock,
+                                          Model model) throws BusinessException, SQLException {
 //        log.info("POST /operations/blocks-comparing");
-//        model.addAttribute("entities", operationsService.executeTwoBlockCompareFunction(firstBlock, secondBlock));
-//        return "/operations/blocks_comparing";
-//    }
-//
+        model.addAttribute("entities", operationsService.executeTwoBlockCompareFunction(firstBlock, secondBlock));
+        return "/operations/blocks_comparing";
+    }
+
 //    @GetMapping("/birthday-check")
 //    String showBirthdayCheck() {
 //        log.info("GET /operations/birthday-check");

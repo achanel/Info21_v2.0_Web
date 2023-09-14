@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@Deprecated
 public class ExceptionController {
 
 //    @GetMapping(value = "/error", produces = APPLICATION_JSON_VALUE)

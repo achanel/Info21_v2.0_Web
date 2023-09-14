@@ -1,4 +1,4 @@
-package edu.school21.infoweb.dto.sqlOperations.functions;
+package edu.school21.infoweb.dto.functions;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
