@@ -114,18 +114,18 @@ public class OperationsController {
         return "/operations/all_day_in_campus";
     }
 
-//    @GetMapping("/transferred-points-change-v1")
-//    String showTransferredPointsChangeV1() {
+    @GetMapping("/fnc_peer_points_changes")
+    String showTransferredPointsChangeV1() {
 //        log.info("GET /operations/transferred-points-change");
-//        return "/operations/transferred_points_change_v1";
-//    }
-//
-//    @PostMapping("/transferred-points-change-v1")
-//    String executeFunctionTransferredPointsChangeV1(Model model) {
+        return "/operations/fnc_peer_points_changes";
+    }
+
+    @PostMapping("/fnc_peer_points_changes")
+    String executeFunctionTransferredPointsChangeV1(Model model) throws BusinessException, SQLException {
 //        log.info("POST /operations/transferred-points-change");
-//        model.addAttribute("entities", operationsService.executeTransferredPointsChangeFunctionV1());
-//        return "/operations/transferred_points_change_v1";
-//    }
+        model.addAttribute("entities", operationsService.executePeersPointsChanges());
+        return "/operations/fnc_peer_points_changes";
+    }
 
 //    @GetMapping("/transferred-points-change-v2")
 //    String showTransferredPointsChangeV2() {

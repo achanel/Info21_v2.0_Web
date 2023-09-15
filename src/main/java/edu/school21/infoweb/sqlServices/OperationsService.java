@@ -1,9 +1,6 @@
 package edu.school21.infoweb.sqlServices;
 
-import edu.school21.infoweb.dto.functions.PeersAllDayInCampusFunction;
-import edu.school21.infoweb.dto.functions.SuccessfulChecksFunction;
-import edu.school21.infoweb.dto.functions.TransferredPointsHumanReadFunction;
-import edu.school21.infoweb.dto.functions.TwoBlockCompareFunction;
+import edu.school21.infoweb.dto.functions.*;
 import edu.school21.infoweb.dto.procedures.AddP2PReview;
 import edu.school21.infoweb.dto.procedures.AddVerterReview;
 import edu.school21.infoweb.exception.BusinessException;
@@ -28,8 +25,8 @@ public class OperationsService {
     private final TransferredPointsHumanReadFunction transferredPointsHumanReadFunction;
     private final SuccessfulChecksFunction successfulChecksFunction;
     private final PeersAllDayInCampusFunction peersAllDayInCampusFunction;
+    private final FncPeerPointsChanges fncPeerPointsChanges;
 //    private final TransferedPointsHumanReadMapper transferedPointsHumanReadMapper;
-//    private final TransferredPointsChangeFunctionV1 transferredPointsChangeFunctionV1;
 //    private final TransferredPointsChangeFunctionV2 transferredPointsChangeFunctionV2;
 //    private final CheckedTaskFunction checkedTaskFunction;
 //    private final TaskBlockFunction taskBlockFunction;
@@ -45,12 +42,16 @@ public class OperationsService {
 //    private final EarlyComingFunction earlyComingFunction;
 
 
-    public OperationsService(AddP2PReview addP2PReview, AddVerterReview addVerterReview, TransferredPointsHumanReadFunction transferredPointsHumanReadFunction, SuccessfulChecksFunction successfulChecksFunction, PeersAllDayInCampusFunction peersAllDayInCampusFunction, TwoBlockCompareFunction twoBlockCompareFunction) {
+    public OperationsService(AddP2PReview addP2PReview, AddVerterReview addVerterReview,
+                             TransferredPointsHumanReadFunction transferredPointsHumanReadFunction,
+                             SuccessfulChecksFunction successfulChecksFunction, PeersAllDayInCampusFunction peersAllDayInCampusFunction,
+                             FncPeerPointsChanges fncPeerPointsChanges, TwoBlockCompareFunction twoBlockCompareFunction) {
         this.addP2PReview = addP2PReview;
         this.addVerterReview = addVerterReview;
         this.transferredPointsHumanReadFunction = transferredPointsHumanReadFunction;
         this.successfulChecksFunction = successfulChecksFunction;
         this.peersAllDayInCampusFunction = peersAllDayInCampusFunction;
+        this.fncPeerPointsChanges = fncPeerPointsChanges;
         this.twoBlockCompareFunction = twoBlockCompareFunction;
     }
 
@@ -74,9 +75,9 @@ public class OperationsService {
         return peersAllDayInCampusFunction.execute(day);
     }
 
-//    public List<TransferredPointChangeResult> executeTransferredPointsChangeFunctionV1() {
-//        return transferredPointsChangeFunctionV1.execute();
-//    }
+    public List<SqlResult> executePeersPointsChanges() throws BusinessException, SQLException {
+        return fncPeerPointsChanges.execute();
+    }
 //
 //    public List<TransferredPointChangeResult> executeTransferredPointsChangeFunctionV2() {
 //        return transferredPointsChangeFunctionV2.execute();

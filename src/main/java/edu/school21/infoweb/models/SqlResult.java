@@ -11,6 +11,7 @@ public class SqlResult {
     private String startedblock2;
     private String startedbothblocks;
     private String didntstartanyblock;
+    private String pointschange;
 
     public SqlResult(String peer, String task, Integer xp) {
         this.peer = peer;
@@ -23,6 +24,11 @@ public class SqlResult {
         this.startedblock2 = startedblock2;
         this.startedbothblocks = startedbothblocks;
         this.didntstartanyblock = didntstartanyblock;
+    }
+
+    public SqlResult(String peer, String pointschange) {
+        this.peer = peer;
+        this.pointschange = pointschange;
     }
 
     public String getPeer() {
@@ -51,5 +57,9 @@ public class SqlResult {
 
     public String getDidntstartanyblock() {
         return didntstartanyblock;
+    }
+
+    public String getPointschange() {
+        return pointschange;
     }
 }
