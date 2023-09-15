@@ -16,19 +16,19 @@ import java.util.List;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class CheckedTaskFunction {
+public class FncPeerPointsChanges2 {
     @Autowired
     SqlExecutor sqlExecutor;
 
     public List<SqlResult> execute() throws BusinessException, SQLException {
         List<SqlResult> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
-                "select * from pcd_most_reviewed_task()");
+                "select * from fnc_peer_points_changes_2()");
 
         while(rs.next()) {
             result.add(new SqlResult(
-                    rs.getDate("CDate"),
-                    rs.getString("Task")
+                    rs.getString("peer"),
+                    String.valueOf(rs.getInt("pointsChange"))
             ));
         }
         return result;

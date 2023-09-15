@@ -2,6 +2,8 @@ package edu.school21.infoweb.models;
 
 import lombok.RequiredArgsConstructor;
 
+import java.sql.Date;
+
 @RequiredArgsConstructor
 public class SqlResult {
     private String peer;
@@ -12,6 +14,7 @@ public class SqlResult {
     private String startedbothblocks;
     private String didntstartanyblock;
     private String pointschange;
+    private Date cDate;
 
     public SqlResult(String peer, String task, Integer xp) {
         this.peer = peer;
@@ -29,6 +32,11 @@ public class SqlResult {
     public SqlResult(String peer, String pointschange) {
         this.peer = peer;
         this.pointschange = pointschange;
+    }
+
+    public SqlResult(Date cDate, String task) {
+        this.cDate = cDate;
+        this.task = task;
     }
 
     public String getPeer() {
@@ -61,5 +69,9 @@ public class SqlResult {
 
     public String getPointschange() {
         return pointschange;
+    }
+
+    public Date getcDate() {
+        return cDate;
     }
 }

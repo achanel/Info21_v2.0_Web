@@ -19,16 +19,17 @@
 <div class="container">
     <div class="row">
         <div class="col-15 mt-2">
-            <h5>Посчитать изменение в количестве пир поинтов каждого пира по таблице TransferredPoints</h5>
+            <h5>Определить самое часто проверяемое задание за каждый день</h5>
         </div>
     </div>
     <div class="row">
         <div>
-            <p>Формат вывода: ник пира, изменение в количество пир поинтов</p>
+            <p>При одинаковом количестве проверок каких-то заданий в определенный день, вывести их все.</p>
+            <p>Формат вывода: день, название задания.</p>
         </div>
     </div>
 
-    <form action="/v1/operations/fnc_peer_points_changes" method="post">
+    <form action="/v1/operations/checked-tasks" method="post">
         <button type="submit" class="btn btn-info col-2" onclick="return confirm_execute()">Execute</button>
     </form>
     <th:block th:if="${entities} != null">
@@ -37,17 +38,17 @@
             <thead class="table-dark">
             <tr>
                 <th class="text-center">
-                    Peer Nickname
+                    Day
                 </th>
                 <th class="text-center">
-                    Points Change
+                    Task
                 </th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="entity : ${entities}">
-                <td th:text="${entity.getPeer()}"/>
-                <td th:text="${entity.getPointschange()}"/>
+                <td th:text="${entity.getcDate()}"/>
+                <td th:text="${entity.getTask()}"/>
             </tr>
             </tbody>
         </table>

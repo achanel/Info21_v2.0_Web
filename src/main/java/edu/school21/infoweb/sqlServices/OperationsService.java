@@ -26,9 +26,9 @@ public class OperationsService {
     private final SuccessfulChecksFunction successfulChecksFunction;
     private final PeersAllDayInCampusFunction peersAllDayInCampusFunction;
     private final FncPeerPointsChanges fncPeerPointsChanges;
+    private final FncPeerPointsChanges2 fncPeerPointsChanges2;
+        private final CheckedTaskFunction checkedTaskFunction;
 //    private final TransferedPointsHumanReadMapper transferedPointsHumanReadMapper;
-//    private final TransferredPointsChangeFunctionV2 transferredPointsChangeFunctionV2;
-//    private final CheckedTaskFunction checkedTaskFunction;
 //    private final TaskBlockFunction taskBlockFunction;
 //    private final RecommendedPeerFunction recommendedPeerFunction;
     private final TwoBlockCompareFunction twoBlockCompareFunction;
@@ -45,13 +45,16 @@ public class OperationsService {
     public OperationsService(AddP2PReview addP2PReview, AddVerterReview addVerterReview,
                              TransferredPointsHumanReadFunction transferredPointsHumanReadFunction,
                              SuccessfulChecksFunction successfulChecksFunction, PeersAllDayInCampusFunction peersAllDayInCampusFunction,
-                             FncPeerPointsChanges fncPeerPointsChanges, TwoBlockCompareFunction twoBlockCompareFunction) {
+                             FncPeerPointsChanges fncPeerPointsChanges, FncPeerPointsChanges2 fncPeerPointsChanges2,
+                             CheckedTaskFunction checkedTaskFunction, TwoBlockCompareFunction twoBlockCompareFunction) {
         this.addP2PReview = addP2PReview;
         this.addVerterReview = addVerterReview;
         this.transferredPointsHumanReadFunction = transferredPointsHumanReadFunction;
         this.successfulChecksFunction = successfulChecksFunction;
         this.peersAllDayInCampusFunction = peersAllDayInCampusFunction;
         this.fncPeerPointsChanges = fncPeerPointsChanges;
+        this.fncPeerPointsChanges2 = fncPeerPointsChanges2;
+        this.checkedTaskFunction = checkedTaskFunction;
         this.twoBlockCompareFunction = twoBlockCompareFunction;
     }
 
@@ -78,15 +81,15 @@ public class OperationsService {
     public List<SqlResult> executePeersPointsChanges() throws BusinessException, SQLException {
         return fncPeerPointsChanges.execute();
     }
-//
-//    public List<TransferredPointChangeResult> executeTransferredPointsChangeFunctionV2() {
-//        return transferredPointsChangeFunctionV2.execute();
-//    }
-//
-//    public List<CheckedTaskResult> executeCheckedTaskFunction() {
-//        return checkedTaskFunction.execute();
-//    }
-//
+
+    public List<SqlResult> executePeersPointsChanges2() throws BusinessException, SQLException {
+        return fncPeerPointsChanges2.execute();
+    }
+
+    public List<SqlResult> executeCheckedTaskFunction() throws BusinessException, SQLException {
+        return checkedTaskFunction.execute();
+    }
+
 //    public List<TaskBlockResult> executeTaskBlockFunction(String blockName) {
 //        return taskBlockFunction.execute(blockName);
 //    }

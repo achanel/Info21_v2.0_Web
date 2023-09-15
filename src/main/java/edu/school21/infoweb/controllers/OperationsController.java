@@ -127,32 +127,32 @@ public class OperationsController {
         return "/operations/fnc_peer_points_changes";
     }
 
-//    @GetMapping("/transferred-points-change-v2")
-//    String showTransferredPointsChangeV2() {
+    @GetMapping("/fnc_peer_points_changes_2")
+    String showTransferredPointsChangeV2() {
 //        log.info("GET /operations/transferred-points-change");
-//        return "/operations/transferred_points_change_v2";
-//    }
-//
-//    @PostMapping("/transferred-points-change-v2")
-//    String executeFunctionTransferredPointsChangeV2(Model model) {
+        return "/operations/fnc_peer_points_changes_2";
+    }
+
+    @PostMapping("/fnc_peer_points_changes_2")
+    String executeFunctionTransferredPointsChangeV2(Model model) throws BusinessException, SQLException {
 //        log.info("POST /operations/transferred-points-change");
-//        model.addAttribute("entities", operationsService.executeTransferredPointsChangeFunctionV2());
-//        return "/operations/transferred_points_change_v2";
-//    }
-//
-//    @GetMapping("/checked-tasks")
-//    String showCheckedTasks() {
+        model.addAttribute("entities", operationsService.executePeersPointsChanges2());
+        return "/operations/fnc_peer_points_changes_2";
+    }
+
+    @GetMapping("/checked-tasks")
+    String showCheckedTasks() {
 //        log.info("GET /operations/checked-tasks");
-//        return "/operations/checked_tasks";
-//    }
-//
-//    @PostMapping("/checked-tasks")
-//    String executeFunctionCheckedTasks(Model model) {
+        return "/operations/checked_tasks";
+    }
+
+    @PostMapping("/checked-tasks")
+    String executeFunctionCheckedTasks(Model model) throws BusinessException, SQLException {
 //        log.info("POST /operations/checked-tasks");
-//        model.addAttribute("entities", operationsService.executeCheckedTaskFunction());
-//        return "/operations/checked_tasks";
-//    }
-//
+        model.addAttribute("entities", operationsService.executeCheckedTaskFunction());
+        return "/operations/checked_tasks";
+    }
+
 //    @GetMapping("/task-block")
 //    String showTaskBlockFunctionPage() {
 //        log.info("GET /operations/task-block");
