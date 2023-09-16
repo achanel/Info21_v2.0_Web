@@ -9,25 +9,24 @@ import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class CampusComingFunction {
+public class LeavingFromCampus {
     @Autowired
     SqlExecutor sqlExecutor;
 
-    public List<String> execute(LocalTime time, Integer n) throws BusinessException, SQLException {
+    public List<String> execute(Integer n, Integer m) throws BusinessException, SQLException {
         List<String> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
-                "select * from fnc_coming_early('" +
-                        time + "', '" +
-                        n + "')");
+                "select * from fnc_out_of_campus('" +
+                        n + "', '" +
+                        m + "')");
 
-        while (rs.next()) {
+        while(rs.next()) {
             result.add(rs.getString("Peer"));
         }
         return result;

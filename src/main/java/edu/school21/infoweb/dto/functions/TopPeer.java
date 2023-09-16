@@ -1,6 +1,7 @@
 package edu.school21.infoweb.dto.functions;
 
 import edu.school21.infoweb.exception.BusinessException;
+import edu.school21.infoweb.models.SqlResult;
 import edu.school21.infoweb.sqlServices.SqlExecutor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,27 +10,20 @@ import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class CampusComingFunction {
+public class TopPeer {
     @Autowired
     SqlExecutor sqlExecutor;
 
-    public List<String> execute(LocalTime time, Integer n) throws BusinessException, SQLException {
-        List<String> result = new ArrayList<>();
+    public SqlResult execute() throws BusinessException, SQLException {
         ResultSet rs = sqlExecutor.executeToResultSet(
-                "select * from fnc_coming_early('" +
-                        time + "', '" +
-                        n + "')");
-
-        while (rs.next()) {
-            result.add(rs.getString("Peer"));
-        }
-        return result;
+                "select * from fnc_top_peer()");
+        rs.next();
+        return new SqlResult(
+                rs.getString("Peer"),
+                rs.getLong("Completed"));
     }
 }

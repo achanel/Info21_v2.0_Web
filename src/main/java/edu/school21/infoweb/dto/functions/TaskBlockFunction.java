@@ -1,27 +1,36 @@
 package edu.school21.infoweb.dto.functions;
 
+import edu.school21.infoweb.exception.BusinessException;
+import edu.school21.infoweb.models.SqlResult;
+import edu.school21.infoweb.sqlServices.SqlExecutor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
 @Component
 @RequiredArgsConstructor
 public class TaskBlockFunction {
-//
-//    private static final String sqlQuery = "SELECT * FROM ex07(?)";
-//
-//    public List<TaskBlockResult> execute(String blockName) {
-//        log.info("start execute function ex07(). BlockName: {}", blockName);
-//        try {
-//            return jdbcTemplate.query(sqlQuery, new BeanPropertyRowMapper<>(TaskBlockResult.class), blockName);
-//        } catch (Exception e) {
-//            log.warn("FAIL execute function ex07. Message: {}", e.getMessage());
-//            throw e;
-//        }
-//    }
+    @Autowired
+    SqlExecutor sqlExecutor;
+
+    public List<SqlResult> execute(String blockName) throws BusinessException, SQLException {
+        List<SqlResult> result = new ArrayList<>();
+        ResultSet rs = sqlExecutor.executeToResultSet(
+                "select * from pcd_completed_block('" + blockName + "')");
+
+        while(rs.next()) {
+            result.add(new SqlResult(
+                    rs.getString("Peer"),
+                    rs.getDate("CDate")
+            ));
+        }
+        return result;
+    }
 }

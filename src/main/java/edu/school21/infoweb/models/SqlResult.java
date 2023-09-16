@@ -7,6 +7,7 @@ import java.sql.Date;
 @RequiredArgsConstructor
 public class SqlResult {
     private String peer;
+    private String peer_two;
     private String task;
     private Integer xp;
     private String startedblock1;
@@ -15,6 +16,12 @@ public class SqlResult {
     private String didntstartanyblock;
     private String pointschange;
     private Date cDate;
+    private Double successfulChecks;
+    private Double unsuccessfulChecks;
+    private Integer prevCount;
+    private Long completed;
+    private String month;
+    private Integer earlyEntries;
 
     public SqlResult(String peer, String task, Integer xp) {
         this.peer = peer;
@@ -37,6 +44,36 @@ public class SqlResult {
     public SqlResult(Date cDate, String task) {
         this.cDate = cDate;
         this.task = task;
+    }
+
+    public SqlResult(String peer, Date cDate) {
+        this.peer = peer;
+        this.cDate = cDate;
+    }
+
+    public SqlResult(String peer, String recommendedPeer, double v) {
+        this.peer = peer;
+        this.peer_two = recommendedPeer;
+    }
+
+    public SqlResult(Double successfulChecks, Double unsuccessfulChecks) {
+        this.successfulChecks = successfulChecks;
+        this.unsuccessfulChecks = unsuccessfulChecks;
+    }
+
+    public SqlResult(String task, Integer prevCount) {
+        this.task = task;
+        this.prevCount = prevCount;
+    }
+
+    public SqlResult(String peer, Long completed) {
+        this.peer = peer;
+        this.completed = completed;
+    }
+
+    public SqlResult(String month, Integer earlyEntries, double v) {
+        this.month = month;
+        this.earlyEntries = earlyEntries;
     }
 
     public String getPeer() {
@@ -73,5 +110,33 @@ public class SqlResult {
 
     public Date getcDate() {
         return cDate;
+    }
+
+    public String getPeer_two() {
+        return peer_two;
+    }
+
+    public Double getSuccessfulChecks() {
+        return successfulChecks;
+    }
+
+    public Double getUnsuccessfulChecks() {
+        return unsuccessfulChecks;
+    }
+
+    public Integer getPrevCount() {
+        return prevCount;
+    }
+
+    public Long getCompleted() {
+        return completed;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public Integer getEarlyEntries() {
+        return earlyEntries;
     }
 }

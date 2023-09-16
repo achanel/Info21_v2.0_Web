@@ -7,28 +7,26 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class CampusComingFunction {
+public class LuckyDays {
     @Autowired
     SqlExecutor sqlExecutor;
 
-    public List<String> execute(LocalTime time, Integer n) throws BusinessException, SQLException {
-        List<String> result = new ArrayList<>();
+    public List<Date> execute(Integer n) throws BusinessException, SQLException {
+        List<Date> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
-                "select * from fnc_coming_early('" +
-                        time + "', '" +
-                        n + "')");
+                "select * from pcd_lucky_day(" + n + ")");
 
         while (rs.next()) {
-            result.add(rs.getString("Peer"));
+            result.add(rs.getDate("CDate"));
         }
         return result;
     }

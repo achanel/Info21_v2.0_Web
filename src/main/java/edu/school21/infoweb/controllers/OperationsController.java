@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Slf4j
 @Controller
-//@RequiredArgsConstructor
 @RequestMapping("/v1/operations/")
 public class OperationsController {
     @Autowired
@@ -153,32 +153,32 @@ public class OperationsController {
         return "/operations/checked_tasks";
     }
 
-//    @GetMapping("/task-block")
-//    String showTaskBlockFunctionPage() {
+    @GetMapping("/task-block")
+    String showTaskBlockFunctionPage() {
 //        log.info("GET /operations/task-block");
-//        return "/operations/task_block";
-//    }
-//
-//    @PostMapping("/task-block")
-//    String executeFunctionTaskBlock(@RequestParam String blockName, Model model) {
+        return "/operations/task_block";
+    }
+
+    @PostMapping("/task-block")
+    String executeFunctionTaskBlock(@RequestParam String blockName, Model model) throws BusinessException, SQLException {
 //        log.info("POST /operations/task-block");
-//        model.addAttribute("entities", operationsService.executeTaskBlockFunction(blockName));
-//        return "/operations/task_block";
-//    }
-//
-//    @GetMapping("/recommended-peer")
-//    String showRecommendedPeer() {
+        model.addAttribute("entities", operationsService.executeTaskBlockFunction(blockName));
+        return "/operations/task_block";
+    }
+
+    @GetMapping("/recommended-peer")
+    String showRecommendedPeer() {
 //        log.info("GET /operations/recommended-peer");
-//        return "/operations/recommended_peer";
-//    }
-//
-//    @PostMapping("/recommended-peer")
-//    String executeFunctionRecommendedPeer(Model model) {
+        return "/operations/recommended_peer";
+    }
+
+    @PostMapping("/recommended-peer")
+    String executeFunctionRecommendedPeer(Model model) throws BusinessException, SQLException {
 //        log.info("POST /operations/recommended-peer");
-//        model.addAttribute("entities", operationsService.executeRecommendedPeerFunction());
-//        return "/operations/recommended_peer";
-//    }
-//
+        model.addAttribute("entities", operationsService.executeRecommendedPeerFunction());
+        return "/operations/recommended_peer";
+    }
+
     @GetMapping("/blocks-comparing")
     String showBlocksComparing() {
 //        log.info("GET /operations/blocks-comparing");
@@ -193,119 +193,117 @@ public class OperationsController {
         return "/operations/blocks_comparing";
     }
 
-//    @GetMapping("/birthday-check")
-//    String showBirthdayCheck() {
+    @GetMapping("/birthday-check")
+    String showBirthdayCheck() {
 //        log.info("GET /operations/birthday-check");
-//        return "/operations/birthday_check";
-//    }
-//
-//    @PostMapping("/birthday-check")
-//    String executeFunctionBirthdayCheck(Model model) {
-//        log.info("POST /operations/birthday-check");
-//        model.addAttribute("entities", operationsService.executeBirthdayCheckFunction());
-//        return "/operations/birthday_check";
-//    }
-//
-//    @GetMapping("/completed-two-tasks")
-//    String showCompletedTwoTaskWithoutThird(Model model) {
-//        log.info("GET /operations/completed-two-tasks");
-//        model.addAttribute("tasks", taskService.findAll());
-//        return "/operations/completed_two_tasks";
-//    }
-//
-//    @PostMapping("/completed-two-tasks")
-//    String executeFunctionCompletedTwoTaskWithoutThird(@RequestParam String firstTask,
-//                                                       @RequestParam String secondTask,
-//                                                       @RequestParam String thirdTask,
-//                                                       Model model) {
-//        log.info("POST /operations/birthday-check");
-//        model.addAttribute("entities",
-//                operationsService.executeCompletedTwoTaskWithoutThirdFunction(firstTask, secondTask, thirdTask));
-//        model.addAttribute("tasks", taskService.findAll());
-//        return "/operations/completed_two_tasks";
-//    }
-//
-//    @GetMapping("/task-count")
-//    String showTaskCountPage() {
-//        log.info("GET /operations/task-count");
-//        return "/operations/task_count";
-//    }
-//
-//    @PostMapping("/task-count")
-//    String executeFunctionTaskCount(Model model) {
-//        log.info("POST /operations/task-count");
-//        model.addAttribute("entities", operationsService.executeTaskCountFunction());
-//        return "/operations/task_count";
-//    }
-//
-//    @GetMapping("/lucky-days")
-//    String showLuckyDaysPage() {
-//        log.info("GET /operations/lucky-days");
-//        return "/operations/lucky_days";
-//    }
-//
-//    @PostMapping("/lucky-days")
-//    String executeFunctionLuckyDays(@RequestParam Integer n, Model model) {
-//        log.info("POST /operations/lucky-days");
-//        model.addAttribute("entities", operationsService.executeLuckyDaysFunction(n));
-//        return "/operations/lucky_days";
-//    }
-//
-//    @GetMapping("/top-peer")
-//    String showTopPeerPage() {
-//        log.info("GET /operations/top-peer");
-//        return "/operations/top_peer";
-//    }
-//
-//    @PostMapping("/top-peer")
-//    String executeFunctionTopPeer(Model model) {
-//        log.info("POST /operations/top-peer");
-//        model.addAttribute("entity", operationsService.executeTopPeerFunction());
-//        return "/operations/top_peer";
-//    }
-//
-//    @GetMapping("/campus-coming")
-//    String showCampusComingPage() {
-//        log.info("GET /operations/campus-coming");
-//        return "/operations/campus_coming";
-//    }
-//
-//    @PostMapping("/campus-coming")
-//    String executeFunctionCampusComing(@RequestParam LocalTime time,
-//                                      @RequestParam Integer n,
-//                                      Model model) {
-//        log.info("POST /operations/campus-coming");
-//        model.addAttribute("entities", operationsService.executeCampusComingFunction(time, n));
-//        return "/operations/campus_coming";
-//    }
-//
-//    @GetMapping("/campus-leaving")
-//    String showCampusLeavingPage() {
-//        log.info("GET /operations/campus-leaving");
-//        return "/operations/campus_leaving";
-//    }
-//
-//    @PostMapping("/campus-leaving")
-//    String executeFunctionCampusLeaving(@RequestParam Integer n,
-//                                      @RequestParam Integer m,
-//                                      Model model) {
-//        log.info("POST /operations/campus-leaving");
-//        model.addAttribute("entities", operationsService.executeLeavingFromCampusFunction(n, m));
-//        return "/operations/campus_leaving";
-//    }
-//
-//    @GetMapping("/early-coming")
-//    String showEarlyComingPage() {
-//        log.info("GET /operations/early-coming");
-//        return "/operations/early_coming";
-//    }
-//
-//    @PostMapping("/early-coming")
-//    String executeFunctionEarlyComing(Model model) {
-//        log.info("POST /operations/early-coming");
-//        model.addAttribute("entities", operationsService.executeEarlyComingFunction());
-//        return "/operations/early_coming";
-//    }
-//
+        return "/operations/birthday_check";
+    }
 
+    @PostMapping("/birthday-check")
+    String executeFunctionBirthdayCheck(Model model) throws BusinessException, SQLException {
+//        log.info("POST /operations/birthday-check");
+        model.addAttribute("entities", operationsService.executeBirthdayCheckFunction());
+        return "/operations/birthday_check";
+    }
+
+    @GetMapping("/completed-task")
+    String showCompletedTwoTaskWithoutThird(Model model) {
+//        log.info("GET /operations/completed-two-tasks");
+        model.addAttribute("tasks", tablesService.getTasks());
+        return "/operations/completed_task";
+    }
+
+    @PostMapping("/completed-task")
+    String executeFunctionCompletedTwoTaskWithoutThird(@RequestParam String firstTask,
+                                                       @RequestParam String secondTask,
+                                                       @RequestParam String thirdTask,
+                                                       Model model) throws BusinessException, SQLException {
+//        log.info("POST /operations/birthday-check");
+        model.addAttribute("entities",
+                operationsService.executeCompletedTwoTaskWithoutThirdFunction(firstTask, secondTask, thirdTask));
+        model.addAttribute("tasks", tablesService.getTasks());
+        return "/operations/completed_task";
+    }
+
+    @GetMapping("/task-count")
+    String showTaskCountPage() {
+//        log.info("GET /operations/task-count");
+        return "/operations/task_count";
+    }
+
+    @PostMapping("/task-count")
+    String executeFunctionTaskCount(Model model) throws BusinessException, SQLException {
+//        log.info("POST /operations/task-count");
+        model.addAttribute("entities", operationsService.executeTaskCountFunction());
+        return "/operations/task_count";
+    }
+
+    @GetMapping("/lucky-days")
+    String showLuckyDaysPage() {
+//        log.info("GET /operations/lucky-days");
+        return "/operations/lucky_days";
+    }
+
+    @PostMapping("/lucky-days")
+    String executeFunctionLuckyDays(@RequestParam Integer n, Model model) throws BusinessException, SQLException {
+//        log.info("POST /operations/lucky-days");
+        model.addAttribute("entities", operationsService.executeLuckyDaysFunction(n));
+        return "/operations/lucky_days";
+    }
+
+    @GetMapping("/top-peer")
+    String showTopPeerPage() {
+//        log.info("GET /operations/top-peer");
+        return "/operations/top_peer";
+    }
+
+    @PostMapping("/top-peer")
+    String executeFunctionTopPeer(Model model) throws BusinessException, SQLException {
+//        log.info("POST /operations/top-peer");
+        model.addAttribute("entity", operationsService.executeTopPeerFunction());
+        return "/operations/top_peer";
+    }
+
+    @GetMapping("/campus-coming")
+    String showCampusComingPage() {
+//        log.info("GET /operations/campus-coming");
+        return "/operations/campus_coming";
+    }
+
+    @PostMapping("/campus-coming")
+    String executeFunctionCampusComing(@RequestParam LocalTime time,
+                                      @RequestParam Integer n,
+                                      Model model) throws BusinessException, SQLException {
+//        log.info("POST /operations/campus-coming");
+        model.addAttribute("entities", operationsService.executeCampusComingFunction(time, n));
+        return "/operations/campus_coming";
+    }
+
+    @GetMapping("/campus-leaving")
+    String showCampusLeavingPage() {
+//        log.info("GET /operations/campus-leaving");
+        return "/operations/campus_leaving";
+    }
+
+    @PostMapping("/campus-leaving")
+    String executeFunctionCampusLeaving(@RequestParam Integer n,
+                                      @RequestParam Integer m,
+                                      Model model) throws BusinessException, SQLException {
+//        log.info("POST /operations/campus-leaving");
+        model.addAttribute("entities", operationsService.executeLeavingFromCampusFunction(n, m));
+        return "/operations/campus_leaving";
+    }
+
+    @GetMapping("/early-coming")
+    String showEarlyComingPage() {
+//        log.info("GET /operations/early-coming");
+        return "/operations/early_coming";
+    }
+
+    @PostMapping("/early-coming")
+    String executeFunctionEarlyComing(Model model) throws BusinessException, SQLException {
+//        log.info("POST /operations/early-coming");
+        model.addAttribute("entities", operationsService.executeEarlyComingFunction());
+        return "/operations/early_coming";
+    }
 }
