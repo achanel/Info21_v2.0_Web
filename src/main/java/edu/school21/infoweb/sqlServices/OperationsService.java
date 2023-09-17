@@ -41,8 +41,8 @@ public class OperationsService {
     private final CampusComingFunction campusComingFunction;
     private final LeavingFromCampus leavingFromCampus;
     private final EarlyComingFunction earlyComingFunction;
-
-
+    private final OutOfCampus outOfCampus;
+    private final LastPeer lastPeer;
     public OperationsService(AddP2PReview addP2PReview, AddVerterReview addVerterReview,
                              TransferredPointsHumanReadFunction transferredPointsHumanReadFunction,
                              SuccessfulChecksFunction successfulChecksFunction, PeersAllDayInCampusFunction peersAllDayInCampusFunction,
@@ -51,7 +51,8 @@ public class OperationsService {
                              RecommendedPeerFunction recommendedPeerFunction, TwoBlockCompareFunction twoBlockCompareFunction,
                              BirthdayCheckFunction birthdayCheckFunction, CompletedTask completedTask,
                              TaskCount taskCount, LuckyDays luckyDays, TopPeer topPeer, CampusComingFunction campusComingFunction,
-                             LeavingFromCampus leavingFromCampus, EarlyComingFunction earlyComingFunction) {
+                             LeavingFromCampus leavingFromCampus, EarlyComingFunction earlyComingFunction, OutOfCampus outOfCampus,
+                             LastPeer lastPeer) {
         this.addP2PReview = addP2PReview;
         this.addVerterReview = addVerterReview;
         this.transferredPointsHumanReadFunction = transferredPointsHumanReadFunction;
@@ -71,6 +72,8 @@ public class OperationsService {
         this.campusComingFunction = campusComingFunction;
         this.leavingFromCampus = leavingFromCampus;
         this.earlyComingFunction = earlyComingFunction;
+        this.outOfCampus = outOfCampus;
+        this.lastPeer = lastPeer;
     }
 
     public void addP2PReviewProcedure(AddP2PReviewParams dto) throws BusinessException {
@@ -147,5 +150,13 @@ public class OperationsService {
 
     public List<SqlResult> executeEarlyComingFunction() throws BusinessException, SQLException {
         return earlyComingFunction.execute();
+    }
+
+    public List<String> executeOutOfCampus(Integer n) throws BusinessException, SQLException {
+        return outOfCampus.execute(n);
+    }
+
+    public List<String> executeLastPeer() throws BusinessException, SQLException {
+        return lastPeer.execute();
     }
 }

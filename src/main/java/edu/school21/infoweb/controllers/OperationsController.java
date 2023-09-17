@@ -306,4 +306,31 @@ public class OperationsController {
         model.addAttribute("entities", operationsService.executeEarlyComingFunction());
         return "/operations/early_coming";
     }
+
+    @GetMapping("/out-of-campus")
+    String showOutOfCampus() {
+//        log.info("GET /operations/campus-leaving");
+        return "/operations/out_of_campus";
+    }
+
+    @PostMapping("/out-of-campus")
+    String executeFunctionOutOfCampus(@RequestParam Integer n,
+                                        Model model) throws BusinessException, SQLException {
+//        log.info("POST /operations/campus-leaving");
+        model.addAttribute("entities", operationsService.executeOutOfCampus(n));
+        return "/operations/out_of_campus";
+    }
+
+    @GetMapping("/last-peer")
+    String showLastPeer() {
+//        log.info("GET /operations/campus-leaving");
+        return "/operations/last_peer";
+    }
+
+    @PostMapping("/last-peer")
+    String executeFunctionLastPeer(Model model) throws BusinessException, SQLException {
+//        log.info("POST /operations/campus-leaving");
+        model.addAttribute("entities", operationsService.executeLastPeer());
+        return "/operations/last_peer";
+    }
 }
