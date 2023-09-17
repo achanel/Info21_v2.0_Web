@@ -333,4 +333,17 @@ public class OperationsController {
         model.addAttribute("entities", operationsService.executeLastPeer());
         return "/operations/last_peer";
     }
+
+    @GetMapping("/max-time-in-campus")
+    String showMaxTimeInCampus() {
+//        log.info("GET /operations/campus-leaving");
+        return "/operations/max_time_in_campus";
+    }
+
+    @PostMapping("/max-time-in-campus")
+    String executeFunctionMaxTimeInCampus(Model model) throws BusinessException, SQLException {
+//        log.info("POST /operations/campus-leaving");
+        model.addAttribute("entities", operationsService.executeMaxTimeInCampus());
+        return "/operations/max_time_in_campus";
+    }
 }

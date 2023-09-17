@@ -43,6 +43,7 @@ public class OperationsService {
     private final EarlyComingFunction earlyComingFunction;
     private final OutOfCampus outOfCampus;
     private final LastPeer lastPeer;
+    private final MaxTimeInCampus maxTimeInCampus;
     public OperationsService(AddP2PReview addP2PReview, AddVerterReview addVerterReview,
                              TransferredPointsHumanReadFunction transferredPointsHumanReadFunction,
                              SuccessfulChecksFunction successfulChecksFunction, PeersAllDayInCampusFunction peersAllDayInCampusFunction,
@@ -52,7 +53,7 @@ public class OperationsService {
                              BirthdayCheckFunction birthdayCheckFunction, CompletedTask completedTask,
                              TaskCount taskCount, LuckyDays luckyDays, TopPeer topPeer, CampusComingFunction campusComingFunction,
                              LeavingFromCampus leavingFromCampus, EarlyComingFunction earlyComingFunction, OutOfCampus outOfCampus,
-                             LastPeer lastPeer) {
+                             LastPeer lastPeer, MaxTimeInCampus maxTimeInCampus) {
         this.addP2PReview = addP2PReview;
         this.addVerterReview = addVerterReview;
         this.transferredPointsHumanReadFunction = transferredPointsHumanReadFunction;
@@ -74,6 +75,7 @@ public class OperationsService {
         this.earlyComingFunction = earlyComingFunction;
         this.outOfCampus = outOfCampus;
         this.lastPeer = lastPeer;
+        this.maxTimeInCampus = maxTimeInCampus;
     }
 
     public void addP2PReviewProcedure(AddP2PReviewParams dto) throws BusinessException {
@@ -158,5 +160,9 @@ public class OperationsService {
 
     public List<String> executeLastPeer() throws BusinessException, SQLException {
         return lastPeer.execute();
+    }
+
+    public List<String> executeMaxTimeInCampus() throws BusinessException, SQLException {
+        return maxTimeInCampus.execute();
     }
 }
