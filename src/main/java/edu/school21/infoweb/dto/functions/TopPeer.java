@@ -24,6 +24,6 @@ public class TopPeer {
         rs.next();
         return new SqlResult(
                 rs.getString("Peer"),
-                rs.getLong("Completed"));
+                rs.getLong("Xp"));
     }
 }

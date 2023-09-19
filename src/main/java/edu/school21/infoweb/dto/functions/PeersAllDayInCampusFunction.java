@@ -24,10 +24,10 @@ public class PeersAllDayInCampusFunction {
     public List<String> execute(LocalDate day) throws BusinessException, SQLException {
         List<String> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
-                "select * from fnc_not_left_peer('" + day.toString() + "')");
+                "select * from fnc_all_day_in_campus('" + day.toString() + "')");
 
         while(rs.next()) {
-            result.add(rs.getString("fnc_not_left_peer"));
+            result.add(rs.getString("fnc_all_day_in_campus"));
         }
         return result;
     }

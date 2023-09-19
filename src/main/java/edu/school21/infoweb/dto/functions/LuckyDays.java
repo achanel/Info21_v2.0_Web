@@ -23,7 +23,7 @@ public class LuckyDays {
     public List<Date> execute(Integer n) throws BusinessException, SQLException {
         List<Date> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
-                "select * from pcd_lucky_day(" + n + ")");
+                "select * from fnc_lucky_day(" + n + ")");
 
         while (rs.next()) {
             result.add(rs.getDate("CDate"));

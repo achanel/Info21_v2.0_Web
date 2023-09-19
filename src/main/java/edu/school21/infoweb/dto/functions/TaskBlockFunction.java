@@ -23,7 +23,7 @@ public class TaskBlockFunction {
     public List<SqlResult> execute(String blockName) throws BusinessException, SQLException {
         List<SqlResult> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
-                "select * from pcd_completed_block('" + blockName + "')");
+                "select * from fnc_task_block('" + blockName + "')");
 
         while(rs.next()) {
             result.add(new SqlResult(

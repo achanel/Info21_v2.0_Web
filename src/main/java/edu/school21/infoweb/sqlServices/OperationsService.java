@@ -29,7 +29,7 @@ public class OperationsService {
     private final PeersAllDayInCampusFunction peersAllDayInCampusFunction;
     private final FncPeerPointsChanges fncPeerPointsChanges;
     private final FncPeerPointsChanges2 fncPeerPointsChanges2;
-    private final CheckedTaskFunction checkedTaskFunction;
+    private final MostReviewedTask mostReviewedTask;
     private final TaskBlockFunction taskBlockFunction;
     private final RecommendedPeerFunction recommendedPeerFunction;
     private final TwoBlockCompareFunction twoBlockCompareFunction;
@@ -48,7 +48,7 @@ public class OperationsService {
                              TransferredPointsHumanReadFunction transferredPointsHumanReadFunction,
                              SuccessfulChecksFunction successfulChecksFunction, PeersAllDayInCampusFunction peersAllDayInCampusFunction,
                              FncPeerPointsChanges fncPeerPointsChanges, FncPeerPointsChanges2 fncPeerPointsChanges2,
-                             CheckedTaskFunction checkedTaskFunction, TaskBlockFunction taskBlockFunction,
+                             MostReviewedTask mostReviewedTask, TaskBlockFunction taskBlockFunction,
                              RecommendedPeerFunction recommendedPeerFunction, TwoBlockCompareFunction twoBlockCompareFunction,
                              BirthdayCheckFunction birthdayCheckFunction, CompletedTask completedTask,
                              TaskCount taskCount, LuckyDays luckyDays, TopPeer topPeer, CampusComingFunction campusComingFunction,
@@ -61,7 +61,7 @@ public class OperationsService {
         this.peersAllDayInCampusFunction = peersAllDayInCampusFunction;
         this.fncPeerPointsChanges = fncPeerPointsChanges;
         this.fncPeerPointsChanges2 = fncPeerPointsChanges2;
-        this.checkedTaskFunction = checkedTaskFunction;
+        this.mostReviewedTask = mostReviewedTask;
         this.taskBlockFunction = taskBlockFunction;
         this.recommendedPeerFunction = recommendedPeerFunction;
         this.twoBlockCompareFunction = twoBlockCompareFunction;
@@ -106,8 +106,8 @@ public class OperationsService {
         return fncPeerPointsChanges2.execute();
     }
 
-    public List<SqlResult> executeCheckedTaskFunction() throws BusinessException, SQLException {
-        return checkedTaskFunction.execute();
+    public List<SqlResult> executeMostReviewedTask() throws BusinessException, SQLException {
+        return mostReviewedTask.execute();
     }
 
     public List<SqlResult> executeTaskBlockFunction(String blockName) throws BusinessException, SQLException {

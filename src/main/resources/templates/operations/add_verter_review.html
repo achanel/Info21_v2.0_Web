@@ -19,7 +19,7 @@
 <div class="container">
     <div style="font-size: 18px">Процедура добавления проверки Verter'ом</div>
 
-    <form action="/v1/operations/add-verter-check" method="post" th:object="${addVerterCheck}">
+    <form action="/v1/operations/add-verter-review" method="post" th:object="${addVerterCheck}">
         <div class="form-group row mt-5">
             <label for="checkedPeer2"  class="col-sm-2 col-form-label">Ник проверяемого</label>
             <input type="text" id="checkedPeer2" th:field="*{checkedPeer}"

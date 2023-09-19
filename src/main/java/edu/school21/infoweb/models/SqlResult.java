@@ -76,6 +76,12 @@ public class SqlResult {
         this.earlyEntries = earlyEntries;
     }
 
+    public SqlResult(String peer, String task, Integer xp, String v) {
+        this.peer = peer;
+        this.task = task;
+        this.xp = xp;
+    }
+
     public String getPeer() {
         return this.peer;
     }

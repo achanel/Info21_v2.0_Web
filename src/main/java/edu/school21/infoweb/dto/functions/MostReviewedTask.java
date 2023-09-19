@@ -16,14 +16,14 @@ import java.util.List;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class CheckedTaskFunction {
+public class MostReviewedTask {
     @Autowired
     SqlExecutor sqlExecutor;
 
     public List<SqlResult> execute() throws BusinessException, SQLException {
         List<SqlResult> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
-                "select * from pcd_most_reviewed_task()");
+                "select * from fnc_most_reviewed_task()");
 
         while(rs.next()) {
             result.add(new SqlResult(

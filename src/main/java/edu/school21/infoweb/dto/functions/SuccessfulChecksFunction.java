@@ -23,13 +23,14 @@ public class SuccessfulChecksFunction {
     public List<SqlResult> execute() throws BusinessException, SQLException {
         List<SqlResult> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
-                "select * from fnc_peer_success_project()");
+                "select * from fnc_successful_checks()");
 
         while(rs.next()) {
             result.add(new SqlResult(
                     rs.getString("peer"),
                     rs.getString("task"),
-                    rs.getInt("xp")
+                    rs.getInt("xp"),
+                    "1.0"
             ));
         }
         return result;

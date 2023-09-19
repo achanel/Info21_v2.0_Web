@@ -23,7 +23,7 @@ public class BirthdayCheckFunction {
     public List<SqlResult> execute() throws BusinessException, SQLException {
         List<SqlResult> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
-                "select * from pcd_success_reviews_on_birthday();");
+                "select * from fnc_birthday_check();");
 
         while (rs.next()) {
             result.add(new SqlResult(

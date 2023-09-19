@@ -23,7 +23,7 @@ public class RecommendedPeerFunction {
     public List<SqlResult> execute() throws BusinessException, SQLException {
         List<SqlResult> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
-                "select * from pcd_recommendation_list()");
+                "select * from fnc_recommended_peer()");
 
         while(rs.next()) {
             result.add(new SqlResult(

@@ -53,15 +53,15 @@ public class OperationsController {
         return "/operations/add_p2p_review";
     }
 
-    @GetMapping("/add-verter-check")
+    @GetMapping("/add-verter-review")
     String showAddVerterCheckPage(Model model) {
 //        log.info("GET /operations/add-verter-check");
         model.addAttribute("tasks", tablesService.getTasks());
         model.addAttribute("addVerterCheck", new AddVerterReviewParams());
-        return "/operations/add_verter_check";
+        return "/operations/add_verter_review";
     }
 
-    @PostMapping("/add-verter-check")
+    @PostMapping("/add-verter-review")
     String executeAddVerterCheck(@ModelAttribute("addVerterCheck") AddVerterReviewParams params, Model model) throws BusinessException {
 //        log.info("POST /operations/add-verter-check");
         model.addAttribute("tasks", tablesService.getTasks());
@@ -71,7 +71,7 @@ public class OperationsController {
 //        }
         operationsService.addVerterReviewProcedure(params);
         model.addAttribute("addVerterCheckSuccess", true);
-        return "/operations/add_verter_check";
+        return "/operations/add_verter_review";
     }
 
     @GetMapping("/transferred-points-human-read")
@@ -140,17 +140,17 @@ public class OperationsController {
         return "/operations/fnc_peer_points_changes_2";
     }
 
-    @GetMapping("/checked-tasks")
-    String showCheckedTasks() {
+    @GetMapping("/most-reviewed-task")
+    String showMostReviewedTask() {
 //        log.info("GET /operations/checked-tasks");
-        return "/operations/checked_tasks";
+        return "/operations/most_reviewed_task";
     }
 
-    @PostMapping("/checked-tasks")
-    String executeFunctionCheckedTasks(Model model) throws BusinessException, SQLException {
+    @PostMapping("/most-reviewed-task")
+    String executeFunctionMostReviewedTask(Model model) throws BusinessException, SQLException {
 //        log.info("POST /operations/checked-tasks");
-        model.addAttribute("entities", operationsService.executeCheckedTaskFunction());
-        return "/operations/checked_tasks";
+        model.addAttribute("entities", operationsService.executeMostReviewedTask());
+        return "/operations/most_reviewed_task";
     }
 
     @GetMapping("/task-block")

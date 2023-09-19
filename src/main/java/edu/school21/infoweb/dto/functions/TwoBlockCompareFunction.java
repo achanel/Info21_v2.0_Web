@@ -23,7 +23,7 @@ public class TwoBlockCompareFunction {
     public List<SqlResult> execute(String firstBlock, String secondBlock) throws BusinessException, SQLException {
         List<SqlResult> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
-                "select * from pcd_peers_block_started_percent('"
+                "select * from fnc_blocks_comparing('"
                         + firstBlock + "', '" + secondBlock + "');");
 
         while (rs.next()) {
