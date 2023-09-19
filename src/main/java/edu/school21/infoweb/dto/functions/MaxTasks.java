@@ -14,16 +14,17 @@ import java.sql.SQLException;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class TopPeer {
+public class MaxTasks {
     @Autowired
     SqlExecutor sqlExecutor;
 
     public SqlResult execute() throws BusinessException, SQLException {
         ResultSet rs = sqlExecutor.executeToResultSet(
-                "select * from fnc_top_peer()");
+                "select * from fnc_max_tasks()");
         rs.next();
         return new SqlResult(
-                rs.getInt("Xp"),
-                rs.getString("Peer"));
+                rs.getString("Peer"),
+                rs.getLong("Completed"),
+                "1.0");
     }
 }

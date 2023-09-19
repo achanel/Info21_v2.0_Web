@@ -19,15 +19,19 @@
 <div class="container">
   <div class="row">
     <div class="col-15 mt-2">
-      <h5>Функция, определяющая пира с наибольшим числом выполненных заданий</h5>
+      <h5>Определить пира с наибольшим числом выполненных заданий.</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      <p>Формат вывода: ник пира, количество заданий</p>
     </div>
   </div>
 
   <form action="/v1/operations/max-tasks" method="post">
     <button type="submit" class="btn btn-info col-2" onclick="return confirm_execute()">Execute</button>
   </form>
-
-  <th:block th:if="${entities} != null">
+  <th:block th:if="${entity} != null">
     <table class="table table-bordered table-striped table-href">
       <caption></caption>
       <thead class="table-dark">
@@ -35,11 +39,15 @@
         <th class="text-center">
           Peer
         </th>
+        <th class="text-center">
+          XP
+        </th>
       </tr>
       </thead>
       <tbody>
-      <tr th:each="entity : ${entities}">
-        <td th:text="${entity}"/>
+      <tr>
+        <td th:text="${entity.getPeer()}"/>
+        <td th:text="${entity.getCompleted()}"/>
       </tr>
       </tbody>
     </table>

@@ -346,4 +346,17 @@ public class OperationsController {
         model.addAttribute("entities", operationsService.executeMaxTimeInCampus());
         return "/operations/max_time_in_campus";
     }
+
+    @GetMapping("/max-tasks")
+    String showMaxTasks() {
+//        log.info("GET /operations/top-peer");
+        return "/operations/max_tasks";
+    }
+
+    @PostMapping("/max-tasks")
+    String executeFunctionMaxTasks(Model model) throws BusinessException, SQLException {
+//        log.info("POST /operations/top-peer");
+        model.addAttribute("entity", operationsService.executeMaxTasks());
+        return "/operations/max_tasks";
+    }
 }

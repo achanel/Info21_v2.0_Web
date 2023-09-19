@@ -22,6 +22,7 @@ public class SqlResult {
     private Long completed;
     private String month;
     private Integer earlyEntries;
+    private Object v;
 
     public SqlResult(String peer, String task, Integer xp) {
         this.peer = peer;
@@ -54,6 +55,7 @@ public class SqlResult {
     public SqlResult(String peer, String recommendedPeer, double v) {
         this.peer = peer;
         this.peer_two = recommendedPeer;
+        this.v = v;
     }
 
     public SqlResult(Double successfulChecks, Double unsuccessfulChecks) {
@@ -66,20 +68,28 @@ public class SqlResult {
         this.prevCount = prevCount;
     }
 
-    public SqlResult(String peer, Long completed) {
+    public SqlResult(Integer xp, String peer) {
+        this.xp = xp;
         this.peer = peer;
-        this.completed = completed;
     }
 
     public SqlResult(String month, Integer earlyEntries, double v) {
         this.month = month;
         this.earlyEntries = earlyEntries;
+        this.v = v;
     }
 
     public SqlResult(String peer, String task, Integer xp, String v) {
         this.peer = peer;
         this.task = task;
         this.xp = xp;
+        this.v = v;
+    }
+
+    public SqlResult(String peer, Long completed, String v) {
+        this.peer = peer;
+        this.completed = completed;
+        this.v = v;
     }
 
     public String getPeer() {
