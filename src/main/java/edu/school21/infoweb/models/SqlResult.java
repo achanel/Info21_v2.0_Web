@@ -3,6 +3,7 @@ package edu.school21.infoweb.models;
 import lombok.RequiredArgsConstructor;
 
 import java.sql.Date;
+import java.sql.Time;
 
 @RequiredArgsConstructor
 public class SqlResult {
@@ -22,6 +23,8 @@ public class SqlResult {
     private Long completed;
     private String month;
     private Integer earlyEntries;
+    private String friendsCount;
+    private Time time;
     private Object v;
 
     public SqlResult(String peer, String task, Integer xp) {
@@ -92,6 +95,28 @@ public class SqlResult {
         this.v = v;
     }
 
+    public SqlResult(String peer, String friendsCount, String v) {
+        this.peer = peer;
+        this.friendsCount = friendsCount;
+        this.v = v;
+    }
+
+    public SqlResult(String peer, Integer xp, String v) {
+        this.peer = peer;
+        this.xp = xp;
+        this.v = v;
+    }
+
+    public SqlResult(Time times) {
+        this.time = times;
+    }
+
+    public SqlResult(Double successfulChecks, Double unsuccessfulChecks, Double v) {
+        this.successfulChecks = successfulChecks;
+        this.unsuccessfulChecks = unsuccessfulChecks;
+        this.v = v;
+    }
+
     public String getPeer() {
         return this.peer;
     }
@@ -154,5 +179,13 @@ public class SqlResult {
 
     public Integer getEarlyEntries() {
         return earlyEntries;
+    }
+
+    public String getFriendsCount() {
+        return friendsCount;
+    }
+
+    public Time getTime() {
+        return time;
     }
 }
