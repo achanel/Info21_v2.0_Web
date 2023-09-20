@@ -45,6 +45,10 @@ public class OperationsService {
     private final LastPeer lastPeer;
     private final MaxTimeInCampus maxTimeInCampus;
     private final MaxTasks maxTasks;
+    private final MaxFriends maxFriends;
+    private final TotalXp totalXp;
+    private final LastCheck lastCheck;
+    private final ChecksPercent checksPercent;
     public OperationsService(AddP2PReview addP2PReview, AddVerterReview addVerterReview,
                              TransferredPointsHumanReadFunction transferredPointsHumanReadFunction,
                              SuccessfulChecksFunction successfulChecksFunction, PeersAllDayInCampusFunction peersAllDayInCampusFunction,
@@ -54,7 +58,8 @@ public class OperationsService {
                              BirthdayCheckFunction birthdayCheckFunction, CompletedTask completedTask,
                              TaskCount taskCount, LuckyDays luckyDays, TopPeer topPeer, CampusComingFunction campusComingFunction,
                              LeavingFromCampus leavingFromCampus, EarlyComingFunction earlyComingFunction, OutOfCampus outOfCampus,
-                             LastPeer lastPeer, MaxTimeInCampus maxTimeInCampus, MaxTasks maxTasks) {
+                             LastPeer lastPeer, MaxTimeInCampus maxTimeInCampus, MaxTasks maxTasks, MaxFriends maxFriends,
+                             TotalXp totalXp, LastCheck lastCheck, ChecksPercent checksPercent) {
         this.addP2PReview = addP2PReview;
         this.addVerterReview = addVerterReview;
         this.transferredPointsHumanReadFunction = transferredPointsHumanReadFunction;
@@ -78,6 +83,10 @@ public class OperationsService {
         this.lastPeer = lastPeer;
         this.maxTimeInCampus = maxTimeInCampus;
         this.maxTasks = maxTasks;
+        this.maxFriends = maxFriends;
+        this.totalXp = totalXp;
+        this.lastCheck = lastCheck;
+        this.checksPercent = checksPercent;
     }
 
     public void addP2PReviewProcedure(AddP2PReviewParams dto) throws BusinessException {
@@ -170,5 +179,21 @@ public class OperationsService {
 
     public SqlResult executeMaxTasks() throws BusinessException, SQLException {
         return maxTasks.execute();
+    }
+
+    public List<SqlResult> executeMaxFriends(Integer n) throws BusinessException, SQLException {
+        return maxFriends.execute(n);
+    }
+
+    public List<SqlResult> executeTotalXP() throws BusinessException, SQLException {
+        return totalXp.execute();
+    }
+
+    public SqlResult executeLastCheck() throws BusinessException, SQLException {
+        return lastCheck.execute();
+    }
+
+    public SqlResult executeChecksPercent() throws BusinessException, SQLException {
+        return checksPercent.execute();
     }
 }

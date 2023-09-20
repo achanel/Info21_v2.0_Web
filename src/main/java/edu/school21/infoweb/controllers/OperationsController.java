@@ -359,4 +359,57 @@ public class OperationsController {
         model.addAttribute("entity", operationsService.executeMaxTasks());
         return "/operations/max_tasks";
     }
+
+    @GetMapping("/max-friends")
+    String showMaxFriends() {
+//        log.info("GET /operations/campus-leaving");
+        return "/operations/max_friends";
+    }
+
+    @PostMapping("/max-friends")
+    String executeFunctionMaxFriends(@RequestParam Integer n,
+                                      Model model) throws BusinessException, SQLException {
+//        log.info("POST /operations/campus-leaving");
+        model.addAttribute("entities", operationsService.executeMaxFriends(n));
+        return "/operations/max_friends";
+    }
+
+    @GetMapping("/total-xp")
+    String showTotalXP() {
+//        log.info("GET /operations/top-peer");
+        return "/operations/total_xp";
+    }
+
+    @PostMapping("/total-xp")
+    String executeTotalXP(Model model) throws BusinessException, SQLException {
+//        log.info("POST /operations/top-peer");
+        model.addAttribute("entities", operationsService.executeTotalXP());
+        return "/operations/total_xp";
+    }
+
+    @GetMapping("/last-check-duration")
+    String showLastCheck() {
+//        log.info("GET /operations/campus-leaving");
+        return "/operations/last_check_duration";
+    }
+
+    @PostMapping("/last-check-duration")
+    String executeFunctionLastCheck(Model model) throws BusinessException, SQLException {
+//        log.info("POST /operations/campus-leaving");
+        model.addAttribute("entity", operationsService.executeLastCheck());
+        return "/operations/last_check_duration";
+    }
+
+    @GetMapping("/checks-percent")
+    String showChecksPercent() {
+//        log.info("GET /operations/campus-leaving");
+        return "/operations/checks_percent";
+    }
+
+    @PostMapping("/checks-percent")
+    String executeFunctionChecksPercent(Model model) throws BusinessException, SQLException {
+//        log.info("POST /operations/campus-leaving");
+        model.addAttribute("entity", operationsService.executeChecksPercent());
+        return "/operations/checks_percent";
+    }
 }
