@@ -1,25 +1,66 @@
 package edu.school21.infoweb.controllers;
 
+import edu.school21.infoweb.services.TablesService;
+import edu.school21.infoweb.sqlServices.OperationsService;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.web.servlet.MockMvc;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+@WebMvcTest(controllers = OperationsController.class)
 class OperationsControllerTest {
+    @Autowired
+    private MockMvc mockMvc;
+    @MockBean
+    OperationsService operationsService;
+    @MockBean
+    TablesService tablesService;
 
+//    AddP2PReviewParams params = new AddP2PReviewParams("achanel", "mmonarch", "DO6_CICD", "Start", "08:08");
     @Test
-    void showOperationsPage() {
+    void showOperationsPage() throws Exception {
+        mockMvc.perform(get("/v1/operations/"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
-    void showAddP2pCheckPage() {
+    void showAddP2pCheckPage() throws Exception {
+        mockMvc.perform(get("/v1/operations/add-p2p-review"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
-    @Test
-    void executeAddP2pCheckProcedure() {
-    }
+//    @Test
+//    void executeAddP2pCheckProcedure() throws Exception {
+//        mockMvc.perform(post("/v1/operations/add-p2p-review", params))
+//                .andDo(print())
+//                .andExpectAll(
+//                        status().isOk(),
+//                        content().contentType("text/html;charset=UTF-8")
+//                );
+//    }
 
     @Test
-    void showAddVerterCheckPage() {
+    void showAddVerterCheckPage() throws Exception {
+        mockMvc.perform(get("/v1/operations/add-verter-review"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -27,15 +68,33 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showTransferredPointsHumanRead() {
+    void showTransferredPointsHumanRead() throws Exception {
+        mockMvc.perform(get("/v1/operations/transferred-points-human-read"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
-    void executeFunctionTransferredPointsHumanRead() {
+    void executeFunctionTransferredPointsHumanRead() throws Exception {
+        mockMvc.perform(post("/v1/operations/transferred-points-human-read"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
-    void showSuccessfulChecks() {
+    void showSuccessfulChecks() throws Exception {
+        mockMvc.perform(get("/v1/operations/successful-checks"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -43,7 +102,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showAllDayInCampus() {
+    void showAllDayInCampus() throws Exception {
+        mockMvc.perform(get("/v1/operations/all-day-in-campus"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -51,7 +116,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showTransferredPointsChangeV1() {
+    void showTransferredPointsChangeV1() throws Exception {
+        mockMvc.perform(get("/v1/operations/fnc_peer_points_changes"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -59,7 +130,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showTransferredPointsChangeV2() {
+    void showTransferredPointsChangeV2() throws Exception {
+        mockMvc.perform(get("/v1/operations/fnc_peer_points_changes_2"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -67,7 +144,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showMostReviewedTask() {
+    void showMostReviewedTask() throws Exception {
+        mockMvc.perform(get("/v1/operations/most-reviewed-task"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -75,7 +158,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showTaskBlockFunctionPage() {
+    void showTaskBlockFunctionPage() throws Exception {
+        mockMvc.perform(get("/v1/operations/task-block"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -83,7 +172,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showRecommendedPeer() {
+    void showRecommendedPeer() throws Exception {
+        mockMvc.perform(get("/v1/operations/recommended-peer"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -91,7 +186,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showBlocksComparing() {
+    void showBlocksComparing() throws Exception {
+        mockMvc.perform(get("/v1/operations/blocks-comparing"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -99,7 +200,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showBirthdayCheck() {
+    void showBirthdayCheck() throws Exception {
+        mockMvc.perform(get("/v1/operations/birthday-check"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -107,7 +214,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showCompletedTwoTaskWithoutThird() {
+    void showCompletedTwoTaskWithoutThird() throws Exception {
+        mockMvc.perform(get("/v1/operations/completed-task"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -115,7 +228,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showTaskCountPage() {
+    void showTaskCountPage() throws Exception {
+        mockMvc.perform(get("/v1/operations/task-count"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -123,7 +242,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showLuckyDaysPage() {
+    void showLuckyDaysPage() throws Exception {
+        mockMvc.perform(get("/v1/operations/lucky-days"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -131,7 +256,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showTopPeerPage() {
+    void showTopPeerPage() throws Exception {
+        mockMvc.perform(get("/v1/operations/top-peer"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -139,7 +270,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showCampusComingPage() {
+    void showCampusComingPage() throws Exception {
+        mockMvc.perform(get("/v1/operations/campus-coming"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -147,7 +284,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showCampusLeavingPage() {
+    void showCampusLeavingPage() throws Exception {
+        mockMvc.perform(get("/v1/operations/campus-leaving"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -155,7 +298,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showEarlyComingPage() {
+    void showEarlyComingPage() throws Exception {
+        mockMvc.perform(get("/v1/operations/early-coming"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -163,7 +312,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showOutOfCampus() {
+    void showOutOfCampus() throws Exception {
+        mockMvc.perform(get("/v1/operations/out-of-campus"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -171,7 +326,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showLastPeer() {
+    void showLastPeer() throws Exception {
+        mockMvc.perform(get("/v1/operations/last-peer"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -179,7 +340,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showMaxTimeInCampus() {
+    void showMaxTimeInCampus() throws Exception {
+        mockMvc.perform(get("/v1/operations/max-time-in-campus"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -187,7 +354,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showMaxTasks() {
+    void showMaxTasks() throws Exception {
+        mockMvc.perform(get("/v1/operations/max-tasks"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -195,7 +368,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showMaxFriends() {
+    void showMaxFriends() throws Exception {
+        mockMvc.perform(get("/v1/operations/max-friends"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -203,7 +382,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showTotalXP() {
+    void showTotalXP() throws Exception {
+        mockMvc.perform(get("/v1/operations/total-xp"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -211,7 +396,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showLastCheck() {
+    void showLastCheck() throws Exception {
+        mockMvc.perform(get("/v1/operations/last-check-duration"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test
@@ -219,7 +410,13 @@ class OperationsControllerTest {
     }
 
     @Test
-    void showChecksPercent() {
+    void showChecksPercent() throws Exception {
+        mockMvc.perform(get("/v1/operations/checks-percent"))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType("text/html;charset=UTF-8")
+                );
     }
 
     @Test

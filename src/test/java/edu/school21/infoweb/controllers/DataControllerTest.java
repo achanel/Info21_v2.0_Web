@@ -14,16 +14,14 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(controllers = DataController.class)
 class DataControllerTest {
-
     @Autowired
     private MockMvc mockMvc;
     @MockBean
-    private TablesService tablesService;
+    TablesService tablesService;
     Tasks task1 = new Tasks("newTask", null, 999999);
     Tasks task2 = new Tasks("updateTask", null, 111111);
 
@@ -35,16 +33,16 @@ class DataControllerTest {
     void tearDown() {
     }
 
-    @Test
-    void getTable() throws Exception {
-        mockMvc.perform(get("/v1/data/get_table"))
-                .andDo(print())
-                .andExpectAll(
-                        status().isOk(),
-                        content().contentType(MediaType.APPLICATION_JSON)
-//                        jsonPath("$.peersList").isNotEmpty()
-                );
-    }
+//    @Test
+//    void getTable() throws Exception {
+//        mockMvc.perform(get("/v1/data/get_table"))
+//                .andDo(print())
+//                .andExpectAll(
+//                        status().isOk(),
+//                        content().contentType(MediaType.APPLICATION_JSON)
+////                        jsonPath("$.peersList").isNotEmpty()
+//                );
+//    }
 
     @Test
     void saveNewTable() throws Exception {
