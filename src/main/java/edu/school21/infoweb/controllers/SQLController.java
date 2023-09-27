@@ -5,6 +5,7 @@ import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.sqlServices.SqlExecutor;
 import edu.school21.infoweb.sqlServices.SqlFunctions;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
 import java.util.Map;
-
+@Slf4j
 @RequiredArgsConstructor
 @Controller
 @RequestMapping("/v1/sql/")
@@ -44,7 +45,14 @@ public class SQLController {
 
     @PostMapping("/export")
     public String csvExport(Map<String, Object> model) throws IOException {
-        csvExecutor.writeCSV(sqlExecutor.getCsv(), "export");
+        log.info("csvExport");
+        try {
+            csvExecutor.writeCSV(sqlExecutor.getCsv(), "export");
+        }
+        catch(Exception e)
+        {
+            log.error("Error While writing CSV ", e);
+        }
         sqlResponse.setLength(0);
         model.put("sqlResponse", sqlResponse);
         return "redirect:/v1/sql/";
@@ -52,8 +60,16 @@ public class SQLController {
 
     @PostMapping("/import")
     public String csvImport(Map<String, Object> model) throws IOException {
-        String csvResponse = csvExecutor.readCSV("export.csv");
-        model.put("csvResponse", csvResponse);
+        log.info("import");
+        try {
+            String csvResponse = csvExecutor.readCSV("export.csv");
+
+            model.put("csvResponse", csvResponse);
+        }
+        catch(Exception e)
+        {
+            log.error("Error While reading CSV ", e);
+        }
         return "main";
     }
 }

@@ -21,6 +21,7 @@ public class CampusComingFunction {
     SqlExecutor sqlExecutor;
 
     public List<String> execute(LocalTime time, Integer n) throws BusinessException, SQLException {
+        log.info("start execute function ex02().");
         List<String> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_coming_early('" +

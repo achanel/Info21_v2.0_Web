@@ -21,6 +21,7 @@ public class MaxFriends {
     SqlExecutor sqlExecutor;
 
     public List<SqlResult> execute(Integer limits) throws BusinessException, SQLException {
+        log.info("start execute function ex12().");
         List<SqlResult> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_max_friends_peer('" + limits + "');");

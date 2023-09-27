@@ -20,6 +20,7 @@ public class LastPeer {
     SqlExecutor sqlExecutor;
 
     public List<String> execute() throws BusinessException, SQLException {
+        log.info("start execute function ex09().");
         List<String> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_last_peer()");

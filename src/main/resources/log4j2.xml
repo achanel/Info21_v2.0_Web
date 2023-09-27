@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="MyApp">
+    <Properties>
+        <Property name="LOG_DIR">./logs</Property>
+    </Properties>
+    <Appenders>
+        <RollingFile name="DataControllerFile"
+                     filePattern="${LOG_DIR}/data_logs_%d{dd-MM-yy-HH-mm-ss}.log.gz">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+            <CronTriggeringPolicy schedule="0 0 0 * * ?"/>
+        </RollingFile>
+
+        <RollingFile name="ExceptionControllerFile"
+                     filePattern="${LOG_DIR}/exception_logs_%d{dd-MM-yy-HH-mm-ss}.log.gz">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+            <CronTriggeringPolicy schedule="0 0 0 * * ?"/>
+        </RollingFile>
+
+        <RollingFile name="OperationsControllerFile"
+                     filePattern="${LOG_DIR}/operations_logs_%d{dd-MM-yy-HH-mm-ss}.log.gz">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+            <CronTriggeringPolicy schedule="0 0 0 * * ?"/>
+        </RollingFile>
+
+        <RollingFile name="SQLControllerFile"
+                     filePattern="${LOG_DIR}/sql_logs_%d{dd-MM-yy-HH-mm-ss}.log.gz">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+            <CronTriggeringPolicy schedule="0 0 0 * * ?"/>
+        </RollingFile>
+
+
+
+        <RollingFile name="OperationsFile"
+                     filePattern="${LOG_DIR}/operations_logs_%d{dd-MM-yy-HH-mm-ss}.log.gz">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+            <CronTriggeringPolicy schedule="0 0 0 * * ?"/>
+        </RollingFile>
+
+        <RollingFile name="File"
+                     filePattern="${LOG_DIR}/logs_%d{dd-MM-yy-HH-mm-ss}.log.gz">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+            <CronTriggeringPolicy schedule="0 0 0 * * ?"/>
+        </RollingFile>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+    </Appenders>
+    <Loggers>
+        <Logger name="ru.s21school.infoweb.controllers.DataController" level="info">
+            <AppenderRef ref="DataControllerFile"/>
+        </Logger>
+
+        <Logger name="ru.s21school.infoweb.controllers.ExceptionController" level="info">
+            <AppenderRef ref="ExceptionControllerFile"/>
+        </Logger>
+
+        <Logger name="ru.s21school.infoweb.controller.OperationsController" level="info">
+            <AppenderRef ref="OperationsControllerFile"/>
+        </Logger>
+
+        <Logger name="ru.s21school.infoweb.controller.SQLController" level="info">
+            <AppenderRef ref="SQLControllerFile"/>
+        </Logger>
+
+
+
+        <Logger name="ru.s21school.infoweb.controller.OperationsController" level="info">
+            <AppenderRef ref="OperationsControllerFile"/>
+        </Logger>
+
+        <Logger name="ru.s21school.dto" level="info">
+            <AppenderRef ref="OperationsFile"/>
+        </Logger>
+
+        <Root level="info">
+            <AppenderRef ref="File"/>
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
