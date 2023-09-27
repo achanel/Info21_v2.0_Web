@@ -3,7 +3,6 @@ package edu.school21.infoweb.controllers;
 import edu.school21.infoweb.csv.CSVExecutor;
 import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.sqlServices.SqlExecutor;
-import edu.school21.infoweb.sqlServices.SqlFunctions;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,8 +18,6 @@ import java.util.Map;
 @Controller
 @RequestMapping("/v1/sql/")
 public class SQLController {
-    @Autowired
-    SqlFunctions sqlFunctions;
     @Autowired
     SqlExecutor sqlExecutor;
     @Autowired
@@ -44,15 +41,15 @@ public class SQLController {
 
     @PostMapping("/export")
     public String csvExport(Map<String, Object> model) throws IOException {
-        csvExecutor.writeCSV(sqlExecutor.getCsv(), "export");
-        sqlResponse.setLength(0);
+        CSVExecutor.writeCSV(sqlExecutor.getCsv(), "export");
+//        sqlResponse.setLength(0);
         model.put("sqlResponse", sqlResponse);
         return "redirect:/v1/sql/";
     }
 
     @PostMapping("/import")
     public String csvImport(Map<String, Object> model) throws IOException {
-        String csvResponse = csvExecutor.readCSV("export.csv");
+        String csvResponse = CSVExecutor.readCSV("export.csv");
         model.put("csvResponse", csvResponse);
         return "main";
     }

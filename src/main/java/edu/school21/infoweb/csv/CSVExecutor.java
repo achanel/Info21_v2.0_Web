@@ -11,7 +11,7 @@ import java.util.List;
 
 @Component
 public class CSVExecutor {
-    public void writeCSV(List<List<String>> data, String fileName) throws IOException {
+    public static void writeCSV(List<List<String>> data, String fileName) throws IOException {
         CSVPrinter printer = new CSVPrinter(new FileWriter("target/" + fileName + ".csv"), CSVFormat.DEFAULT);
         data.forEach(line -> {
             try {
@@ -24,9 +24,9 @@ public class CSVExecutor {
         printer.close();
     }
 
-    public String readCSV(String fileName) throws IOException {
+    public static String readCSV(String fileName) throws IOException {
         StringBuilder csv = new StringBuilder();
-        CSVParser csvParser = new CSVParser(new FileReader("target/" + fileName), CSVFormat.DEFAULT);
+        CSVParser csvParser = new CSVParser(new FileReader("target/" + fileName + ".csv"), CSVFormat.DEFAULT);
 
         for (CSVRecord record : csvParser) {
             record.forEach(csv::append);
