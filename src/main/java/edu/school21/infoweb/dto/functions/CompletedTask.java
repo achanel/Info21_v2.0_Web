@@ -22,6 +22,7 @@ public class CompletedTask {
     SqlExecutor sqlExecutor;
 
     public List<String> execute(String firstTask, String secondTask, String thirdTask) throws BusinessException, SQLException {
+        log.info("start execute function ex04().");
         List<String> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_completed_task('" +

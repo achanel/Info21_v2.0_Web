@@ -14,13 +14,13 @@ public class AddP2PReview {
     @Autowired
     SqlExecutor sqlExecutor;
     public void execute(String checkingPeer, String checkedPeer, String taskTitle, String state, String checkTime) throws BusinessException {
-//        log.info("start execute procedure add_p2p_review. Parameters: {{}, {}, {}, {}, {}}", checkingPeer, checkedPeer, taskTitle, state, checkTime);
+        log.info("start execute procedure add_p2p_review. Parameters: {{}, {}, {}, {}, {}}", checkingPeer, checkedPeer, taskTitle, state, checkTime);
         sqlExecutor.execute("call add_p2p_review('" +
                 checkingPeer + "', '" +
                 checkedPeer + "', '" +
                 taskTitle + "', '" +
                 state + "'::check_state, '" +
                 checkTime + ":00');");
-//            log.info("procedure add_p2p_review was executed");
+           log.info("procedure add_p2p_review was executed");
     }
 }

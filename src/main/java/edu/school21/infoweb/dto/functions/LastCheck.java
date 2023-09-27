@@ -19,6 +19,7 @@ public class LastCheck {
     SqlExecutor sqlExecutor;
 
     public SqlResult execute() throws BusinessException, SQLException {
+        log.info("start execute function ex08().");
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_last_check_duration()");
         rs.next();
