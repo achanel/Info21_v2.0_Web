@@ -21,7 +21,7 @@ public class FncPeerPointsChanges {
     SqlExecutor sqlExecutor;
 
     public List<SqlResult> execute() throws BusinessException, SQLException {
-        log.info("start execute function ex06().");
+        log.info("start execute function fnc_peer_points_changes().");
         List<SqlResult> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_peer_points_changes()");

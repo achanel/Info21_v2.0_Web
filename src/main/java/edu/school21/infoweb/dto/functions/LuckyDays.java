@@ -21,7 +21,7 @@ public class LuckyDays {
     SqlExecutor sqlExecutor;
 
     public List<Date> execute(Integer n) throws BusinessException, SQLException {
-        log.info("start execute function ex11().");
+        log.info("start execute function fnc_lucky_day().");
         List<Date> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_lucky_day(" + n + ")");

@@ -22,7 +22,7 @@ public class PeersAllDayInCampusFunction {
     SqlExecutor sqlExecutor;
 
     public List<String> execute(LocalDate day) throws BusinessException, SQLException {
-        log.info("start execute function ex17().");
+        log.info("start execute function fnc_all_day_in_campus().");
         List<String> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_all_day_in_campus('" + day.toString() + "')");

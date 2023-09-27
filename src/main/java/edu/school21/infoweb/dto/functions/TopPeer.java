@@ -19,7 +19,7 @@ public class TopPeer {
     SqlExecutor sqlExecutor;
 
     public SqlResult execute() throws BusinessException, SQLException {
-        log.info("start execute function ex22().");
+        log.info("start execute function fnc_top_peer().");
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_top_peer()");
         rs.next();

@@ -19,7 +19,7 @@ public class ChecksPercent {
     SqlExecutor sqlExecutor;
 
     public SqlResult execute() throws BusinessException, SQLException {
-        log.info("start execute function ex03().");
+        log.info("start execute function fnc_checks_percent().");
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_checks_percent()");
         rs.next();

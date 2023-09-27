@@ -19,7 +19,7 @@ public class MaxTasks {
     SqlExecutor sqlExecutor;
 
     public SqlResult execute() throws BusinessException, SQLException {
-        log.info("start execute function ex13().");
+        log.info("start execute function fnc_max_tasks().");
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_max_tasks()");
         rs.next();

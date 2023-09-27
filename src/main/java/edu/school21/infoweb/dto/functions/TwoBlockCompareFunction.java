@@ -21,7 +21,7 @@ public class TwoBlockCompareFunction {
     SqlExecutor sqlExecutor;
 
     public List<SqlResult> execute(String firstBlock, String secondBlock) throws BusinessException, SQLException {
-        log.info("start execute function ex25().");
+        log.info("start execute function fnc_blocks_comparing().");
         List<SqlResult> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_blocks_comparing('"
