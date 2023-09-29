@@ -41,7 +41,7 @@ public class SQLController {
 
     @PostMapping("/export")
     public String csvExport(Map<String, Object> model) throws IOException {
-        CSVExecutor.writeCSV(sqlExecutor.getCsv(), "export");
+        new CSVExecutor().writeCSV(sqlExecutor.getCsv(), "export");
 //        sqlResponse.setLength(0);
         model.put("sqlResponse", sqlResponse);
         return "redirect:/v1/sql/";
@@ -49,7 +49,7 @@ public class SQLController {
 
     @PostMapping("/import")
     public String csvImport(Map<String, Object> model) throws IOException {
-        String csvResponse = CSVExecutor.readCSV("export.csv");
+        String csvResponse = new CSVExecutor().readCSV("export.csv");
         model.put("csvResponse", csvResponse);
         return "main";
     }
