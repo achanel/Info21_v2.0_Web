@@ -1,5 +1,6 @@
 package edu.school21.infoweb.controllers;
 
+import lombok.RequiredArgsConstructor;
 import edu.school21.infoweb.dto.TablesDTO;
 import edu.school21.infoweb.services.TablesService;
 import lombok.extern.slf4j.Slf4j;
