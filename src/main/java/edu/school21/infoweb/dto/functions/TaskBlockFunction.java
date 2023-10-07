@@ -21,6 +21,7 @@ public class TaskBlockFunction {
     SqlExecutor sqlExecutor;
 
     public List<SqlResult> execute(String blockName) throws BusinessException, SQLException {
+        log.info("start execute function fnc_task_block().");
         List<SqlResult> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_task_block('" + blockName + "')");

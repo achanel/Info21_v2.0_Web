@@ -20,6 +20,7 @@ public class MaxTimeInCampus {
     SqlExecutor sqlExecutor;
 
     public List<String> execute() throws BusinessException, SQLException {
+        log.info("start execute function fnc_max_time_in_campus().");
         List<String> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_max_time_in_campus()");

@@ -21,6 +21,7 @@ public class EarlyComingFunction {
     SqlExecutor sqlExecutor;
 
     public List<SqlResult> execute() throws BusinessException, SQLException {
+        log.info("start execute function fnc_early_coming().");
         List<SqlResult> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_early_coming()");

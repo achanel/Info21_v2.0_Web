@@ -16,12 +16,12 @@ public class AddVerterReview {
     SqlExecutor sqlExecutor;
 
     public void execute(String checkedPeer, String taskTitle, String state, String checkTime) throws BusinessException {
-//        log.info("start execute procedure add_p2p_review. Parameters: {{}, {}, {}, {}, {}}", checkingPeer, checkedPeer, taskTitle, state, checkTime);
+      log.info("start execute procedure add_verter_review");
         sqlExecutor.execute("call add_verter_review('" +
                         checkedPeer + "', '" +
                         taskTitle + "', '" +
                         state + "', '" +
                         checkTime + ":00');");
-//            log.info("procedure add_p2p_review was executed");
+           log.info("procedure add_verter_review was executed");
     }
 }

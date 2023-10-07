@@ -21,6 +21,7 @@ public class TaskCount {
     SqlExecutor sqlExecutor;
 
     public List<SqlResult> execute() throws BusinessException, SQLException {
+        log.info("start execute function fnc_pre_task().");
         List<SqlResult> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_pre_task();");

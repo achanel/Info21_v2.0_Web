@@ -21,6 +21,7 @@ public class TotalXp {
     SqlExecutor sqlExecutor;
 
     public List<SqlResult> execute() throws BusinessException, SQLException {
+        log.info("start execute function fnc_total_xp().");
         List<SqlResult> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_total_xp()");

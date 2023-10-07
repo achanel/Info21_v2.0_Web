@@ -23,6 +23,7 @@ public class TransferredPointsHumanReadFunction {
     SqlExecutor sqlExecutor;
 
     public List<TransferredPoints> execute() throws BusinessException, SQLException {
+        log.info("start execute function fnc_transferred_points().");
         List<TransferredPoints> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_transferred_points()");

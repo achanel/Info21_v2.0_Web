@@ -20,6 +20,7 @@ public class OutOfCampus {
     SqlExecutor sqlExecutor;
 
     public List<String> execute(Integer n) throws BusinessException, SQLException {
+        log.info("start execute function fnc_time_out_of_campus().");
         List<String> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_time_out_of_campus('" + n + "')");

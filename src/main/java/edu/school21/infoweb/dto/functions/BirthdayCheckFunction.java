@@ -21,6 +21,7 @@ public class BirthdayCheckFunction {
     SqlExecutor sqlExecutor;
 
     public List<SqlResult> execute() throws BusinessException, SQLException {
+        log.info("start execute function fnc_birthday_check().");
         List<SqlResult> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_birthday_check();");

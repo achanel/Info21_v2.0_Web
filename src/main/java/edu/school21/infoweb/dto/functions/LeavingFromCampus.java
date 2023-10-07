@@ -20,6 +20,8 @@ public class LeavingFromCampus {
     SqlExecutor sqlExecutor;
 
     public List<String> execute(Integer n, Integer m) throws BusinessException, SQLException {
+
+        log.info("start execute function fnc_out_of_campus().");
         List<String> result = new ArrayList<>();
         ResultSet rs = sqlExecutor.executeToResultSet(
                 "select * from fnc_out_of_campus('" +
