@@ -1,5 +1,6 @@
 package edu.school21.infoweb.dto.procedures;
 
+import edu.school21.infoweb.dto.functions.TwoBlockCompareFunction;
 import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.sqlServices.SqlExecutor;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Component;
 public class AddP2PReview {
     @Autowired
     SqlExecutor sqlExecutor;
+    private static final org.slf4j.Logger log
+            = org.slf4j.LoggerFactory.getLogger(AddP2PReview.class);
     public void execute(String checkingPeer, String checkedPeer, String taskTitle, String state, String checkTime) throws BusinessException {
         log.info("start execute procedure add_p2p_review.");
         sqlExecutor.execute("call add_p2p_review('" +

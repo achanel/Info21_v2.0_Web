@@ -1,6 +1,5 @@
 package edu.school21.infoweb.controllers;
 
-import lombok.RequiredArgsConstructor;
 import edu.school21.infoweb.dto.TablesDTO;
 import edu.school21.infoweb.services.TablesService;
 import lombok.extern.slf4j.Slf4j;
@@ -10,13 +9,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Slf4j
+
 @Controller
 @RequestMapping("/v1/data/")
 public class DataController {
     @Autowired
     private TablesService tablesService;
-
+    private static final org.slf4j.Logger log
+            = org.slf4j.LoggerFactory.getLogger(DataController.class);
     @GetMapping("/get_table")
     public ResponseEntity<TablesDTO> getTable() {
         log.info("Get table");

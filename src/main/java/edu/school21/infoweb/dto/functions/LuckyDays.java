@@ -13,13 +13,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
+
 @Component
 @RequiredArgsConstructor
 public class LuckyDays {
     @Autowired
     SqlExecutor sqlExecutor;
-
+    private static final org.slf4j.Logger log
+            = org.slf4j.LoggerFactory.getLogger(LuckyDays.class);
     public List<Date> execute(Integer n) throws BusinessException, SQLException {
         log.info("start execute function fnc_lucky_day().");
         List<Date> result = new ArrayList<>();

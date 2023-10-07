@@ -1,5 +1,6 @@
 package edu.school21.infoweb.dto.functions;
 
+import edu.school21.infoweb.csv.CSVExecutor;
 import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.models.Peers;
 import edu.school21.infoweb.models.TransferredPoints;
@@ -14,14 +15,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
+
 @Component
 @RequiredArgsConstructor
 public class TransferredPointsHumanReadFunction {
 
     @Autowired
     SqlExecutor sqlExecutor;
-
+    private static final org.slf4j.Logger log
+            = org.slf4j.LoggerFactory.getLogger(TransferredPointsHumanReadFunction.class);
     public List<TransferredPoints> execute() throws BusinessException, SQLException {
         log.info("start execute function fnc_transferred_points().");
         List<TransferredPoints> result = new ArrayList<>();
