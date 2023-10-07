@@ -271,7 +271,7 @@ public class OperationsController {
     }
 
     @PostMapping("/campus-coming")
-    String executeFunctionCampusComing(@RequestParam LocalTime time,
+    String executeFunctionCampusComing(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) LocalTime time,
                                       @RequestParam Integer n,
                                       Model model) throws BusinessException, SQLException {
       log.info("POST /operations/campus-coming");

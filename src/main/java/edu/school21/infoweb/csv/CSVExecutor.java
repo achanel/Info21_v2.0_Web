@@ -25,8 +25,8 @@ public class CSVExecutor {
         printer.flush();
         printer.close();
     }
-
-    public String readCSV(String fileName) throws IOException{
+  
+  public String readCSV(String fileName) throws IOException{
             StringBuilder csv = new StringBuilder();
             CSVParser csvParser = new CSVParser(new FileReader("target/" + fileName), CSVFormat.DEFAULT);
 
@@ -37,8 +37,5 @@ public class CSVExecutor {
             csvParser.close();
 
             return csv.toString().replaceAll("\\]", "\n").replaceAll("\\[", "");
-
-
     }
 }
-
