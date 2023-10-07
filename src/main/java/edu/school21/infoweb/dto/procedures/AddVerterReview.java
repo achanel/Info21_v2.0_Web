@@ -1,5 +1,6 @@
 package edu.school21.infoweb.dto.procedures;
 
+import edu.school21.infoweb.dto.functions.TwoBlockCompareFunction;
 import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.sqlServices.SqlExecutor;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,8 @@ public class AddVerterReview {
 
     @Autowired
     SqlExecutor sqlExecutor;
-
+    private static final org.slf4j.Logger log
+            = org.slf4j.LoggerFactory.getLogger(AddVerterReview.class);
     public void execute(String checkedPeer, String taskTitle, String state, String checkTime) throws BusinessException {
       log.info("start execute procedure add_verter_review");
         sqlExecutor.execute("call add_verter_review('" +

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -377,9 +378,9 @@ class OperationsControllerTest {
 
     @Test
     void executeFunctionCampusComing() throws Exception {
-        mockMvc.perform(post("/v1/operations/campus-coming")
+        ResultActions resultActions = mockMvc.perform(post("/v1/operations/campus-coming")
                         .param("time", String.valueOf(LocalTime.now()))
-                        .param("n","1"))
+                        .param("n", "1"))
                 .andDo(print())
                 .andExpectAll(
                         status().isOk(),

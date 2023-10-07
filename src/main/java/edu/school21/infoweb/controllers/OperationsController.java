@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-@Slf4j
+
 @Controller
 @RequestMapping("/v1/operations/")
 public class OperationsController {
@@ -26,6 +26,8 @@ public class OperationsController {
     @Autowired
     private TablesService tablesService;
 
+    private static final org.slf4j.Logger log
+            = org.slf4j.LoggerFactory.getLogger(OperationsController.class);
     @GetMapping
     String showOperationsPage() {
        log.info("GET /operations");
@@ -266,15 +268,15 @@ public class OperationsController {
 
     @GetMapping("/campus-coming")
     String showCampusComingPage() {
-      log.info("GET /operations/campus-coming");
+        log.info("GET /operations/campus-coming");
         return "/operations/campus_coming";
     }
 
     @PostMapping("/campus-coming")
     String executeFunctionCampusComing(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) LocalTime time,
-                                      @RequestParam Integer n,
-                                      Model model) throws BusinessException, SQLException {
-      log.info("POST /operations/campus-coming");
+                                       @RequestParam Integer n,
+                                       Model model) throws BusinessException, SQLException {
+       log.info("POST /operations/campus-coming");
         model.addAttribute("entities", operationsService.executeCampusComingFunction(time, n));
         return "/operations/campus_coming";
     }

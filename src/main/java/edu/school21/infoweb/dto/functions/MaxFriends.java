@@ -1,5 +1,6 @@
 package edu.school21.infoweb.dto.functions;
 
+import edu.school21.infoweb.csv.CSVExecutor;
 import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.models.SqlResult;
 import edu.school21.infoweb.sqlServices.SqlExecutor;
@@ -13,13 +14,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
+
 @Component
 @RequiredArgsConstructor
 public class MaxFriends {
     @Autowired
     SqlExecutor sqlExecutor;
 
+    private static final org.slf4j.Logger log
+            = org.slf4j.LoggerFactory.getLogger(MaxFriends.class);
     public List<SqlResult> execute(Integer limits) throws BusinessException, SQLException {
         log.info("start execute function fnc_max_friends_peer().");
         List<SqlResult> result = new ArrayList<>();

@@ -33,7 +33,7 @@ class CSVExecutorTest {
         CSVExecutor csvExecutor = new CSVExecutor();
         csvExecutor.writeCSV(table, "testFile");
         Assertions.assertEquals(
-                csvExecutor.readCSV("testFile"),
+                csvExecutor.readCSV("testFile.csv"),
                 "0, 1, 2\n" +
                         "2, 3, 4\n" +
                         "4, 5, 6\n");

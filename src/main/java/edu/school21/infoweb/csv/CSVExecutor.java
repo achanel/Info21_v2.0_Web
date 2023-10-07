@@ -1,5 +1,6 @@
 package edu.school21.infoweb.csv;
 
+import edu.school21.infoweb.controllers.SQLController;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -9,9 +10,11 @@ import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.util.List;
-@Slf4j
+
 @Component
 public class CSVExecutor {
+    private static final org.slf4j.Logger log
+            = org.slf4j.LoggerFactory.getLogger(CSVExecutor.class);
     public void writeCSV(List<List<String>> data, String fileName) throws IOException {
         CSVPrinter printer = new CSVPrinter(new FileWriter("target/" + fileName + ".csv"), CSVFormat.DEFAULT);
         data.forEach(line -> {
@@ -25,8 +28,8 @@ public class CSVExecutor {
         printer.flush();
         printer.close();
     }
-  
-  public String readCSV(String fileName) throws IOException{
+
+    public String readCSV(String fileName) throws IOException{
             StringBuilder csv = new StringBuilder();
             CSVParser csvParser = new CSVParser(new FileReader("target/" + fileName), CSVFormat.DEFAULT);
 
@@ -37,5 +40,8 @@ public class CSVExecutor {
             csvParser.close();
 
             return csv.toString().replaceAll("\\]", "\n").replaceAll("\\[", "");
+
+
     }
 }
+

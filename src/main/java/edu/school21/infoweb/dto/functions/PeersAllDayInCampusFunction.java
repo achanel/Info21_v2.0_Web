@@ -1,6 +1,7 @@
 package edu.school21.infoweb.dto.functions;
 
 
+import edu.school21.infoweb.csv.CSVExecutor;
 import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.sqlServices.SqlExecutor;
 import lombok.RequiredArgsConstructor;
@@ -14,13 +15,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
+
 @Component
 @RequiredArgsConstructor
 public class PeersAllDayInCampusFunction {
     @Autowired
     SqlExecutor sqlExecutor;
-
+    private static final org.slf4j.Logger log
+            = org.slf4j.LoggerFactory.getLogger(PeersAllDayInCampusFunction.class);
     public List<String> execute(LocalDate day) throws BusinessException, SQLException {
         log.info("start execute function fnc_all_day_in_campus().");
         List<String> result = new ArrayList<>();

@@ -3,6 +3,7 @@ package edu.school21.infoweb.controllers;
 import edu.school21.infoweb.csv.CSVExecutor;
 import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.sqlServices.SqlExecutor;
+import edu.school21.infoweb.sqlServices.SqlFunctions;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +15,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
 import java.util.Map;
-@Slf4j
+
 @RequiredArgsConstructor
 @Controller
 @RequestMapping("/v1/sql/")
 public class SQLController {
     @Autowired
+    SqlFunctions sqlFunctions;
+    @Autowired
     SqlExecutor sqlExecutor;
     @Autowired
     CSVExecutor csvExecutor;
+    private static final org.slf4j.Logger log
+            = org.slf4j.LoggerFactory.getLogger(SQLController.class);
     private StringBuilder sqlResponse;
 
     @GetMapping
@@ -44,7 +49,7 @@ public class SQLController {
     public String csvExport(Map<String, Object> model) throws IOException {
         log.info("csvExport");
         try {
-            new CSVExecutor().writeCSV(sqlExecutor.getCsv(), "export");
+            csvExecutor.writeCSV(sqlExecutor.getCsv(), "export");
         }
         catch(Exception e)
         {
@@ -59,8 +64,9 @@ public class SQLController {
     public String csvImport(Map<String, Object> model) throws IOException {
         log.info("import");
         try {
-          String csvResponse = new CSVExecutor().readCSV("export.csv");
-          model.put("csvResponse", csvResponse);
+            String csvResponse = csvExecutor.readCSV("export.csv");
+
+            model.put("csvResponse", csvResponse);
         }
         catch(Exception e)
         {

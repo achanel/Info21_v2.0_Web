@@ -10,6 +10,7 @@ import java.text.MessageFormat;
 
 @ControllerAdvice
 public class DefaultAdvice {
+
     @ExceptionHandler({BusinessException.class, RuntimeException.class, SQLException.class, Exception.class})
     public ResponseEntity<Response> handleException(BusinessException e) {
         String message = MessageFormat.format("{0} returned with message: {1}",
@@ -18,4 +19,5 @@ public class DefaultAdvice {
         Response response = new Response(message);
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
+
 }
