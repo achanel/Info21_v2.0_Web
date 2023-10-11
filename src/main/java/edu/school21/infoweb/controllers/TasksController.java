@@ -7,25 +7,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/peers")
-public class PeerController {
+@RequestMapping("/tasks")
+public class TasksController {
     @GetMapping("/read")
-    public String peersRead() {
-        return "/peers/read";
+    public String tasksRead() {
+        return "/tasks/read";
     }
 
     @GetMapping("/create")
     String createPeer() {
-        return "/peers/create";
+        return "/tasks/create";
     }
 
     @GetMapping("/update")
     String showUpdatePeer() {
-        return "/peers/update";
+        return "/tasks/update";
     }
 
     @GetMapping("/delete")
     String showDeletePeer() {
-        return "/peers/delete";
+        return "/tasks/delete";
     }
 }

@@ -3,10 +3,6 @@ body {
     font-style: normal;
 }
 
-.container {
-    padding-bottom: 100px;
-}
-
 button {
     border-radius: 8px!important;
 }

@@ -51,6 +51,7 @@ function generateTableFromData(data, isRecursive) {
                 th.textContent = key;
                 th.setAttribute("data-type", typeof Object.values(data[0])[0]);
                 th.classList.add('text-center');
+                th.style.padding = "0.55rem"
                 headerRow.appendChild(th);
             }
         }
@@ -73,6 +74,7 @@ function generateTableFromData(data, isRecursive) {
                 }
 
                 cell.classList.add(key);
+                cell.style.padding = "0.55rem"
                 row.appendChild(cell);
             }
         }

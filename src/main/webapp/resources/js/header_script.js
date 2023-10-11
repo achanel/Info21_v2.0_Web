@@ -11,7 +11,6 @@ function createHeader(title) {
         <div class="header_text header_title">${title}</div>
     </div>
     
-
     <div class="row2">
         <div class="column_item">
             <div class="dropdown">
@@ -20,13 +19,13 @@ function createHeader(title) {
                 <a class="header_text" href="/peers/read">Peers</a>
                 <a class="header_text" href="/tasks/read">Tasks</a>
                 <a class="header_text" href="/checks/read">Checks</a>
-                <a class="header_text" href="/verters/read">Verter</a>
+                <a class="header_text" href="/verter/read">Verter</a>
                 <a class="header_text" href="/experiences/read">XP</a>
                 <a class="header_text" href="/p2p/read">P2P</a>
-                <a class="header_text" href="/transferred-points/read">TransferredPoints</a>
+                <a class="header_text" href="/transferredPoints/read">TransferredPoints</a>
                 <a class="header_text" href="/friends/read">Friends</a>
                 <a class="header_text" href="/recommendations/read">Recommendations</a>
-                <a class="header_text" href="/time-tracking/read">TimeTracking</a>
+                <a class="header_text" href="/timeTracking/read">TimeTracking</a>
               </div>
             </div>
         </div>

@@ -2,7 +2,6 @@ package edu.school21.infoweb.controllers;
 
 import edu.school21.infoweb.dto.TablesDTO;
 import edu.school21.infoweb.services.TablesService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

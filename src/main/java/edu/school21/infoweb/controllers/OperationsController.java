@@ -6,7 +6,6 @@ import edu.school21.infoweb.models.operations.AddP2PReviewParams;
 import edu.school21.infoweb.models.operations.AddVerterReviewParams;
 import edu.school21.infoweb.services.TablesService;
 import edu.school21.infoweb.sqlServices.OperationsService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;

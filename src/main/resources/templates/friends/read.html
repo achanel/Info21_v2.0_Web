@@ -23,23 +23,28 @@
 <header></header>
 
 <div class="container">
-    <h1 class="page-header">Таблица p2p:</h1>
+    <h1 class="page-header">Таблица friends:</h1>
 
     <div id="table-container"></div>
+    <div class="control-btn-container"></div>
 </div>
 
 <script type="text/javascript" src="/resources/js/confirm_CUD.js"></script>
 <script type="text/javascript" src="/resources/js/header_script.js"></script>
-<script src="/resources/js/show_table.js"></script>
+<script src="/resources/js/generateAndShowTable.js"></script>
+<script src="/resources/js/setCUDButtons.js"></script>
 <script th:inline="javascript">
     createHeader('Data');
 
-    getTable("p2PList")
+    getTable("friendsList")
         .then(result => {
             const table = generateTableFromData(result, false);
 
             const tableContainer = document.getElementById('table-container');
             tableContainer.appendChild(table);
+
+            sortTable();
+            setCUDButtons("friends");
         })
         .catch(error => {
             console.error(`Произошла ошибка: ${error.message}`);
