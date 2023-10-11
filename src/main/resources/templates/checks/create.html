@@ -74,13 +74,6 @@
 
 <script th:inline="javascript">
     createHeader('Data');
-    // getTable("checksList")
-    //     .then(result => {
-    //         setLastIdFromTable(result);
-    //     })
-    //     .catch(error => {
-    //         console.error(`Произошла ошибка: ${error.message}`);
-    //     });
 
     getTable("peersList")
         .then(result => {
@@ -100,7 +93,6 @@
 
     setRequestSettingsChecks("checksList", "save", "POST");
 
-    // setUnchangeableInputs("#last_id");
     setUnchangeableInputs("#nickname");
     setUnchangeableInputs("#title");
 
