@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-@RequestMapping("/v1/data/")
+@RequestMapping("/data/")
 public class DataController {
     @Autowired
     private TablesService tablesService;

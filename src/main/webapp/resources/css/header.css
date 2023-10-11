@@ -4,14 +4,15 @@ body {
 
 header {
     background: #1D2633;
+    margin-bottom: 30px;
 }
 
-.header__title {
+.header_title {
     font-size: 20px;
     color: #FFF;
 }
 
-.header__text {
+.header_text {
     font-family: SB Sans Display, serif;
 }
 
@@ -42,30 +43,30 @@ header {
     margin-bottom: 10px;
 }
 
-.item__ref a {
+.item_ref a {
     text-decoration: none;
     font-size: 18px;
     color: #FFF;
 }
 
-.item__ref a:hover {
+.item_ref a:hover {
     color: #44EB99;
 }
 
-.data__list_submenu {
+.data_list_submenu {
     position: absolute;
     min-width: 140px;
     display: none;
 }
 
-.data__submenu li {
+.data_submenu li {
     padding: 10px;
     font-size: 16px;
     font-weight: 200;
     background: #1D2633;
 }
 
-.data__submenu:hover > .data__list_submenu {
+.data_submenu:hover > .data_list_submenu {
     display: block;
     z-index: 100;
 }

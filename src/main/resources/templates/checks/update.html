@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://cdn-app.sberdevices.ru/shared-static/0.0.0/styles/SBSansDisplay.0.1.0.css"/>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/resources/css/reset.css">
+    <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/error_msg.css">
+    <link rel="stylesheet" href="/resources/css/drop_down.css">
+
+    <title>Data</title>
+</head>
+<body>
+<header></header>
+
+<div class="container">
+    <h1 class="page-header">Обновление записи о проверке</h1>
+
+    <form id="form" action="#" method="POST">
+        <div class="label-input-row">
+            <div class="dropdown">
+                <button class="dropbtn select-btn" type="button">Select id</button>
+                <div class="dropdown-content checks_ids"></div>
+            </div>
+            <input type="text" id="checks_id" name="checks_id" placeholder="checks id" class="form-control input" required readonly>
+        </div>
+        <div class="label-input-row">
+            <div class="dropdown">
+                <button class="dropbtn select-btn" type="button">Select nick</button>
+                <div class="dropdown-content nicknames"></div>
+            </div>
+            <input type="text" id="nickname" name="name" placeholder="Nickname" class="form-control input" required readonly>
+        </div>
+        <div class="label-input-row">
+            <div class="dropdown">
+                <button class="dropbtn select-btn" type="button">Select title</button>
+                <div class="dropdown-content titles"></div>
+            </div>
+            <input type="text" id="title" name="title" placeholder="Tack title" class="form-control input" required readonly>
+        </div>
+
+        <div class="label-input-row">
+            <label for="dateField">Date</label>
+            <input type="date" id="dateField" name="date" class="form-control input" required>
+        </div>
+
+        <button type="submit" class="update-btn" style="margin-bottom: 10px" onclick="return confirm_update()">Обновить</button>
+    </form>
+    <a href="/checks/read" class="create-btn">Назад</a>
+</div>
+
+
+<script type="text/javascript" src="/resources/js/confirm_CUD.js"></script>
+<script type="text/javascript" src="/resources/js/header_script.js"></script>
+<script src="/resources/js/generateAndShowTable.js"></script>
+<script src="/resources/js/getPeerNames.js"></script>
+<script src="/resources/js/selectDropDown.js"></script>
+<script src="/resources/js/setRequestSettingsChecks.js"></script>
+<script src="/resources/js/setLastIdFromTable.js"></script>
+<script src="/resources/js/setUnchangeableInputs.js"></script>
+<script src="/resources/js/selectDropDown.js"></script>
+<script src="/resources/js/getPeerNames.js"></script>
+<script src="/resources/js/getAllTasks.js"></script>
+<script src="/resources/js/getAllChecksIds.js"></script>
+
+
+<script th:inline="javascript">
+    createHeader('Data');
+    getTable("checksList")
+        .then(result => {
+            selectDropDown(getAllChecksIds(result), ".checks_ids", "#checks_id");
+        })
+        .catch(error => {
+            console.error(`Произошла ошибка: ${error.message}`);
+        });
+
+    getTable("peersList")
+        .then(result => {
+            selectDropDown(getPeerNames(result), ".nicknames", "#nickname")
+        })
+        .catch(error => {
+            console.error(`Произошла ошибка: ${error.message}`);
+        });
+
+    getTable("tasksList")
+        .then(result => {
+            selectDropDown(getAllTasks(result), ".titles", "#title")
+        })
+        .catch(error => {
+            console.error(`Произошла ошибка: ${error.message}`);
+        });
+
+    setRequestSettingsChecks("checksList", "update", "POST");
+
+    setUnchangeableInputs("#checks_id");
+    setUnchangeableInputs("#nickname");
+    setUnchangeableInputs("#title");
+
+
+</script>
+
+
+</body>
+</html>
