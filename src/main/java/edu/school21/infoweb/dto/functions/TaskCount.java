@@ -1,11 +1,9 @@
 package edu.school21.infoweb.dto.functions;
 
-import edu.school21.infoweb.csv.CSVExecutor;
 import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.models.SqlResult;
 import edu.school21.infoweb.sqlServices.SqlExecutor;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,10 +16,11 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class TaskCount {
-    @Autowired
-    SqlExecutor sqlExecutor;
     private static final org.slf4j.Logger log
             = org.slf4j.LoggerFactory.getLogger(TaskCount.class);
+    @Autowired
+    SqlExecutor sqlExecutor;
+
     public List<SqlResult> execute() throws BusinessException, SQLException {
         log.info("start execute function fnc_pre_task().");
         List<SqlResult> result = new ArrayList<>();

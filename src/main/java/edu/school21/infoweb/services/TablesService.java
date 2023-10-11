@@ -7,9 +7,12 @@ import java.util.List;
 
 public interface TablesService {
     TablesDTO getTable();
+
     TablesDTO saveTable(TablesDTO tablesDTO);
 
     void deleteTable(TablesDTO tablesDTO);
+
     TablesDTO getP2PTable();
+
     List<Tasks> getTasks();
 }

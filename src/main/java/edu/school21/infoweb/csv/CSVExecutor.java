@@ -1,20 +1,21 @@
 package edu.school21.infoweb.csv;
 
-import edu.school21.infoweb.controllers.SQLController;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Component;
 
-import java.io.*;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 @Component
 public class CSVExecutor {
     private static final org.slf4j.Logger log
             = org.slf4j.LoggerFactory.getLogger(CSVExecutor.class);
+
     public void writeCSV(List<List<String>> data, String fileName) throws IOException {
         CSVPrinter printer = new CSVPrinter(new FileWriter("target/" + fileName + ".csv"), CSVFormat.DEFAULT);
         data.forEach(line -> {
@@ -29,17 +30,17 @@ public class CSVExecutor {
         printer.close();
     }
 
-    public String readCSV(String fileName) throws IOException{
-            StringBuilder csv = new StringBuilder();
-            CSVParser csvParser = new CSVParser(new FileReader("target/" + fileName), CSVFormat.DEFAULT);
+    public String readCSV(String fileName) throws IOException {
+        StringBuilder csv = new StringBuilder();
+        CSVParser csvParser = new CSVParser(new FileReader("target/" + fileName), CSVFormat.DEFAULT);
 
-            for (CSVRecord record : csvParser) {
-                record.forEach(csv::append);
-            }
+        for (CSVRecord record : csvParser) {
+            record.forEach(csv::append);
+        }
 
-            csvParser.close();
+        csvParser.close();
 
-            return csv.toString().replaceAll("\\]", "\n").replaceAll("\\[", "");
+        return csv.toString().replaceAll("\\]", "\n").replaceAll("\\[", "");
 
 
     }

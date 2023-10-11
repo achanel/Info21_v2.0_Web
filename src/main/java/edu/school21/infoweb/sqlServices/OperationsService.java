@@ -49,6 +49,7 @@ public class OperationsService {
     private final TotalXp totalXp;
     private final LastCheck lastCheck;
     private final ChecksPercent checksPercent;
+
     public OperationsService(AddP2PReview addP2PReview, AddVerterReview addVerterReview,
                              TransferredPointsHumanReadFunction transferredPointsHumanReadFunction,
                              SuccessfulChecksFunction successfulChecksFunction, PeersAllDayInCampusFunction peersAllDayInCampusFunction,

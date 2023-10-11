@@ -19,14 +19,14 @@ import java.util.Map;
 @Controller
 @RequestMapping("/v1/sql/")
 public class SQLController {
+    private static final org.slf4j.Logger log
+            = org.slf4j.LoggerFactory.getLogger(SQLController.class);
     @Autowired
     SqlFunctions sqlFunctions;
     @Autowired
     SqlExecutor sqlExecutor;
     @Autowired
     CSVExecutor csvExecutor;
-    private static final org.slf4j.Logger log
-            = org.slf4j.LoggerFactory.getLogger(SQLController.class);
     private StringBuilder sqlResponse;
 
     @GetMapping
@@ -49,9 +49,7 @@ public class SQLController {
         log.info("csvExport");
         try {
             csvExecutor.writeCSV(sqlExecutor.getCsv(), "export");
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             log.error("Error While writing CSV ", e);
         }
         sqlResponse.setLength(0);
@@ -66,9 +64,7 @@ public class SQLController {
             String csvResponse = csvExecutor.readCSV("export.csv");
 
             model.put("csvResponse", csvResponse);
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             log.error("Error While reading CSV ", e);
         }
         return "main";

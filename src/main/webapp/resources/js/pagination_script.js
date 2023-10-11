@@ -13,6 +13,7 @@ let params = window
     );
 
 let path = '';
+
 function createSelector(totalPages, currentPage) {
     const element = document.querySelector(".selector");
 
@@ -36,7 +37,7 @@ function onSelectionChange(select) {
 function createPagination(page, pageSize, totalPages, sortField, sortDir) {
     const element = document.querySelector(".pagination ul");
     if (element == null) return;
-    let urlEnd = '?pageSize=' + pageSize  +'&sortField=' + sortField + '&sortDir=' + sortDir + '';
+    let urlEnd = '?pageSize=' + pageSize + '&sortField=' + sortField + '&sortDir=' + sortDir + '';
     let liTag = '';
     let active;
     let beforePage = page - 1;
@@ -47,7 +48,7 @@ function createPagination(page, pageSize, totalPages, sortField, sortDir) {
     }
 
     if (totalPages != 3 && page > 2) { //if page value is greater than 2 then add 1 after the previous button
-        let url = path +'0?pageSize=' + pageSize  +'&sortField=' + sortField + '&sortDir=' + sortDir + '';
+        let url = path + '0?pageSize=' + pageSize + '&sortField=' + sortField + '&sortDir=' + sortDir + '';
 
         liTag += `<li class="first numb" onclick="window.location.href = '${url}'"><span>1</span></li>`;
         if (page > 3) { //if page value is greater than 3 then add this (...) after the first li or page

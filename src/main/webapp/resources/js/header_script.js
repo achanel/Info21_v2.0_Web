@@ -1,7 +1,7 @@
 function createHeader(title) {
     const element = document.querySelector("header");
     element.innerHTML =
-    `
+        `
     <div class="row1">
         <div class="logo">
             <a href="/">
@@ -47,7 +47,7 @@ function createHeader(title) {
         })
     })
 
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (!event.target.matches('.dropbtn')) {
             const dropdowns = document.getElementsByClassName("dropdown-content");
             for (let i = 0; i < dropdowns.length; i++) {

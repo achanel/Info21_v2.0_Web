@@ -58,7 +58,6 @@ function generateTableFromData(data, isRecursive) {
     }
 
 
-
     thead.appendChild(headerRow);
     table.appendChild(thead);
 
@@ -97,12 +96,12 @@ function sortTable() {
 
     switch (type) {
         case 'number':
-            compare = function(rowA, rowB) {
+            compare = function (rowA, rowB) {
                 return rowA.cells[0].innerHTML - rowB.cells[0].innerHTML;
             };
             break;
         case 'string':
-            compare = function(rowA, rowB) {
+            compare = function (rowA, rowB) {
                 return rowA.cells[0].innerHTML > rowB.cells[0].innerHTML ? 1 : -1;
             };
             break;

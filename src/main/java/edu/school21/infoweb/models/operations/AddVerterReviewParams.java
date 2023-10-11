@@ -26,28 +26,28 @@ public class AddVerterReviewParams {
         return this.checkedPeer;
     }
 
-    public @NotBlank(message = "Can not be empty") String getTaskTitle() {
-        return this.taskTitle;
-    }
-
-    public @NotBlank(message = "Can not be empty") String getState() {
-        return this.state;
-    }
-
-    public @NotNull(message = "Can not be empty") String getCheckTime() {
-        return this.checkTime;
-    }
-
     public void setCheckedPeer(String checkedPeer) {
         this.checkedPeer = checkedPeer;
+    }
+
+    public @NotBlank(message = "Can not be empty") String getTaskTitle() {
+        return this.taskTitle;
     }
 
     public void setTaskTitle(String taskTitle) {
         this.taskTitle = taskTitle;
     }
 
+    public @NotBlank(message = "Can not be empty") String getState() {
+        return this.state;
+    }
+
     public void setState(String state) {
         this.state = state;
+    }
+
+    public @NotNull(message = "Can not be empty") String getCheckTime() {
+        return this.checkTime;
     }
 
     public void setCheckTime(String checkTime) {

@@ -23,7 +23,7 @@ public class SqlFunctions {
 //                        "fetch all in ?;" +
 //                        "end;";
                 statement = "call pcd_peer_points_changes(?);" +
-                params.add("cursor");
+                        params.add("cursor");
                 break;
             case "pcd_peer_points_changes_2":
                 statement = "call pcd_peer_points_changes_2(?);";

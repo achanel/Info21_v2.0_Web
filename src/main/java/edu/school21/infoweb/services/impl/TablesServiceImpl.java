@@ -46,6 +46,7 @@ public class TablesServiceImpl implements TablesService {
                 .xpList(xpService.getAllXP())
                 .build();
     }
+
     @Override
     public TablesDTO saveTable(TablesDTO tablesDTO) {
         return TablesDTO.builder()
@@ -63,6 +64,7 @@ public class TablesServiceImpl implements TablesService {
                 .xpList(xpService.saveXP(tablesDTO.getXpList()))
                 .build();
     }
+
     @Override
     public void deleteTable(TablesDTO tablesDTO) {
         peersService.deletePeer(tablesDTO.getPeersList());

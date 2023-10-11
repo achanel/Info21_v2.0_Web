@@ -12,10 +12,11 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/data/")
 public class DataController {
-    @Autowired
-    private TablesService tablesService;
     private static final org.slf4j.Logger log
             = org.slf4j.LoggerFactory.getLogger(DataController.class);
+    @Autowired
+    private TablesService tablesService;
+
     @GetMapping("/get_table")
     public ResponseEntity<TablesDTO> getTable() {
         log.info("Get table");

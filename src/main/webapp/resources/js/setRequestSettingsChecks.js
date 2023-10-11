@@ -5,7 +5,7 @@ const paths = {
 }
 
 function setRequestSettingsChecks(tableName, action, method) {
-    document.getElementById('form').addEventListener('submit', function(e) {
+    document.getElementById('form').addEventListener('submit', function (e) {
         e.preventDefault();
 
         let formData = new FormData(this);

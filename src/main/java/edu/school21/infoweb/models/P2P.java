@@ -7,6 +7,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.sql.Time;
+
 @Entity
 @Table(name = "p2p")
 public class P2P {

@@ -5,7 +5,9 @@ function setLastIdFromTable(data) {
         arr.push(Object.values(data[dataKey])[0]);
     }
 
-    arr = arr.sort((a, b) => { return a - b })
+    arr = arr.sort((a, b) => {
+        return a - b
+    })
 
     document.querySelector("#last_id").value = arr[arr.length - 1] + 1;
 }

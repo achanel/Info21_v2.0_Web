@@ -1,7 +1,6 @@
 package edu.school21.infoweb.models.operations;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
@@ -30,36 +29,36 @@ public class AddP2PReviewParams {
         return this.checkingPeer;
     }
 
-    public @NotBlank(message = "Can not be empty") String getCheckedPeer() {
-        return this.checkedPeer;
-    }
-
-    public @NotBlank(message = "Can not be empty") String getTaskTitle() {
-        return this.taskTitle;
-    }
-
-    public @NotBlank(message = "Can not be empty") String getState() {
-        return this.state;
-    }
-
-    public @NotNull(message = "Can not be empty") String getCheckTime() {
-        return this.checkTime;
-    }
-
     public void setCheckingPeer(@NotBlank(message = "Can not be empty") String checkingPeer) {
         this.checkingPeer = checkingPeer;
+    }
+
+    public @NotBlank(message = "Can not be empty") String getCheckedPeer() {
+        return this.checkedPeer;
     }
 
     public void setCheckedPeer(@NotBlank(message = "Can not be empty") String checkedPeer) {
         this.checkedPeer = checkedPeer;
     }
 
+    public @NotBlank(message = "Can not be empty") String getTaskTitle() {
+        return this.taskTitle;
+    }
+
     public void setTaskTitle(@NotBlank(message = "Can not be empty") String taskTitle) {
         this.taskTitle = taskTitle;
     }
 
+    public @NotBlank(message = "Can not be empty") String getState() {
+        return this.state;
+    }
+
     public void setState(@NotBlank(message = "Can not be empty") String state) {
         this.state = state;
+    }
+
+    public @NotNull(message = "Can not be empty") String getCheckTime() {
+        return this.checkTime;
     }
 
     public void setCheckTime(@NotNull(message = "Can not be empty") String checkTime) {

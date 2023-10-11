@@ -63,74 +63,93 @@ public class TablesDTO {
     public List<Peers> getPeersList() {
         return this.peersList;
     }
-    public List<Tasks> getTasksList() {
-        return this.tasksList;
-    }
-    public List<Checks> getChecksList() {
-        return this.checksList;
-    }
-    public List<Friends> getFriendsList() {
-        return this.friendsList;
-    }
-    public List<P2P> getP2PList() {
-        return this.p2PList;
-    }
-    public List<Recommendations> getRecommendationsList() {
-        return this.recommendationsList;
-    }
-    public List<TimeTracking> getTimeTrackingList() {
-        return this.timeTrackingList;
-    }
-    public List<TransferredPoints> getTransferredPointsList() {
-        return this.transferredPointsList;
-    }
-    public List<Verter> getVerterList() {
-        return this.verterList;
-    }
-    public List<XP> getXpList() {
-        return this.xpList;
-    }
 
     @JsonProperty("peersList")
     public void setPeersList(List<Peers> peersList) {
         this.peersList = peersList;
     }
+
+    public List<Tasks> getTasksList() {
+        return this.tasksList;
+    }
+
     @JsonProperty("tasksList")
     public void setTasksList(List<Tasks> tasksList) {
         this.tasksList = tasksList;
     }
+
+    public List<Checks> getChecksList() {
+        return this.checksList;
+    }
+
     @JsonProperty("checksList")
     public void setChecksList(List<Checks> checksList) {
         this.checksList = checksList;
     }
+
+    public List<Friends> getFriendsList() {
+        return this.friendsList;
+    }
+
     @JsonProperty("friendsList")
     public void setFriendsList(List<Friends> friendsList) {
         this.friendsList = friendsList;
     }
+
+    public List<P2P> getP2PList() {
+        return this.p2PList;
+    }
+
     @JsonProperty("p2PList")
     public void setP2PList(List<P2P> p2PList) {
         this.p2PList = p2PList;
     }
+
+    public List<Recommendations> getRecommendationsList() {
+        return this.recommendationsList;
+    }
+
     @JsonProperty("recommendationsList")
     public void setRecommendationsList(List<Recommendations> recommendationsList) {
         this.recommendationsList = recommendationsList;
     }
+
+    public List<TimeTracking> getTimeTrackingList() {
+        return this.timeTrackingList;
+    }
+
     @JsonProperty("timeTrackingList")
     public void setTimeTrackingList(List<TimeTracking> timeTrackingList) {
         this.timeTrackingList = timeTrackingList;
     }
+
+    public List<TransferredPoints> getTransferredPointsList() {
+        return this.transferredPointsList;
+    }
+
     @JsonProperty("transferredPointsList")
     public void setTransferredPointsList(List<TransferredPoints> transferredPointsList) {
         this.transferredPointsList = transferredPointsList;
     }
+
+    public List<Verter> getVerterList() {
+        return this.verterList;
+    }
+
     @JsonProperty("verterList")
     public void setVerterList(List<Verter> verterList) {
         this.verterList = verterList;
     }
+
+    public List<XP> getXpList() {
+        return this.xpList;
+    }
+
     @JsonProperty("xpList")
     public void setXpList(List<XP> xpList) {
         this.xpList = xpList;
     }
+
     public static class TablesDTOBuilder {
         private List<Peers> peersList;
         private List<Tasks> tasksList;
@@ -155,6 +174,7 @@ public class TablesDTO {
             this.tasksList = tasksList;
             return this;
         }
+
         public TablesDTOBuilder checksList(List<Checks> checksList) {
             this.checksList = checksList;
             return this;

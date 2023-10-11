@@ -6,8 +6,6 @@
 }
 
 *, *:before, *:after {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -43,7 +41,8 @@ input::-ms-clear {
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none; // Yeah, yeah everybody write about it
+    -webkit-appearance: none;
+/ / Yeah, yeah everybody write about it
 }
 
 input[type='number'],

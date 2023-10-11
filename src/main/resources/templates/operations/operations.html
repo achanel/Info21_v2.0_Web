@@ -2,20 +2,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
 
-    <link rel="stylesheet"
+    <link crossorigin="anonymous"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdn-app.sberdevices.ru/shared-static/0.0.0/styles/SBSansDisplay.0.1.0.css"/>
-    <link rel="stylesheet" href="/resources/css/reset.css">
-    <link rel="stylesheet" href="/resources/css/main.css">
-    <link rel="stylesheet" href="/resources/css/header.css">
-    <link rel="stylesheet" href="/resources/css/error_msg.css">
-    <link rel="stylesheet" href="/resources/css/drop_down.css">
+    <link href="https://cdn-app.sberdevices.ru/shared-static/0.0.0/styles/SBSansDisplay.0.1.0.css" rel="stylesheet"/>
+    <link href="/resources/css/reset.css" rel="stylesheet">
+    <link href="/resources/css/main.css" rel="stylesheet">
+    <link href="/resources/css/header.css" rel="stylesheet">
+    <link href="/resources/css/error_msg.css" rel="stylesheet">
+    <link href="/resources/css/drop_down.css" rel="stylesheet">
 
     <title>Operations</title>
 </head>
@@ -38,7 +38,7 @@
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/add-p2p-review" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/add-p2p-review">Перейти</a>
     </div>
 </div>
 
@@ -53,11 +53,12 @@
     <div class="row">
         <div>
             <p>Параметры: ник проверяемого, название задания, статус проверки Verter'ом, время.</p>
-            <p>Добавить запись в таблицу Verter (в качестве проверки указать проверку соответствующего задания с самым поздним (по времени) успешным P2P этапом)</p>
+            <p>Добавить запись в таблицу Verter (в качестве проверки указать проверку соответствующего задания с самым
+                поздним (по времени) успешным P2P этапом)</p>
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/add-verter-review" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/add-verter-review">Перейти</a>
     </div>
 </div>
 
@@ -76,7 +77,7 @@
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/transferred-points-human-read" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/transferred-points-human-read">Перейти</a>
     </div>
 </div>
 
@@ -85,17 +86,19 @@
 <div class="container">
     <div class="row">
         <div class="col-15 mt-2">
-            <h5>4. Функция, которая возвращает таблицу вида: ник пользователя, название проверенного задания, кол-во полученного XP</h5>
+            <h5>4. Функция, которая возвращает таблицу вида: ник пользователя, название проверенного задания, кол-во
+                полученного XP</h5>
         </div>
     </div>
     <div class="row">
         <div>
             <p>В таблицу включать только задания, успешно прошедшие проверку (определять по таблице Checks).</p>
-            <p>Одна задача может быть успешно выполнена несколько раз. В таком случае в таблицу включать все успешные проверки.</p>
+            <p>Одна задача может быть успешно выполнена несколько раз. В таком случае в таблицу включать все успешные
+                проверки.</p>
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/successful-checks" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/successful-checks">Перейти</a>
     </div>
 </div>
 
@@ -114,7 +117,7 @@
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/all-day-in-campus" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/all-day-in-campus">Перейти</a>
     </div>
 </div>
 
@@ -132,7 +135,7 @@
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/fnc_peer_points_changes" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/fnc_peer_points_changes">Перейти</a>
     </div>
 </div>
 
@@ -150,7 +153,7 @@
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/fnc_peer_points_changes_2" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/fnc_peer_points_changes_2">Перейти</a>
     </div>
 </div>
 
@@ -169,7 +172,7 @@
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/most-reviewed-task" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/most-reviewed-task">Перейти</a>
     </div>
 </div>
 
@@ -188,7 +191,7 @@
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/task-block" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/task-block">Перейти</a>
     </div>
 </div>
 
@@ -202,12 +205,13 @@
     </div>
     <div class="row">
         <div>
-            <p>Определять нужно исходя из рекомендаций друзей пира, т.е. нужно найти пира, проверяться у которого рекомендует наибольшее число друзей.</p>
+            <p>Определять нужно исходя из рекомендаций друзей пира, т.е. нужно найти пира, проверяться у которого
+                рекомендует наибольшее число друзей.</p>
             <p>Формат вывода: ник пира, ник найденного проверяющего</p>
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/recommended-peer" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/recommended-peer">Перейти</a>
     </div>
 </div>
 
@@ -229,12 +233,14 @@
     </div>
     <div class="row">
         <div>
-            <p>Пир считается приступившим к блоку, если он проходил хоть одну проверку любого задания из этого блока (по таблице Checks).</p>
-            <p>Формат вывода: процент приступивших только к первому блоку, процент приступивших только ко второму блоку, процент приступивших к обоим, процент не приступивших ни к одному</p>
+            <p>Пир считается приступившим к блоку, если он проходил хоть одну проверку любого задания из этого блока (по
+                таблице Checks).</p>
+            <p>Формат вывода: процент приступивших только к первому блоку, процент приступивших только ко второму блоку,
+                процент приступивших к обоим, процент не приступивших ни к одному</p>
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/blocks-comparing" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/blocks-comparing">Перейти</a>
     </div>
 </div>
 
@@ -248,11 +254,12 @@
     </div>
     <div class="row">
         <div>
-            <p>Формат вывода: процент пиров, успешно прошедших проверку в день рождения, процент пиров, проваливших проверку в день рождения</p>
+            <p>Формат вывода: процент пиров, успешно прошедших проверку в день рождения, процент пиров, проваливших
+                проверку в день рождения</p>
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/birthday-check" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/birthday-check">Перейти</a>
     </div>
 </div>
 
@@ -271,7 +278,7 @@
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/completed-task" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/completed-task">Перейти</a>
     </div>
 </div>
 
@@ -290,7 +297,7 @@
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/task-count" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/task-count">Перейти</a>
     </div>
 </div>
 
@@ -310,7 +317,7 @@
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/lucky-days" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/lucky-days">Перейти</a>
     </div>
 </div>
 
@@ -328,7 +335,7 @@
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/top-peer" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/top-peer">Перейти</a>
     </div>
 </div>
 
@@ -347,7 +354,7 @@
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/campus-coming" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/campus-coming">Перейти</a>
     </div>
 </div>
 
@@ -366,7 +373,7 @@
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/campus-leaving" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/campus-leaving">Перейти</a>
     </div>
 </div>
 
@@ -380,14 +387,16 @@
     </div>
     <div class="row">
         <div>
-            <p>Для каждого месяца посчитать, сколько раз люди, родившиеся в этот месяц, приходили в кампус за всё время (будем называть это общим числом входов).</p>
-            <p>Для каждого месяца посчитать, сколько раз люди, родившиеся в этот месяц, приходили в кампус раньше 12:00 за всё время (будем называть это числом ранних входов).</p>
+            <p>Для каждого месяца посчитать, сколько раз люди, родившиеся в этот месяц, приходили в кампус за всё время
+                (будем называть это общим числом входов).</p>
+            <p>Для каждого месяца посчитать, сколько раз люди, родившиеся в этот месяц, приходили в кампус раньше 12:00
+                за всё время (будем называть это числом ранних входов).</p>
             <p>Для каждого месяца посчитать процент ранних входов в кампус относительно общего числа входов.</p>
             <p>Формат вывода: месяц, процент ранних входов</p>
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/early-coming" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/early-coming">Перейти</a>
     </div>
 </div>
 
@@ -406,7 +415,7 @@
         </div>
     </div>
     <div class="row">
-        <a href="/v1/operations/out-of-campus" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/out-of-campus">Перейти</a>
     </div>
 </div>
 
@@ -425,7 +434,7 @@
     </div>
 
     <div class="row">
-        <a href="/v1/operations/last-peer" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/last-peer">Перейти</a>
     </div>
 </div>
 
@@ -444,7 +453,7 @@
     </div>
 
     <div class="row">
-        <a href="/v1/operations/max-time-in-campus" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/max-time-in-campus">Перейти</a>
     </div>
 </div>
 
@@ -463,7 +472,7 @@
     </div>
 
     <div class="row">
-        <a href="/v1/operations/max-tasks" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/max-tasks">Перейти</a>
     </div>
 </div>
 
@@ -482,7 +491,7 @@
     </div>
 
     <div class="row">
-        <a href="/v1/operations/max-friends" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/max-friends">Перейти</a>
     </div>
 </div>
 
@@ -501,7 +510,7 @@
     </div>
 
     <div class="row">
-        <a href="/v1/operations/total-xp" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/total-xp">Перейти</a>
     </div>
 </div>
 
@@ -520,7 +529,7 @@
     </div>
 
     <div class="row">
-        <a href="/v1/operations/checks-percent" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/checks-percent">Перейти</a>
     </div>
 </div>
 
@@ -539,14 +548,14 @@
     </div>
 
     <div class="row">
-        <a href="/v1/operations/checks-percent" class="btn btn-primary">Перейти</a>
+        <a class="btn btn-primary" href="/v1/operations/checks-percent">Перейти</a>
     </div>
 </div>
 
 <hr>
 
-<script type="text/javascript" src="/resources/js/confirm_CUD.js"></script>
-<script type="text/javascript" src="/resources/js/header_script.js"></script>
+<script src="/resources/js/confirm_CUD.js" type="text/javascript"></script>
+<script src="/resources/js/header_script.js" type="text/javascript"></script>
 <script th:inline="javascript">
     createHeader('Operations');
 </script>
