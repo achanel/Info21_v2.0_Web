@@ -23,22 +23,23 @@
 <header></header>
 
 <div class="container">
-    <h1 class="page-header">Добавление записи о проверке вертером</h1>
+    <h1 class="page-header">Создание записи в таблице p2p</h1>
     <form action="#" id="form" method="POST">
-<!--        <div class="label-input-row">-->
-<!--            <div class="dropdown">-->
-<!--                <button class="dropbtn select-btn" type="button">verter id</button>-->
-<!--                <div class="dropdown-content verterIds"></div>-->
-<!--            </div>-->
-<!--            <input class="form-control input" id="verterId" name="verter_id" placeholder="verter id" readonly required-->
-<!--                   type="text">-->
-<!--        </div>-->
         <div class="label-input-row">
             <div class="dropdown">
                 <button class="dropbtn select-btn" type="button">check id</button>
                 <div class="dropdown-content checks_ids"></div>
             </div>
             <input class="form-control input" id="checks_id" name="checks_id" placeholder="check id" readonly
+                   required
+                   type="text">
+        </div>
+        <div class="label-input-row">
+            <div class="dropdown">
+                <button class="dropbtn select-btn" type="button">checkingpeer</button>
+                <div class="dropdown-content checkingpeers"></div>
+            </div>
+            <input class="form-control input" id="checkingpeer" name="checkingpeer" placeholder="checkingpeer" readonly
                    required
                    type="text">
         </div>
@@ -54,14 +55,14 @@
         </div>
 
         <div class="label-input-row">
-            <label for="time">time</label>
-            <input class="form-control input" id="time" name="time" required type="time" step="1">
+            <label for="time">Time</label>
+            <input class="form-control input" id="time" name="time" step="1" required type="time">
         </div>
 
         <button class="create-btn" onclick="return confirm_save()" style="margin-bottom: 10px" type="submit">Сохранить
         </button>
     </form>
-    <a class="create-btn" href="/verter/read">Назад</a>
+    <a class="create-btn" href="/p2p/read">Назад</a>
 </div>
 
 
@@ -70,25 +71,24 @@
 <script src="/resources/js/generateAndShowTable.js"></script>
 <script src="/resources/js/selectDropDown.js"></script>
 <script src="/resources/js/getAllIds.js"></script>
-<script src="/resources/js/requestSettings/setRequestSettingsTasks.js"></script>
 <script src="/resources/js/getCheckById.js"></script>
+<script src="/resources/js/requestSettings/sendRequestSettingsP2P.js"></script>
 
 
 <script th:inline="javascript">
     createHeader('Data');
 
-    // getTable("verterList")
-    //     .then(result => {
-    //         selectDropDown(getAllVerterIds(result), ".verterIds", "#verterId")
-    //     })
-    //     .catch(error => {
-    //         console.error(`Произошла ошибка: ${error.message}`);
-    //     });
-
     getTable("checksList")
         .then(result => {
             selectDropDown(getAllIds(result, "checks_id"), ".checks_ids", "#checks_id");
-            // getCheckById(result, 1);
+        })
+        .catch(error => {
+            console.error(`Произошла ошибка: ${error.message}`);
+        });
+
+    getTable("peersList")
+        .then(result => {
+            selectDropDown(getAllIds(result, "name"), ".checkingpeers", "#checkingpeer");
         })
         .catch(error => {
             console.error(`Произошла ошибка: ${error.message}`);
@@ -96,7 +96,9 @@
 
     selectDropDown(["Start", "Success", "Failure"], ".states", "#state");
 
-    setRequestSettingsTasks("verterList", "save", "POST");
+
+
+    sendRequestSettingsP2P("p2PList", "save", "POST");
 </script>
 
 </body>
