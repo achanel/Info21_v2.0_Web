@@ -51,7 +51,7 @@ public class SQLController {
     @PostMapping("/export")
     public ResponseEntity<P2P> csvExport() {
         log.info("csvExport");
-        csvExecutor.writeChecksCSV(tablesService.getTable());
+        csvExecutor.writeChecksCSV(tablesService.getTable());  //TODO почему Checks?
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
