@@ -25,14 +25,6 @@
 <div class="container">
     <h1 class="page-header">Добавление записи о проверке вертером</h1>
     <form action="#" id="form" method="POST">
-<!--        <div class="label-input-row">-->
-<!--            <div class="dropdown">-->
-<!--                <button class="dropbtn select-btn" type="button">verter id</button>-->
-<!--                <div class="dropdown-content verterIds"></div>-->
-<!--            </div>-->
-<!--            <input class="form-control input" id="verterId" name="verter_id" placeholder="verter id" readonly required-->
-<!--                   type="text">-->
-<!--        </div>-->
         <div class="label-input-row">
             <div class="dropdown">
                 <button class="dropbtn select-btn" type="button">check id</button>
@@ -70,7 +62,7 @@
 <script src="/resources/js/generateAndShowTable.js"></script>
 <script src="/resources/js/selectDropDown.js"></script>
 <script src="/resources/js/getAllIds.js"></script>
-<script src="/resources/js/requestSettings/setRequestSettingsTasks.js"></script>
+<script src="/resources/js/requestSettings/sendRequestSettingsVerter.js"></script>
 <script src="/resources/js/getCheckById.js"></script>
 
 
@@ -96,7 +88,7 @@
 
     selectDropDown(["Start", "Success", "Failure"], ".states", "#state");
 
-    setRequestSettingsTasks("verterList", "save", "POST");
+    sendRequestSettingsVerter("verterList", "save", "POST");
 </script>
 
 </body>

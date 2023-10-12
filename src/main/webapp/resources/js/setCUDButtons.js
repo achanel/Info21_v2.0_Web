@@ -4,6 +4,7 @@ function setCUDButtons(tableName) {
     const createBtn = document.createElement('a');
     const updateBtn = document.createElement('a');
     const deleteBtn = document.createElement('a');
+    const exportToCsvBtn = document.createElement('a');
 
     createBtn.textContent = 'create';
     createBtn.classList.add('create-btn');
@@ -17,7 +18,19 @@ function setCUDButtons(tableName) {
     deleteBtn.classList.add('delete-btn');
     deleteBtn.href = `/${tableName}/delete`;
 
+    exportToCsvBtn.textContent = 'export csv';
+    exportToCsvBtn.classList.add('export-btn');
+
     controlBtnContainer.appendChild(createBtn);
     controlBtnContainer.appendChild(updateBtn);
     controlBtnContainer.appendChild(deleteBtn);
+    controlBtnContainer.appendChild(exportToCsvBtn);
+
+
+    exportToCsvBtn.addEventListener('click', function (e) {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", `http://localhost:8082/${tableName}/export`, true);
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.send();
+    });
 }

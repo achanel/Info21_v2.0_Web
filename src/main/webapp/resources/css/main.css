@@ -33,7 +33,7 @@ p, li {
     padding-bottom: 100px;
 }
 
-.create-btn, .update-btn, .delete-btn, .select-btn {
+.create-btn, .update-btn, .delete-btn, .select-btn, .export-btn {
     padding: 16px;
     font-size: 16px;
     border: none;
@@ -46,7 +46,7 @@ p, li {
     display: block;
 }
 
-.create-btn:focus, .update-btn:focus, .delete-btn:focus, .select-btn:focus {
+.create-btn:focus, .update-btn:focus, .delete-btn:focus, .select-btn:focus, .export-btn:focus {
     outline: rgba(0, 139, 255, 1) 5px solid;
 }
 
@@ -55,9 +55,9 @@ p, li {
     color: rgba(33, 33, 33, 1);
 }
 
-.create-btn:hover, .update-btn:hover, .delete-btn:hover, .select-btn {
-    background-color: rgba(162, 79, 234, 1);
-    color: rgba(255, 255, 255, 1);
+.export-btn {
+    background-color: rgba(0, 139, 255, 1);
+    color: rgba(33, 33, 33, 1);
 }
 
 .update-btn {
@@ -75,6 +75,11 @@ p, li {
     background: rgba(198, 207, 218, 1);
     color: rgba(33, 33, 33, 1);
     margin-right: 10px;
+}
+
+.create-btn:hover, .update-btn:hover, .delete-btn:hover, .select-btn:hover, .export-btn:hover {
+    background-color: rgba(162, 79, 234, 1);
+    color: rgba(255, 255, 255, 1);
 }
 
 .invisible {

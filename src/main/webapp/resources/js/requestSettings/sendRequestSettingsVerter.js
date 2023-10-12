@@ -4,8 +4,7 @@ const paths = {
     delete: "http://localhost:8082/data/delete_table",
 }
 
-
-function sendRequestSettingsP2P(tableName, action, method) {
+function sendRequestSettingsVerter(tableName, action, method) {
     document.getElementById('form').addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -14,7 +13,6 @@ function sendRequestSettingsP2P(tableName, action, method) {
         let data = "";
 
         data += `"check": {"checks_id": ${formData.get("checks_id")}},`;
-        data += `"checkingpeer": {"name": "${formData.get("checkingpeer")}"},`;
         data += `"state": "${formData.get("state")}",`;
         data += `"time": "${formData.get("time")}"`;
 
@@ -36,4 +34,3 @@ function sendRequestSettingsP2P(tableName, action, method) {
         // location.reload()
     });
 }
-
