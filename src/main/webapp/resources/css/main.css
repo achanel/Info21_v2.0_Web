@@ -109,3 +109,21 @@ label {
     display: flex;
 }
 
+
+
+.box-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.box > img {
+    width: 100px;
+    border-radius: 100%;
+    box-shadow: 0 2px 3px 0 rgba(81, 96, 119, 0.20);
+    margin-bottom: 20px;
+}
+
+.names {
+    font-size: 25px;
+}
