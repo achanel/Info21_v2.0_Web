@@ -34,9 +34,7 @@ public class SQLController {
     private TablesService tablesService;
 
     @GetMapping
-    public String main(Map<String, Object> model) {
-        model.put("sqlResponse", sqlResponse);
-
+    public String main() {
         return "main";
     }
 

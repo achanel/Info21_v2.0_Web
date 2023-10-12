@@ -413,10 +413,4 @@ public class OperationsController {
         model.addAttribute("entity", operationsService.executeChecksPercent());
         return "/operations/checks_percent";
     }
-
-    @GetMapping("/query")
-    String showQuery() {
-        log.info("GET /operations/query");
-        return "/operations/query";
-    }
 }
