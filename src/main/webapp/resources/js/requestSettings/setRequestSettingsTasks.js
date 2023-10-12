@@ -27,6 +27,6 @@ function setRequestSettingsTasks(tableName, action, method) {
         xhr.setRequestHeader("Content-type", "application/json");
         xhr.send(jsonString);
 
-        location.reload()
+        // location.reload()
     });
 }
