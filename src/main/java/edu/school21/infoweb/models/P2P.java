@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.sql.Time;
@@ -27,6 +28,7 @@ public class P2P {
 
     @JsonProperty("state")
     @Enumerated(EnumType.STRING)
+    @Type(type = "edu.school21.infoweb.utils.EnumTypePostgreSql")
     private CheckStatus state;
 
     @JsonProperty("time")
