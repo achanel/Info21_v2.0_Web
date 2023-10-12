@@ -5,7 +5,7 @@ function createHeader(title) {
     <div class="row1">
         <div class="logo">
             <a href="/">
-                <img alt="" height="88px" src="/resources/img/welcome_page_logo.png" width="94px">
+                <img alt="" height="88px" src="/resources/img/welcome_page_logo.png" width="94px" tabindex="0">
             </a>
         </div>
         <div class="header_text header_title">${title}</div>
@@ -14,7 +14,7 @@ function createHeader(title) {
     <div class="row2">
         <div class="column_item">
             <div class="dropdown">
-              <button class="dropbtn create-btn">Data</button>
+              <button class="dropbtn create-btn" tabindex="1">Data</button>
               <div class="dropdown-content">
                 <a class="header_text" href="/peers/read">Peers</a>
                 <a class="header_text" href="/tasks/read">Tasks</a>
@@ -31,7 +31,7 @@ function createHeader(title) {
         </div>
         <div class="column_item">
             <div class="dropdown">
-              <button class="dropbtn create-btn">Operations</button>
+              <button class="dropbtn create-btn" tabindex="2">Operations</button>
               <div class="dropdown-content">
                 <a class="header_text" href="/v1/operations/">Procedures</a>
                 <a class="header_text" href="/v1/operations/query">Execute query</a>

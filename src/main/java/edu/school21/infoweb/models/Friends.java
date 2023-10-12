@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Table(name = "friends")
 public class Friends {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonIgnoreProperties
     @Column(name = "id")
     private long friend_id;

@@ -12,86 +12,96 @@ drop table if exists XP cascade;
 drop table if exists TimeTracking cascade;
 
 -- Создание всех заданных таблиц
-create table Peers (
-                       Nickname    varchar not null primary key,
-                       Birthday    date not null
+create table Peers
+(
+    Nickname varchar not null primary key,
+    Birthday date    not null
 );
 
-create table Tasks (
-                       Title       varchar not null primary key,
-                       ParentTask   varchar,
-                       MaxXP       integer not null,
-                       foreign key ( ParentTask ) references Tasks ( Title )
+create table Tasks
+(
+    Title      varchar not null primary key,
+    ParentTask varchar,
+    MaxXP      integer not null,
+    foreign key (ParentTask) references Tasks (Title)
 );
 
-create table Checks (
-                        ID      integer primary key not null,
-                        Peer    varchar not null,
-                        Task    varchar not null,
-                        Date    date not null,
-                        foreign key ( Peer ) references Peers ( Nickname ),
-                        foreign key ( Task ) references Tasks ( Title )
+create table Checks
+(
+    ID   integer primary key not null,
+    Peer varchar             not null,
+    Task varchar             not null,
+    Date date                not null,
+    foreign key (Peer) references Peers (Nickname),
+    foreign key (Task) references Tasks (Title)
 );
 
 create type check_state as enum ( 'Start', 'Success', 'Failure' );
 
-create  table P2P (
-                      ID              integer primary key not null,
-                      "check"         integer not null,
-                      CheckingPeer    varchar not null,
-                      State           check_state not null,
-                      Time            time not null,
-                      foreign key ( "check" ) references Checks ( ID ),
-                      foreign key ( CheckingPeer ) references Peers ( Nickname )
+create table P2P
+(
+    ID           integer primary key not null,
+    "check"      integer             not null,
+    CheckingPeer varchar             not null,
+    State        check_state         not null,
+    Time         time                not null,
+    foreign key ("check") references Checks (ID),
+    foreign key (CheckingPeer) references Peers (Nickname)
 );
 
-create table Verter (
-                        ID      integer primary key not null,
-                        "check" integer not null,
-                        State   check_state not null,
-                        Time    time not null,
-                        foreign key ( "check" ) references Checks ( ID )
+create table Verter
+(
+    ID      integer primary key not null,
+    "check" integer             not null,
+    State   check_state         not null,
+    Time    time                not null,
+    foreign key ("check") references Checks (ID)
 );
 
-create table TransferredPoints (
-                                   ID              integer primary key not null,
-                                   CheckingPeer    varchar not null,
-                                   CheckedPeer     varchar not null,
-                                   PointsAmount    bigint not null,
-                                   foreign key ( CheckingPeer ) references Peers ( Nickname ),
-                                   foreign key ( CheckedPeer ) references Peers ( Nickname )
+create table TransferredPoints
+(
+    ID           integer primary key not null,
+    CheckingPeer varchar             not null,
+    CheckedPeer  varchar             not null,
+    PointsAmount bigint              not null,
+    foreign key (CheckingPeer) references Peers (Nickname),
+    foreign key (CheckedPeer) references Peers (Nickname)
 );
 
-create table Friends (
-                         ID      integer primary key not null,
-                         Peer1   varchar not null,
-                         Peer2   varchar not null,
-                         foreign key ( Peer1 ) references Peers ( Nickname ),
-                         foreign key ( Peer2 ) references Peers ( Nickname )
+create table Friends
+(
+    ID    integer primary key not null,
+    Peer1 varchar             not null,
+    Peer2 varchar             not null,
+    foreign key (Peer1) references Peers (Nickname),
+    foreign key (Peer2) references Peers (Nickname)
 );
 
-create table Recommendations (
-                                 ID              integer primary key not null,
-                                 Peer            varchar not null,
-                                 RecommendedPeer varchar not null,
-                                 foreign key ( Peer ) references Peers ( Nickname ),
-                                 foreign key ( RecommendedPeer ) references Peers ( Nickname )
+create table Recommendations
+(
+    ID              integer primary key not null,
+    Peer            varchar             not null,
+    RecommendedPeer varchar             not null,
+    foreign key (Peer) references Peers (Nickname),
+    foreign key (RecommendedPeer) references Peers (Nickname)
 );
 
-create table XP (
-                    ID          integer primary key not null,
-                    "check"     integer not null,
-                    XPAmount    integer not null,
-                    foreign key ( "check" ) references Checks ( ID )
+create table XP
+(
+    ID       integer primary key not null,
+    "check"  integer             not null,
+    XPAmount integer             not null,
+    foreign key ("check") references Checks (ID)
 );
 
-create table TimeTracking (
-                              ID  integer primary key not null,
-                              Peer    varchar not null,
-                              Date  date not null,
-                              Time  time not null,
-                              State   int2 not null check ( State in ( 1, 2 ) ),
-                              foreign key ( Peer ) references Peers ( Nickname )
+create table TimeTracking
+(
+    ID    integer primary key not null,
+    Peer  varchar             not null,
+    Date  date                not null,
+    Time  time                not null,
+    State int2                not null check ( State in (1, 2) ),
+    foreign key (Peer) references Peers (Nickname)
 );
 
 -- Процедуры экспорта и импорта их .csv файла

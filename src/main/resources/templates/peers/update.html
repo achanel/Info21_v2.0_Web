@@ -32,7 +32,7 @@
                 <div class="dropdown-content nicknames" id="myDropdown"></div>
             </div>
 
-            <input class="form-control input" id="nickname" name="name" placeholder="Nickname" required type="text">
+            <input class="form-control input" id="nickname" name="name" placeholder="Nickname" required readonly type="text">
         </div>
         <div class="label-input-row">
             <label for="dateField">Birthday</label>
@@ -64,8 +64,6 @@
             console.error(`Произошла ошибка: ${error.message}`);
         });
     setRequestSettingsPeer("peersList", "update", "POST");
-
-    setUnchangeableInputs("#nickname");
 </script>
 <script>
 

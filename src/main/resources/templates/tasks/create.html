@@ -44,7 +44,7 @@
       <input type="number" class="form-control input" id="maxXP" name="maxXP" placeholder="max XP" required>
     </div>
 
-    <button class="create-btn" onclick="return confirm_update()" style="margin-bottom: 10px" type="submit">Сохранить
+    <button class="create-btn" onclick="return confirm_save()" style="margin-bottom: 10px" type="submit">Сохранить
     </button>
   </form>
   <a class="create-btn" href="/tasks/read">Назад</a>
@@ -72,8 +72,6 @@
           });
 
   setRequestSettingsTasks("tasksList", "save", "POST");
-
-  setUnchangeableInputs("#parentTask");
 </script>
 
 </body>
