@@ -25,7 +25,7 @@
 <div class="container">
     <h1 class="page-header">Процедура добавления проверки Verter'ом</h1>
 
-    <form action="/v1/operations/add-verter-review" method="post" th:object="${addVerterCheck}">
+    <form id="form" action="/v1/operations/add-verter-review" method="post" th:object="${addVerterCheck}">
         <div class="form-group row mt-5">
             <label class="col-sm-2 col-form-label" for="checkedPeer2">Ник проверяемого</label>
             <input aria-describedby="checkedPeerError2" class="form-control mb-4 col-4" id="checkedPeer2"
@@ -69,12 +69,17 @@
     <div class="mt-5">
         <a class="btn btn-primary" href="/v1/operations/">Назад</a>
     </div>
+
+    <div class="message-container"></div>
 </div>
 
 <script src="/resources/js/confirm_CUD.js" type="text/javascript"></script>
 <script src="/resources/js/header_script.js" type="text/javascript"></script>
+<script src="/resources/js/SetErrorMessage.js" type="text/javascript"></script>
+<script src="/resources/js/requestSettings/sendRequestSettingsOperations.js" type="text/javascript"></script>
 <script th:inline="javascript">
     createHeader('Operations');
+    sendRequestSettingsOperations();
 </script>
 </body>
 </html>

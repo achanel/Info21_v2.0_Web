@@ -1,12 +1,13 @@
-function setRequestSettingsSql() {
+function sendRequestSettingsOperations() {
     document.getElementById('form').addEventListener('submit', function (e) {
         e.preventDefault();
         resetErrorMessage();
 
         let formData = new FormData(this);
+        let form = e.target;
 
-        fetch('/v1/sql/', {
-            method: 'POST',
+        fetch(form.getAttribute('action'), {
+            method: form.getAttribute('method'),
             body: formData,
         })
             .then(response => {
@@ -15,15 +16,6 @@ function setRequestSettingsSql() {
                         throw new Error('Запрос завершился с ошибкой ' + response.status + ': ' + errorText);
                     });
                 }
-
-                return response.text();
-            })
-            .then(data => {
-                if (data) {
-                    setTable(data);
-                } else {
-                    setErrorMessage("No data found");
-                }
             })
             .catch((error) => {
                 setErrorMessage(extractErrorMessage(error.toString()));
@@ -31,14 +23,3 @@ function setRequestSettingsSql() {
     });
 }
 
-function extractErrorMessage(message) {
-    let targetWord = "ERROR:";
-
-    let indexOfWord = message.indexOf(targetWord);
-
-    if (indexOfWord !== -1) {
-        return message.slice(indexOfWord + targetWord.length).trim();
-    } else {
-        return message;
-    }
-}

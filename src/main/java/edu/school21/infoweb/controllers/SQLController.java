@@ -48,10 +48,7 @@ public class SQLController {
 
     @PostMapping
     public ResponseEntity<String> sqlController(@RequestParam(required = false, name = "request") String request) throws BusinessException {
-        System.out.println(request);
-        ResponseEntity<String> tmp = new ResponseEntity<>(sqlExecutor.execute(request).toString(), HttpStatus.OK);
-        int a = 1;
-        return tmp;
+        return new ResponseEntity<>(sqlExecutor.execute(request).toString(), HttpStatus.OK);
     }
 
     @PostMapping("/export")
