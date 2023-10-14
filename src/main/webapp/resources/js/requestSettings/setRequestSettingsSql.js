@@ -4,33 +4,49 @@ function setRequestSettingsSql() {
 
         let formData = new FormData(this);
 
-        sendRequest(formData.get("query"))
-            .then(result => {
-                console.log(result);
-            })
+        fetch('/v1/sql/', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => {
+            return response.text();
+        })
+        .then(data => {
+            setTable(data);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
     });
 }
 
-function sendRequest(data) {
-    return new Promise((resolve, reject) => {
-        let xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://localhost:8082/v1/sql/", true);
-        xhr.responseType = 'text';
-        xhr.setRequestHeader("Content-type", "text/html");
-        xhr.send(data);
+function setTable(data) {
+    const table = document.createElement('table');
+    table.classList.add('table', 'table-bordered', 'table-striped', 'table-href');
+    const thead = document.createElement('thead');
+    thead.classList.add('table-dark');
+    const tbody = document.createElement('tbody');
 
-        xhr.onload = function () {
-            let responseObj = xhr.response;
+    data = data.split("\n");
 
-            if (responseObj !== null) {
-                resolve(responseObj);
-            } else {
-                reject(new Error(`Ошибка`));
+    for (let i = 0; i < data.length; i++) {
+        let items = data[i].split(",");
+
+        if (items.length > 1) {
+            const row = document.createElement('tr');
+            for (let j = 0; j < items.length; j++) {
+                const cell = document.createElement('td');
+                cell.textContent = items[j];
+
+                cell.style.padding = "0.55rem"
+                row.appendChild(cell);
             }
-        };
+            tbody.appendChild(row);
+        }
+    }
+    const tableContainer = document.querySelector("#table-container");
+    tableContainer.textContent = "";
 
-        xhr.onerror = function () {
-            reject(new Error("Произошла ошибка при выполнении запроса"));
-        };
-    })
+    table.appendChild(tbody);
+    tableContainer.appendChild(table);
 }

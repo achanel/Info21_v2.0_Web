@@ -1,6 +1,7 @@
 package edu.school21.infoweb.controllers;
 
 import edu.school21.infoweb.csv.CSVExecutor;
+import edu.school21.infoweb.dto.TablesDTO;
 import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.models.*;
 import edu.school21.infoweb.services.TablesService;
@@ -38,12 +39,19 @@ public class SQLController {
         return "main";
     }
 
-    @PostMapping
-    public String sqlController(@RequestParam(required = false, name = "request") String request,
-                                Map<String, Object> model) throws BusinessException {
-        model.put("sqlResponse", sqlExecutor.execute(request));
+//    @PostMapping
+//    public String sqlController(@RequestParam(required = false, name = "request") String request) throws BusinessException {
+////        model.put("sqlResponse", sqlExecutor.execute(request));
+//
+//        return sqlExecutor.execute(request).toString();
+//    }
 
-        return "main";
+    @PostMapping
+    public ResponseEntity<String> sqlController(@RequestParam(required = false, name = "request") String request) throws BusinessException {
+        System.out.println(request);
+        ResponseEntity<String> tmp = new ResponseEntity<>(sqlExecutor.execute(request).toString(), HttpStatus.OK);
+        int a = 1;
+        return tmp;
     }
 
     @PostMapping("/export")
