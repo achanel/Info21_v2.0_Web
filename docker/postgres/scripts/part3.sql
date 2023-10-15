@@ -4,20 +4,29 @@ drop function if exists fnc_transferred_points();
 create or replace function fnc_transferred_points()
     returns table
             (
-                Peer1        varchar,
-                Peer2        varchar,
-                PointsAmount bigint
+                peer1        varchar,
+                peer2        varchar,
+                pointsamount bigint
             )
 as
 $$
 begin
-    return query (select t1.checkingpeer, t1.checkedpeer, (t1.pointsamount - t1.pointsamount) as PointsAmount
-                  from transferredpoints as t1);
+    return query
+        select tp1.checkedpeer                                  as peer1,
+               tp1.checkingpeer                                 as peer2,
+               tp1.pointsamount - coalesce(tp2.pointsamount, 0) as pointsamount
+        from transferredpoints tp1
+                 left join
+             transferredpoints tp2
+             on
+                         tp1.checkedpeer = tp2.checkingpeer
+                     and tp1.checkingpeer = tp2.checkedpeer;
 end;
-$$ language plpgsql;
+$$
+    language plpgsql;
 
-select *
-from fnc_transferred_points();
+-- select *
+-- from fnc_transferred_points();
 
 -- ++2) Написать функцию, которая возвращает таблицу вида: ник пользователя, название проверенного задания, кол-во полученного XP
 
@@ -40,8 +49,8 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_successful_checks();
+-- select *
+-- from fnc_successful_checks();
 
 -- ++3) Написать функцию, определяющую пиров, которые не выходили из кампуса в течение всего дня
 
@@ -62,8 +71,8 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_all_day_in_campus('2020-01-02');
+-- select *
+-- from fnc_all_day_in_campus('2020-01-02');
 
 -- ++4) Найти процент успешных и неуспешных проверок за всё время
 create or replace function fnc_checks_percent()
@@ -97,12 +106,13 @@ begin
 end;
 $$ language plpgsql;
 
-select * from fnc_checks_percent();
+-- select *
+-- from fnc_checks_percent();
 
 -- ++5) Посчитать изменение в количестве пир поинтов каждого пира по таблице TransferredPoints
 drop function if exists fnc_peer_points_changes cascade;
 create function fnc_peer_points_changes()
-    returns TABLE
+    returns table
             (
                 peer         character varying,
                 pointschange numeric
@@ -110,25 +120,23 @@ create function fnc_peer_points_changes()
 as
 $$
 begin
-    return query (with amount_received as (select checkingpeer      as Peer,
-                                                  sum(pointsamount) as PointsChange
-                                           from transferredpoints
-                                           group by checkingpeer
-                                           order by checkingpeer),
-                       amount_spent as (select checkedpeer       as Peer,
-                                               sum(pointsamount) as PointsChange
-                                        from transferredpoints
-                                        group by checkedpeer
-                                        order by checkedpeer)
-                  select ar.Peer, ar.PointsChange - "as".PointsChange as PointsChange
-                  from amount_received ar
-                           inner join amount_spent "as" on ar.Peer = "as".Peer);
-end;
+    return query (select checkingpeer      as peer,
+                         sum(pointsamount) as points
+                  from (select checkingpeer, sum(pointsamount) as pointsamount
+                        from transferredpoints
+                        group by checkingpeer
+                        union all
+                        select checkedpeer, sum(-pointsamount) as pointsamount
+                        from transferredpoints
+                        group by checkedpeer) as change
+                  group by checkingpeer
+                  order by points desc);
+end ;
 $$
     language plpgsql;
 
-select *
-from fnc_peer_points_changes();
+-- select *
+-- from fnc_peer_points_changes();
 
 -- ++6) Посчитать изменение в количестве пир поинтов каждого пира по таблице, возвращаемой первой функцией из Part 3
 drop function if exists fnc_peer_points_changes_2 cascade;
@@ -136,25 +144,28 @@ create or replace function fnc_peer_points_changes_2()
     returns table
             (
                 peer         varchar,
-                pointsChange integer
+                pointsChange numeric
             )
 as
 $$
 begin
-
-    return query (with p1 as (select Peer1 as peer, cast(sum(PointsAmount) as integer) as PointsChange
-                              from fnc_transferred_points()
-                              group by Peer1),
-                       p2 as (select Peer2 as peer, cast(sum(PointsAmount) as integer) as PointsChange
-                              from fnc_transferred_points()
-                              group by Peer2)
-                  select coalesce(p1.peer, p2.peer)                                    as peer,
-                         (coalesce(p1.PointsChange, 0) - coalesce(p2.PointsChange, 0)) as pointsChange
-                  from p1
-                           full join p2 on p1.peer = p2.peer
-                  order by PointsChange desc);
-end ;
-$$ language plpgsql;
+    return query (
+        select "peer1"           as Peer,
+               sum(pointsamount) as pointsChange
+        from (select "peer1",
+                     sum("pointsamount") as pointsamount
+              from fnc_transferred_points()
+              group by "peer1"
+              union all
+              select "peer2",
+                     sum(-"pointsamount") as pointsamount
+              from fnc_transferred_points()
+              group by "peer2") as pointsChange
+        group by peer
+        order by pointsChange desc);
+end;
+$$
+    language plpgsql;
 
 select *
 from fnc_peer_points_changes_2();
@@ -181,8 +192,8 @@ begin
 end ;
 $$ language plpgsql;
 
-select *
-from fnc_most_reviewed_task();
+-- select *
+-- from fnc_most_reviewed_task();
 
 -- ++8) Определить длительность последней P2P проверки
 drop function if exists fnc_last_check_duration cascade;
@@ -205,8 +216,8 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_last_check_duration();
+-- select *
+-- from fnc_last_check_duration();
 
 -- ++9) Найти всех пиров, выполнивших весь заданный блок задач и дату завершения последнего задания
 drop function if exists fnc_task_block cascade;
@@ -234,8 +245,8 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_task_block('C');
+-- select *
+-- from fnc_task_block('C');
 
 -- ++10) Определить, к какому пиру стоит идти на проверку каждому обучающемуся
 drop function if exists fnc_recommended_peer cascade;
@@ -266,8 +277,8 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_recommended_peer();
+-- select *
+-- from fnc_recommended_peer();
 
 -- ++11) Определить процент пиров, которые:
 -- - Приступили только к блоку 1
@@ -313,8 +324,8 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_blocks_comparing('C', 'C');
+-- select *
+-- from fnc_blocks_comparing('C', 'C');
 
 -- ++12) Определить N пиров с наибольшим числом друзей
 drop function if exists fnc_max_friends_peer cascade;
@@ -340,8 +351,8 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_max_friends_peer(2);
+-- select *
+-- from fnc_max_friends_peer(2);
 
 -- ++13) Определить процент пиров, которые когда-либо успешно проходили проверку в свой день рождения
 drop function if exists fnc_birthday_check cascade;
@@ -371,8 +382,8 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_birthday_check();
+-- select *
+-- from fnc_birthday_check();
 
 -- ++14) Определить кол-во XP, полученное в сумме каждым пиром
 drop function if exists fnc_total_xp cascade;
@@ -396,8 +407,8 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_total_xp();
+-- select *
+-- from fnc_total_xp();
 
 -- ++15) Определить всех пиров, которые сдали заданные задания 1 и 2, но не сдали задание 3
 drop function if exists fnc_completed_task cascade;
@@ -434,8 +445,8 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_completed_task('SQL1_Bootcamp', 'SQL2_Info21 v1.0', 'SQL3_RetailAnalitycs v1.0');
+-- select *
+-- from fnc_completed_task('SQL1_Bootcamp', 'SQL2_Info21 v1.0', 'SQL3_RetailAnalitycs v1.0');
 
 -- ++16) Используя рекурсивное обобщенное табличное выражение, для каждой задачи вывести кол-во предшествующих ей задач
 create or replace function fnc_count(in pre_tasks text) returns integer as
@@ -467,8 +478,8 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_pre_task();
+-- select *
+-- from fnc_pre_task();
 
 -- ++17) Найти "удачные" для проверок дни. День считается "удачным", если в нем есть хотя бы N идущих подряд успешных проверки
 drop function if exists fnc_lucky_day cascade;
@@ -496,8 +507,8 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_lucky_day(1);
+-- select *
+-- from fnc_lucky_day(1);
 
 -- ++18) Определить пира с наибольшим числом выполненных заданий
 drop function if exists fnc_max_tasks cascade;
@@ -518,8 +529,8 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_max_tasks();
+-- select *
+-- from fnc_max_tasks();
 
 -- ++19) Определить пира с наибольшим количеством XP
 drop function if exists fnc_top_peer cascade;
@@ -541,8 +552,8 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_top_peer();
+-- select *
+-- from fnc_top_peer();
 
 -- ++20) Определить пира, который провел сегодня в кампусе больше всего времени
 drop function if exists fnc_max_time_in_campus cascade;
@@ -582,8 +593,8 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_max_time_in_campus();
+-- select *
+-- from fnc_max_time_in_campus();
 
 -- ++21) Определить пиров, приходивших раньше заданного времени не менее N раз за всё время
 drop function if exists fnc_coming_early cascade;
@@ -606,8 +617,8 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_coming_early('23:00:00', 1);
+-- select *
+-- from fnc_coming_early('23:00:00', 1);
 
 -- ++22) Определить пиров, выходивших за последние N дней из кампуса больше M раз
 drop function if exists fnc_out_of_campus cascade;
@@ -631,8 +642,8 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_out_of_campus(0, 0);
+-- select *
+-- from fnc_out_of_campus(0, 0);
 
 -- ++23) Определить пира, который пришел сегодня последним
 drop function if exists fnc_last_peer cascade;
@@ -653,8 +664,8 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_last_peer();
+-- select *
+-- from fnc_last_peer();
 
 -- ++24) Определить пиров, которые выходили вчера из кампуса больше чем на N минут
 drop function if exists fnc_time_out_of_campus cascade;
@@ -693,8 +704,8 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_time_out_of_campus('90');
+-- select *
+-- from fnc_time_out_of_campus('90');
 
 -- ++25) Определить для каждого месяца процент ранних входов
 drop function if exists fnc_count_of_visits cascade;
@@ -733,5 +744,5 @@ begin
 end;
 $$ language plpgsql;
 
-select *
-from fnc_early_coming();
+-- select *
+-- from fnc_early_coming();

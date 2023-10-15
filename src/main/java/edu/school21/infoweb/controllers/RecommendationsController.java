@@ -2,6 +2,7 @@ package edu.school21.infoweb.controllers;
 
 import edu.school21.infoweb.csv.CSVExecutor;
 import edu.school21.infoweb.dto.TablesDTO;
+import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.services.TablesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,12 @@ public class RecommendationsController {
     @PostMapping("/export")
     public ResponseEntity<TablesDTO> csvExport() {
         csvExecutor.writeRecommendationsCSV(tablesService.getTable());
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/import")
+    public ResponseEntity<TablesDTO> csvImport() throws BusinessException {
+        csvExecutor.readCSV("Recommendations");
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

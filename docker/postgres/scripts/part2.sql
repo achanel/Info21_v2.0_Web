@@ -5,7 +5,7 @@ drop procedure if exists add_p2p_review cascade;
 create or replace procedure add_p2p_review(in checked_peer varchar,
                                            in checking_peer varchar,
                                            in task_title varchar,
-                                           in checkstate check_state ,
+                                           in checkstate check_state,
                                            in check_time time) as
 $$
 begin
@@ -151,10 +151,10 @@ create or replace function fnc_trg_XP() returns trigger as
 $$
 begin
     if new.xpamount <= (select maxxp
-                         from xp
-                                  inner join checks c on c.id = xp."check"
-                                  inner join tasks t on t.title = c.task
-                         group by maxxp)
+                        from xp
+                                 inner join checks c on c.id = xp."check"
+                                 inner join tasks t on t.title = c.task
+                        group by maxxp)
         and new."check" in (select "check"
                             from verter
                             where state = 'Success') then
