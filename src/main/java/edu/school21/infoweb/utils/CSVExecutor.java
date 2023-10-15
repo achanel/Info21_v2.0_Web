@@ -1,4 +1,4 @@
-package edu.school21.infoweb.csv;
+package edu.school21.infoweb.utils;
 
 import edu.school21.infoweb.controllers.SQLController;
 import edu.school21.infoweb.dto.TablesDTO;

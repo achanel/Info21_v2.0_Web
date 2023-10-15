@@ -1,6 +1,6 @@
 package edu.school21.infoweb.controllers;
 
-import edu.school21.infoweb.csv.CSVExecutor;
+import edu.school21.infoweb.utils.CSVExecutor;
 import edu.school21.infoweb.dto.TablesDTO;
 import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.services.TablesService;
