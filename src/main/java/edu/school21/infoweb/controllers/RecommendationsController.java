@@ -17,38 +17,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping("/recommendations")
 public class RecommendationsController {
+    private static final org.slf4j.Logger log
+            = org.slf4j.LoggerFactory.getLogger(DataController.class);
     @Autowired
     private CSVExecutor csvExecutor;
     @Autowired
     private TablesService tablesService;
     @GetMapping("/read")
     public String recommendationsRead() {
+        log.info("Read recommendations table");
         return "/recommendations/read";
     }
 
     @GetMapping("/create")
-    String createPeer() {
+    String createRecommendations() {
+        log.info("Create recommendations table");
         return "/recommendations/create";
     }
 
     @GetMapping("/update")
-    String showUpdatePeer() {
+    String showUpdateRecommendations() {
+        log.info("Update recommendations table");
         return "/recommendations/update";
     }
 
     @GetMapping("/delete")
-    String showDeletePeer() {
+    String showDeleteRecommendations() {
+        log.info("Delete recommendations table");
         return "/recommendations/delete";
     }
 
     @PostMapping("/export")
     public ResponseEntity<TablesDTO> csvExport() {
+        log.info("Export recommendations table to csv");
         csvExecutor.writeRecommendationsCSV(tablesService.getTable());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/import")
     public ResponseEntity<TablesDTO> csvImport() throws BusinessException {
+        log.info("Import recommendations table from csv");
         csvExecutor.readCSV("Recommendations");
         return new ResponseEntity<>(HttpStatus.OK);
     }

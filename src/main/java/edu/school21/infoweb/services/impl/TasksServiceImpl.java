@@ -17,7 +17,6 @@ public class TasksServiceImpl implements TasksService {
     @Override
     @Transactional
     public List<Tasks> getAllTasks() {
-        System.out.println("tasksService: " + tasksRepository.findAll());
         return tasksRepository.findAll();
     }
 

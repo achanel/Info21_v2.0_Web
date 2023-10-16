@@ -17,7 +17,6 @@ public class TimeTrackingServiceImpl implements TimeTrackingService {
     @Override
     @Transactional
     public List<TimeTracking> getAllTimeTracking() {
-        System.out.println("timeTrackingService: " + timeTrackingRepository.findAll());
         return timeTrackingRepository.findAll();
     }
 

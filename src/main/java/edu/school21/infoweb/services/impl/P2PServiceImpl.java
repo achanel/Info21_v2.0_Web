@@ -17,7 +17,6 @@ public class P2PServiceImpl implements P2PService {
     @Override
     @Transactional
     public List<P2P> getAllP2P() {
-        System.out.println("p2pService: " + p2PRepository.findAll());
         return p2PRepository.findAll();
     }
 

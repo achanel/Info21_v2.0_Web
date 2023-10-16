@@ -17,7 +17,6 @@ public class ChecksServiceImpl implements ChecksService {
     @Override
     @Transactional
     public List<Checks> getAllChecks() {
-        System.out.println("checksService: " + checksRepository.findAll());
         return checksRepository.findAll();
     }
 

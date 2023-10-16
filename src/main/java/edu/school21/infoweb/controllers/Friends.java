@@ -17,38 +17,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping("/friends")
 public class Friends {
+    private static final org.slf4j.Logger log
+            = org.slf4j.LoggerFactory.getLogger(DataController.class);
     @Autowired
     private CSVExecutor csvExecutor;
     @Autowired
     private TablesService tablesService;
     @GetMapping("/read")
     public String friendsRead() {
+        log.info("Read friends table");
         return "/friends/read";
     }
 
     @GetMapping("/create")
-    String createPeer() {
+    String createFriends() {
+        log.info("Create friends table");
         return "/friends/create";
     }
 
     @GetMapping("/update")
-    String showUpdatePeer() {
+    String showUpdatFriends() {
+        log.info("Update friends table");
         return "/friends/update";
     }
 
     @GetMapping("/delete")
-    String showDeletePeer() {
+    String showDeleteFriends() {
+        log.info("Delete friends table");
         return "/friends/delete";
     }
 
     @PostMapping("/export")
     public ResponseEntity<TablesDTO> csvExport() {
+        log.info("Export friends table to csv");
         csvExecutor.writeFriendsCSV(tablesService.getTable());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/import")
     public ResponseEntity<TablesDTO> csvImport() throws BusinessException {
+        log.info("Import friends table from csv");
         csvExecutor.readCSV("Friends");
         return new ResponseEntity<>(HttpStatus.OK);
     }

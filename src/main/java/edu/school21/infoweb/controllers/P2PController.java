@@ -17,38 +17,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping("/p2p")
 public class P2PController {
+    private static final org.slf4j.Logger log
+            = org.slf4j.LoggerFactory.getLogger(DataController.class);
     @Autowired
     private CSVExecutor csvExecutor;
     @Autowired
     private TablesService tablesService;
     @GetMapping("/read")
     public String p2pRead() {
+        log.info("Read p2ps table");
         return "/p2p/read";
     }
 
     @GetMapping("/create")
-    String createPeer() {
+    String createP2p() {
+        log.info("Create p2ps table");
         return "/p2p/create";
     }
 
     @GetMapping("/update")
-    String showUpdatePeer() {
+    String showUpdateP2p() {
+        log.info("Update p2ps table");
         return "/p2p/update";
     }
 
     @GetMapping("/delete")
-    String showDeletePeer() {
+    String showDeleteP2p() {
+        log.info("Delete p2ps table");
         return "/p2p/delete";
     }
 
     @PostMapping("/export")
     public ResponseEntity<TablesDTO> csvExport() {
+        log.info("Export p2ps table to csv");
         csvExecutor.writeP2PCSV(tablesService.getTable());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/import")
     public ResponseEntity<TablesDTO> csvImport() throws BusinessException {
+        log.info("Import p2ps table from csv");
         csvExecutor.readCSV("P2P");
         return new ResponseEntity<>(HttpStatus.OK);
     }

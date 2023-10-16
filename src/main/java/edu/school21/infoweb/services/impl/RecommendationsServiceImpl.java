@@ -17,7 +17,6 @@ public class RecommendationsServiceImpl implements RecommendationsService {
     @Override
     @Transactional
     public List<Recommendations> getAllRecommendations() {
-        System.out.println("recommendationsServise: " + recommendationsRepository.findAll());
         return recommendationsRepository.findAll();
     }
 

@@ -17,7 +17,6 @@ public class TransferedPointsServiceImpl implements TransferredPointsService {
     @Override
     @Transactional
     public List<TransferredPoints> getAllTransferredPoints() {
-        System.out.println("transferredPointsService: " + transferredPointsRepository.findAll());
         return transferredPointsRepository.findAll();
     }
 

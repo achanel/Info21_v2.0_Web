@@ -17,7 +17,6 @@ public class PeersServiceImpl implements PeersService {
     @Override
     @Transactional
     public List<Peers> getAllPeers() {
-        System.out.println("peersService: " + peersRepository.findAll());
         return peersRepository.findAll();
     }
 

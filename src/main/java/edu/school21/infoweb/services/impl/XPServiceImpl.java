@@ -17,7 +17,6 @@ public class XPServiceImpl implements XPService {
     @Override
     @Transactional
     public List<XP> getAllXP() {
-        System.out.println("xpService: " + xpRepository.findAll());
         return xpRepository.findAll();
     }
 

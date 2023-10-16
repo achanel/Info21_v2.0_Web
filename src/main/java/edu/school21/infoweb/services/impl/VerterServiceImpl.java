@@ -17,7 +17,6 @@ public class VerterServiceImpl implements VerterService {
     @Override
     @Transactional
     public List<Verter> getAllVerter() {
-        System.out.println("verterService: " + verterRepository.findAll());
         return verterRepository.findAll();
     }
 

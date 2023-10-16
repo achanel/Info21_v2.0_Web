@@ -17,38 +17,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping("/verter")
 public class VerterController {
+    private static final org.slf4j.Logger log
+            = org.slf4j.LoggerFactory.getLogger(DataController.class);
     @Autowired
     private CSVExecutor csvExecutor;
     @Autowired
     private TablesService tablesService;
     @GetMapping("/read")
-    public String tasksRead() {
+    public String verterRead() {
+        log.info("Read verter table");
         return "/verter/read";
     }
 
     @GetMapping("/create")
-    String createPeer() {
+    String createVerter() {
+        log.info("Create verter table");
         return "/verter/create";
     }
 
     @GetMapping("/update")
-    String showUpdatePeer() {
+    String showUpdateVerter() {
+        log.info("Update verter table");
         return "/verter/update";
     }
 
     @GetMapping("/delete")
-    String showDeletePeer() {
+    String showDeleteVerter() {
+        log.info("Delete verter table");
         return "/verter/delete";
     }
 
     @PostMapping("/export")
     public ResponseEntity<TablesDTO> csvExport() {
+        log.info("Export verter table to csv");
         csvExecutor.writeVerterCSV(tablesService.getTable());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/import")
     public ResponseEntity<TablesDTO> csvImport() throws BusinessException {
+        log.info("Import verter table from csv");
         csvExecutor.readCSV("Verter");
         return new ResponseEntity<>(HttpStatus.OK);
     }

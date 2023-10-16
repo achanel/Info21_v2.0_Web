@@ -23,8 +23,12 @@ public class CSVExecutor {
             = org.slf4j.LoggerFactory.getLogger(SQLController.class);
 
     public void readCSV(String tableName) throws BusinessException {
-        sqlExecutor.execute(
-                "CALL import('" + tableName + "', '/tmp/" + tableName.toLowerCase() + ".csv', ',');");
+        try {
+            sqlExecutor.execute(
+                    "CALL import('" + tableName + "', '/tmp/" + tableName.toLowerCase() + ".csv', ',');");
+        } catch (BusinessException e) {
+            log.error("Error While reading CSV ", e);
+        }
     }
     public void writePeersCSV(TablesDTO tablesDTO) {
         try (CSVPrinter csvPrinter = new CSVPrinter(

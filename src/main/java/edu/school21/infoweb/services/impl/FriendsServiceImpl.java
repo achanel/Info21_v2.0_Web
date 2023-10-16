@@ -17,7 +17,6 @@ public class FriendsServiceImpl implements FriendsService {
     @Override
     @Transactional
     public List<Friends> getAllFriends() {
-        System.out.println("friendsService: " + friendsRepository.findAll());
         return friendsRepository.findAll();
     }
 
