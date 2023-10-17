@@ -34,7 +34,7 @@ function createHeader(title) {
               <button class="dropbtn create-btn" tabindex="2">Operations</button>
               <div class="dropdown-content">
                 <a class="header_text" href="/v1/operations/">Procedures</a>
-                <a class="header_text" href="/v1/sql/">Execute query</a>
+                <a class="header_text" href="/v1/operations/manual">Execute query</a>
               </div>
             </div>
         </div>

@@ -6,8 +6,11 @@ import edu.school21.infoweb.models.operations.AddP2PReviewParams;
 import edu.school21.infoweb.models.operations.AddVerterReviewParams;
 import edu.school21.infoweb.services.TablesService;
 import edu.school21.infoweb.sqlServices.OperationsService;
+import edu.school21.infoweb.sqlServices.SqlExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +29,8 @@ public class OperationsController {
     OperationsService operationsService;
     @Autowired
     private TablesService tablesService;
+    @Autowired
+    SqlExecutor sqlExecutor;
 
     @GetMapping
     String showOperationsPage() {
@@ -412,5 +417,17 @@ public class OperationsController {
         log.info("POST /operations/campus-leaving");
         model.addAttribute("entity", operationsService.executeChecksPercent());
         return "/operations/checks_percent";
+    }
+
+    @GetMapping("/manual")
+    public String manualQuery() {
+        return "main";
+    }
+
+
+    @PostMapping("/manual")
+    public ResponseEntity<String> executeManualQuery(@RequestParam(required = false, name = "request") String request) throws BusinessException {
+        log.info("POST sql_execute");
+        return new ResponseEntity<>(sqlExecutor.execute(request).toString(), HttpStatus.OK);
     }
 }

@@ -5,7 +5,7 @@ function setRequestSettingsSql() {
 
         let formData = new FormData(this);
 
-        fetch('/v1/sql/', {
+        fetch('/v1/operations/manual', {
             method: 'POST',
             body: formData,
         })
