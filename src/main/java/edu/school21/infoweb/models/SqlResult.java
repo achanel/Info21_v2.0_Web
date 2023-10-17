@@ -188,4 +188,8 @@ public class SqlResult {
     public Time getTime() {
         return time;
     }
+
+    public Date getDay() {
+        return cDate;
+    }
 }

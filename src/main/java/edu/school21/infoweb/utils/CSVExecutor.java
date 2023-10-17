@@ -1,6 +1,5 @@
 package edu.school21.infoweb.utils;
 
-import edu.school21.infoweb.controllers.SQLController;
 import edu.school21.infoweb.dto.TablesDTO;
 import edu.school21.infoweb.exception.BusinessException;
 import edu.school21.infoweb.models.*;
@@ -20,7 +19,7 @@ public class CSVExecutor {
     @Autowired
     SqlExecutor sqlExecutor;
     private static final org.slf4j.Logger log
-            = org.slf4j.LoggerFactory.getLogger(SQLController.class);
+            = org.slf4j.LoggerFactory.getLogger(CSVExecutor.class);
 
     public void readCSV(String tableName) throws BusinessException {
         try {
