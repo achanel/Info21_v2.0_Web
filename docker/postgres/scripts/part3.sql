@@ -149,20 +149,19 @@ create or replace function fnc_peer_points_changes_2()
 as
 $$
 begin
-    return query (
-        select "peer1"           as Peer,
-               sum(pointsamount) as pointsChange
-        from (select "peer1",
-                     sum("pointsamount") as pointsamount
-              from fnc_transferred_points()
-              group by "peer1"
-              union all
-              select "peer2",
-                     sum(-"pointsamount") as pointsamount
-              from fnc_transferred_points()
-              group by "peer2") as pointsChange
-        group by peer
-        order by pointsChange desc);
+    return query (select "peer1"           as Peer,
+                         sum(pointsamount) as pointsChange
+                  from (select "peer1",
+                               sum("pointsamount") as pointsamount
+                        from fnc_transferred_points()
+                        group by "peer1"
+                        union all
+                        select "peer2",
+                               sum(-"pointsamount") as pointsamount
+                        from fnc_transferred_points()
+                        group by "peer2") as pointsChange
+                  group by peer
+                  order by pointsChange desc);
 end;
 $$
     language plpgsql;
@@ -299,10 +298,10 @@ $$
 begin
     return query (with first_block as (select distinct peer
                                        from checks
-                                       where task like block_name_1),
+                                       where checks.task like block_name_1 || '%'),
                        second_block as (select distinct peer
                                         from checks
-                                        where task like block_name_2),
+                                        where checks.task like block_name_2 || '%'),
                        both_blocks as (select distinct peer
                                        from first_block
                                        intersect
@@ -630,20 +629,19 @@ create or replace function fnc_out_of_campus(in n int, in m int)
 as
 $$
 begin
-
-    return query (select t.peer
-                  from (select timetracking.peer, timetracking."date", (count(*) - 1) as counts
-                        from timetracking
-                        where state = 2
-                          and "date" > (current_date - n)
-                        group by timetracking.peer, "date") as t
-                  group by t.peer
-                  having sum(counts) > m);
+    return query (with last_n_days as (select timetracking.peer, timetracking.date
+                                       from timetracking
+                                       where state = 2
+                                         and timetracking.date >= (current_date - (n || ' day')::interval))
+                  select last_n_days.peer
+                  from last_n_days
+                  group by last_n_days.peer
+                  having count(*) > m);
 end;
 $$ language plpgsql;
 
--- select *
--- from fnc_out_of_campus(0, 0);
+select *
+from fnc_out_of_campus(2000000, 1);
 
 -- ++23) Определить пира, который пришел сегодня последним
 drop function if exists fnc_last_peer cascade;
