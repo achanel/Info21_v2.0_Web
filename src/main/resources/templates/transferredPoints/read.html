@@ -44,11 +44,11 @@
             tableContainer.appendChild(table);
 
             sortTable();
-            setCUDButtons("transferredPoints");
         })
         .catch(error => {
             console.error(`Произошла ошибка: ${error.message}`);
         });
+        setCUDButtons("transferredPoints");
 </script>
 </body>
 </html>

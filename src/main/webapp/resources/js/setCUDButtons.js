@@ -41,7 +41,7 @@ function setCUDButtons(tableName) {
 
     importToCsvBtn.addEventListener('click', function (e) {
         let xhr = new XMLHttpRequest();
-        xhr.open("POST", `http://localhost:8082/${tableName}/import`, true);
+        xhr.open("GET", `http://localhost:8082/${tableName}/import`, true);
         xhr.setRequestHeader("Content-type", "application/json");
         xhr.send();
     });

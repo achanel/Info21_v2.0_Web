@@ -44,11 +44,11 @@
             tableContainer.appendChild(table);
 
             sortTable();
-            setCUDButtons("recommendations");
         })
         .catch(error => {
             console.error(`Произошла ошибка: ${error.message}`);
         });
+        setCUDButtons("recommendations");
 </script>
 </body>
 </html>

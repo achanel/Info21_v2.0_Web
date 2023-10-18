@@ -45,11 +45,11 @@
             tableContainer.appendChild(table);
 
             sortTable();
-            setCUDButtons("tasks");
         })
         .catch(error => {
             console.error(`Произошла ошибка: ${error.message}`);
         });
+        setCUDButtons("tasks");
 </script>
 </body>
 </html>
